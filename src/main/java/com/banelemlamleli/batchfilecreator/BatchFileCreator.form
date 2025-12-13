@@ -79,10 +79,12 @@
                   <Component id="jPanel2" pref="284" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnDownloadTxtFile" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnDownloadExcelFile" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="btnDownloadCsvFile" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnDownloadTxtFile" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                      <Component id="btnDownloadCsvFile" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
