@@ -32,7 +32,7 @@ public class SanctionsListData {
 
     @SuppressWarnings("null")
     @Test
-    public void launchBrowser(){
+    public void scrapeWebsite(){
         System.out.println("start of method");
         driver = new FirefoxDriver();
         driver.get("https://sanctionssearch.ofac.treas.gov/");
