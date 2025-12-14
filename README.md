@@ -2,6 +2,14 @@
 
 This is a small Java application that creates and generates a correctly formatted batch file with test data. I created this because I'm simply lazy to manually create these batch files.
 
+## Project design
+
+This project is split into three main parts.
+
+- Front-end: Using JSwing application for GIU
+- Scraping the [OFAC](https://sanctionssearch.ofac.treas.gov/) Sanctions List website using Selenium with Java
+- Storing the Sanctions list test data into SQLite database
+
 ## Tech-stack for the project
 
 - ![Apache NetBeans IDE](./src/main/java/icons/netbeans.png) IDE 28
@@ -15,8 +23,13 @@ This is a small Java application that creates and generates a correctly formatte
 
 There are two ways one can run this project
 
-- Launch the jar file
-- You can run it directly by clicking the **Run Project** button
+- NetBeans 
+    - Launch the jar file
+    - Run it directly by clicking the **Run Project** button
+- Selenium
+    - You can run the method **scrapeWebsite** by clicking on the *Run* icon next to the method
+    - Run from testng.xml with the command **mvn test -DsuiteXmlFile=testng.xml**
+    - Run using maven command **mvn test**
 
 ## Icons
 
