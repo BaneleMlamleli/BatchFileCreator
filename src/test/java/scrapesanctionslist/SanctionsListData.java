@@ -1,3 +1,5 @@
+package scrapesanctionslist;
+
 import java.time.Duration;
 import java.util.List;
 
@@ -8,6 +10,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 /**
@@ -28,11 +32,11 @@ import org.testng.annotations.Test;
 public class SanctionsListData {
 
     WebDriver driver;
-    private final String PARTY_TYPE = "Individual"; // Entity, Individual
 
     @SuppressWarnings("null")
     @Test
-    public void scrapeWebsite(){
+    @Parameters({"partyType"})
+    public void scrapeWebsite(@Optional("Individual") String partyType){
         System.out.println("start of method");
         driver = new FirefoxDriver();
         driver.get("https://sanctionssearch.ofac.treas.gov/");
@@ -41,7 +45,7 @@ public class SanctionsListData {
         Select selectType = new Select(driver.findElement(By.id("ctl00_MainContent_ddlType")));
         Select selectCountry = new Select(driver.findElement(By.id("ctl00_MainContent_ddlCountry")));
 
-        selectType.selectByValue(PARTY_TYPE);
+        selectType.selectByValue(partyType);
         
         System.out.println("Total countries: " + selectCountry.getOptions().size());
         
@@ -87,7 +91,7 @@ public class SanctionsListData {
                     continue;
                 }
 
-                switch (PARTY_TYPE) {
+                switch (partyType) {
                     case "Entity":
                         new WebDriverWait(driver, Duration.ofSeconds(10))
                             .until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_MainContent_lblNameOther")));
