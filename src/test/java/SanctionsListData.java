@@ -28,7 +28,7 @@ import org.testng.annotations.Test;
 public class SanctionsListData {
 
     WebDriver driver;
-    private final String PARTY_TYPE = "Entity"; // Individual
+    private final String PARTY_TYPE = "Individual"; // Entity, Individual
 
     @SuppressWarnings("null")
     @Test
@@ -45,7 +45,6 @@ public class SanctionsListData {
         
         System.out.println("Total countries: " + selectCountry.getOptions().size());
         
-        List<WebElement> countries = selectCountry.getAllSelectedOptions();
         int allCountries = selectCountry.getOptions().size();
 
         for (int a = 1; a < allCountries; a++) { // starting at 1 because index 0 will select the 'All' option which not what we need
@@ -126,8 +125,53 @@ public class SanctionsListData {
                             continue;
                         }
                         System.out.println("************************************************************************"); break;
-                    case "Individual":break;
-                    default:break;
+                    case "Individual":
+                        new WebDriverWait(driver, Duration.ofSeconds(10))
+                            .until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_MainContent_lblFirstName")));
+
+                        String firstname = driver.findElement(By.id("ctl00_MainContent_lblFirstName")).getText();
+                        String lastname = driver.findElement(By.id("ctl00_MainContent_lblLastName")).getText();
+                        String dob = driver.findElement(By.id("ctl00_MainContent_lblDOB")).getText();
+                        String nationality = driver.findElement(By.id("ctl00_MainContent_lblNationality")).getText();
+                        String citizenship = driver.findElement(By.id("ctl00_MainContent_lblCitizenship")).getText();
+                        System.out.println("Firstname: " + firstname);
+                        System.out.println("Lastname: " + lastname);
+                        System.out.println("D.O.B: " + dob);
+                        System.out.println("Nationality: " + nationality);
+                        System.out.println("Citizenship: " + citizenship);
+
+                        try {
+                            String idType = driver.findElement(By.xpath("//table[@id='ctl00_MainContent_gvIdentification']//tr[2]//td[1]")).getText();
+                            String id = driver.findElement(By.xpath("")).getText();
+                            String entityCountry = driver.findElement(By.xpath("")).getText();
+                            System.out.println("Type: " + idType);
+                            System.out.println("Id: " + id);
+                            System.out.println("Country: " + entityCountry);
+                        } catch (Exception e) {
+                            System.out.println("TABLE FOR IDENTIFICATION INFORMATION IS NOT IN THE DOM AT ALL!");
+                            e.getMessage();
+                        }
+
+                        try {
+                            String address = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[1]")).getText();
+                            String city = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[2]")).getText();
+                            String stateOrProvince = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[3]")).getText();
+                            String postalCode = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[4]")).getText();
+                            String addressCountry = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[5]")).getText();
+
+                            System.out.println("Address: " + address);
+                            System.out.println("City: " + city);
+                            System.out.println("State/Province: " + stateOrProvince);
+                            System.out.println("Postal code: " + postalCode);
+                            System.out.println("Address country: " + addressCountry);
+                        } catch (Exception e) {
+                            System.out.println("TABLE FOR ADDRESS INFORMATION IS NOT IN THE DOM AT ALL!");
+                            // e.getMessage();
+                            continue;
+                        }
+                        System.out.println("************************************************************************"); break;
+                    default:
+                        System.out.println("Error. Only 'Entity' and 'Individual' are expected options"); break;
                 }
 
                 // go back and wait until results table is present again
