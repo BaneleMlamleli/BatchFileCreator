@@ -29,6 +29,7 @@ There are two ways one can run this project
 - Selenium
     - You can run the method **scrapeWebsite** by clicking on the *Run* icon next to the method
     - Run from testng.xml with the command **mvn test -DsuiteXmlFile=testng.xml**
+        - **N.B.,** Depending on which party type you need, change the parameter in the testng.xml file. Expected parameter '*Entity*' or '*Individual*' 
     - Run using maven command **mvn test**
 
 ## Icons
