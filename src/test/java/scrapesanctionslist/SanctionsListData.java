@@ -36,7 +36,7 @@ public class SanctionsListData {
     @SuppressWarnings("null")
     @Test
     @Parameters({"partyType"})
-    public void scrapeWebsite(@Optional("Individual") String partyType){
+    public void scrapeWebsite(@Optional("Entity") String partyType){
         System.out.println("start of method");
         driver = new FirefoxDriver();
         driver.get("https://sanctionssearch.ofac.treas.gov/");
@@ -51,7 +51,7 @@ public class SanctionsListData {
         
         int allCountries = selectCountry.getOptions().size();
 
-        for (int a = 1; a < allCountries; a++) { // starting at 1 because index 0 will select the 'All' option which not what we need
+        for (int a = 1; a < allCountries; a++) { // starting at 1 because index 0 will select the 'All' option which is not what we need
            
             new WebDriverWait(driver, Duration.ofSeconds(10))
             .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("ctl00_MainContent_ddlCountry")));
@@ -98,36 +98,38 @@ public class SanctionsListData {
                         String entityName = driver.findElement(By.id("ctl00_MainContent_lblNameOther")).getText();
                         System.out.println("Entity Name: " + entityName);
 
-                        try {
-                            String idType = driver.findElement(By.xpath("//table[@id='ctl00_MainContent_gvIdentification']//tr[2]//td[1]")).getText();
-                            String id = driver.findElement(By.xpath("//table[@id='ctl00_MainContent_gvIdentification']//tr[2]//td[2]")).getText();
-                            String entityCountry = driver.findElement(By.xpath("//table[@id='ctl00_MainContent_gvIdentification']//tr[2]//td[3]")).getText();
+                        String idType = "", id = "", entityCountry = "", address = "", city = "", stateOrProvince = "", postalCode = "", addressCountry = "";
 
-                            System.out.println("Type: " + idType);
-                            System.out.println("Id: " + id);
-                            System.out.println("Country: " + entityCountry);
+                        try {
+                            idType = driver.findElement(By.xpath("//table[@id='ctl00_MainContent_gvIdentification']//tr[2]//td[1]")).getText();
+                            id = driver.findElement(By.xpath("//table[@id='ctl00_MainContent_gvIdentification']//tr[2]//td[2]")).getText();
+                            entityCountry = driver.findElement(By.xpath("//table[@id='ctl00_MainContent_gvIdentification']//tr[2]//td[3]")).getText();
                         } catch (Exception e) {
                             System.out.println("TABLE FOR IDENTIFICATION INFORMATION IS NOT IN THE DOM AT ALL!");
                             e.getMessage();
                         }
 
                         try {
-                            String address = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[1]")).getText();
-                            String city = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[2]")).getText();
-                            String stateOrProvince = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[3]")).getText();
-                            String postalCode = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[4]")).getText();
-                            String addressCountry = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[5]")).getText();
-
-                            System.out.println("Address: " + address);
-                            System.out.println("City: " + city);
-                            System.out.println("State/Province: " + stateOrProvince);
-                            System.out.println("Postal code: " + postalCode);
-                            System.out.println("Address country: " + addressCountry);
+                            address = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[1]")).getText();
+                            city = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[2]")).getText();
+                            stateOrProvince = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[3]")).getText();
+                            postalCode = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[4]")).getText();
+                            addressCountry = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[5]")).getText();
                         } catch (Exception e) {
                             System.out.println("TABLE FOR ADDRESS INFORMATION IS NOT IN THE DOM AT ALL!");
                             // e.getMessage();
                             continue;
                         }
+
+                        System.out.println("Type: " + idType);
+                        System.out.println("Id: " + id);
+                        System.out.println("Country: " + entityCountry);
+                        System.out.println("Address: " + address);
+                        System.out.println("City: " + city);
+                        System.out.println("State/Province: " + stateOrProvince);
+                        System.out.println("Postal code: " + postalCode);
+                        System.out.println("Address country: " + addressCountry);
+                        
                         System.out.println("************************************************************************"); break;
                     case "Individual":
                         new WebDriverWait(driver, Duration.ofSeconds(10))
@@ -138,44 +140,47 @@ public class SanctionsListData {
                         String dob = driver.findElement(By.id("ctl00_MainContent_lblDOB")).getText();
                         String nationality = driver.findElement(By.id("ctl00_MainContent_lblNationality")).getText();
                         String citizenship = driver.findElement(By.id("ctl00_MainContent_lblCitizenship")).getText();
-                        System.out.println("Firstname: " + firstname);
-                        System.out.println("Lastname: " + lastname);
-                        System.out.println("D.O.B: " + dob);
-                        System.out.println("Nationality: " + nationality);
-                        System.out.println("Citizenship: " + citizenship);
+
+                        String entityIdType = "", entityId = "", entCountry = "", entityAddress = "", entityCity = "", entityStateOrProvince = "", entityPostalCode = "", entityAddressCountry = "";
 
                         try {
-                            String idType = driver.findElement(By.xpath("//table[@id='ctl00_MainContent_gvIdentification']//tr[2]//td[1]")).getText();
-                            String id = driver.findElement(By.xpath("")).getText();
-                            String entityCountry = driver.findElement(By.xpath("")).getText();
-                            System.out.println("Type: " + idType);
-                            System.out.println("Id: " + id);
-                            System.out.println("Country: " + entityCountry);
+                            entityIdType = driver.findElement(By.xpath("//table[@id='ctl00_MainContent_gvIdentification']//tr[2]//td[1]")).getText();
+                            entityId = driver.findElement(By.xpath("")).getText();
+                            entCountry = driver.findElement(By.xpath("")).getText();
                         } catch (Exception e) {
                             System.out.println("TABLE FOR IDENTIFICATION INFORMATION IS NOT IN THE DOM AT ALL!");
                             e.getMessage();
                         }
 
                         try {
-                            String address = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[1]")).getText();
-                            String city = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[2]")).getText();
-                            String stateOrProvince = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[3]")).getText();
-                            String postalCode = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[4]")).getText();
-                            String addressCountry = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[5]")).getText();
-
-                            System.out.println("Address: " + address);
-                            System.out.println("City: " + city);
-                            System.out.println("State/Province: " + stateOrProvince);
-                            System.out.println("Postal code: " + postalCode);
-                            System.out.println("Address country: " + addressCountry);
+                            entityAddress = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[1]")).getText();
+                            entityCity = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[2]")).getText();
+                            entityStateOrProvince = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[3]")).getText();
+                            entityPostalCode = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[4]")).getText();
+                            entityAddressCountry = driver.findElement(By.xpath("//div[@id='ctl00_MainContent_pnlAddress']//table//tr[2]//td[5]")).getText();
                         } catch (Exception e) {
                             System.out.println("TABLE FOR ADDRESS INFORMATION IS NOT IN THE DOM AT ALL!");
                             // e.getMessage();
                             continue;
                         }
+
+                        System.out.println("Firstname: " + firstname);
+                        System.out.println("Lastname: " + lastname);
+                        System.out.println("D.O.B: " + dob);
+                        System.out.println("Nationality: " + nationality);
+                        System.out.println("Citizenship: " + citizenship);
+                        System.out.println("Type: " + entityIdType);
+                        System.out.println("Id: " + entityId);
+                        System.out.println("Country: " + entCountry);
+                        System.out.println("Address: " + entityAddress);
+                        System.out.println("City: " + entityCity);
+                        System.out.println("State/Province: " + entityStateOrProvince);
+                        System.out.println("Postal code: " + entityPostalCode);
+                        System.out.println("Address country: " + entityAddressCountry);
+
                         System.out.println("************************************************************************"); break;
                     default:
-                        System.out.println("Error. Only 'Entity' and 'Individual' are expected options"); break;
+                        System.out.println("Error. Only 'Entity' or 'Individual' are expected options"); break;
                 }
 
                 // go back and wait until results table is present again
