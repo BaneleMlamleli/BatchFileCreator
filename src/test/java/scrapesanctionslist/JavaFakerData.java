@@ -17,9 +17,15 @@ public class JavaFakerData {
         for (int i = 0; i < 5; i++) {
 
             boolean gender[] = {true, false};
-            int yearOfBirth = (int) (Math.random() * 2008) + 1900;
-            int monthOfBirth = (int) (Math.random() * 12) + 1;
-            int dateOfBirth = (int) (Math.random() * 30) + 1;
+            
+            long startEpoch = LocalDate.now().minusYears(100).toEpochDay();
+            long endEpoch = LocalDate.now().minusYears(18).toEpochDay();
+            long randomEpochDay = java.util.concurrent.ThreadLocalRandom.current().nextLong(startEpoch, endEpoch + 1);
+            LocalDate randomDob = LocalDate.ofEpochDay(randomEpochDay);
+            int yearOfBirth = randomDob.getYear();
+            int monthOfBirth = randomDob.getMonthValue();
+            int dateOfBirth = randomDob.getDayOfMonth();
+
             LocalDate dob = LocalDate.of(yearOfBirth, monthOfBirth, dateOfBirth);
             System.out.println("SA ID Number: " + SAIDNumberGenerator.generateSAID(LocalDate.of(yearOfBirth, monthOfBirth, dateOfBirth), gender[(int) (Math.random() * 1) + 0], true) + ", D.O.B: " + dob);
         }
