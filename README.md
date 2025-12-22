@@ -12,7 +12,7 @@ This project is split into three main parts.
 
 ## Tech-stack for the project
 
-- ![Apache NetBeans IDE](./src/main/java/icons/netbeans.png) IDE 28
+- ![Apache NetBeans IDE](./src/main/java/icons/netbeans.png) NetBeans IDE 28
 - ![Java 25](./src/main/java/icons/java.png) Java 25
 - ![SQLite](./src/main/java/icons/sqlite.png) SQLite
 - ![Maven](./src/main/java/icons/Maven.png) Maven

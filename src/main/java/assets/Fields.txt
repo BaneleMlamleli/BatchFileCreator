@@ -1,0 +1,122 @@
+
+LEGAL ENTITY
+    - Details:
+        - Registered name (mandatory)
+        - Registration number (mandatory)
+        - Entity type (mandatory)
+        - Date of registration
+        - Country of registration (mandatory)
+        - Industry type (mandatory)
+        - Tax registration number
+            - Primary tax residence (conditional mandatory)
+        - Additional tax residence
+        - VAT registration number
+        - Foreign tin
+            - Foreign tin issuing country
+    - Relationship:
+        - Reason for transaction (mandatory)
+        - Product type (mandatory)
+        - Risk class (mandatory)
+        - Business relationship (mandatory)
+        - Source of funds (mandatory)
+        - Account number
+        - Transaction amount
+        - Transaction date
+        - Inception date
+        - Authorised by
+        - Termination date
+    - Address:
+        - Postal Address -> Address line 1, Address line 2, City, Province, Country, Zip code
+        - POBox Address -> Address line 1, Address line 2, City, Province, Country, Zip code
+        - Registered Address -> Address line 1, Address line 2, City, Province, Country, Zip code
+        - GCOHeadOffice Address -> Address line 1, Address line 2, City, Province, Country, Zip code
+        - Operational Address -> Address line 1, Address line 2, City, Province, Country, Zip code
+    - Linked Parties:
+        - Natural Person
+            - Firstname (mandatory)
+            - Lastname (mandatory)
+            - Middle name
+            - Previous surname
+            - Country of birth (mandatory)
+            - Date of birth (mandatory)
+            - Nationality (mandatory)
+            - Country of residence (mandatory)
+            - Relationship to party (mandatory)
+            - ID number (mandatory)
+            - Passport number (mandatory)
+                - Passport Country (conditional mandatory)
+            - Tax registration (mandatory)
+                - Primary tax residence (conditional mandatory)
+        - Legal Entity
+            - Registered name (mandatory)
+            - Registration number (mandatory)
+            - Trading name
+            - Entity type (mandatory)
+            - Date of registration
+            - Country of registration (mandatory)
+            - Registration to party (mandatory)
+NATURAL PERSON
+    - Details:
+        - Firstname (mandatory)
+        - Surname (mandatory)
+        - Middle name
+        - Previous surname
+        - Date of birth (mandatory)
+        - Country of birth (mandatory)
+        - Nationality (mandatory)
+        - Country of residence (mandatory)
+        - Gender
+        - Industry type (mandatory)
+        - Profession
+        - Monthly income
+        - Date of last income
+        - ID Number (mandatory)
+        - Nationality2
+        - Nationality3
+        - Passport (mandatory)
+            - Passport country (conditional mandatory)
+        - Tax registration number (mandatory)
+            - Primary tax residence (conditional mandatory)
+                - Additional tax residence (conditional mandatory)
+        - Foreign tin
+            - Foreign tin issuing country (conditional mandatory)
+    - Relationship:
+        - Reason for transaction (mandatory)
+        - Product type (mandatory)
+        - Risk class (mandatory)
+        - Business relationship (mandatory)
+        - Source of funds (mandatory)
+        - Account number (alphanumeric)
+        - Transaction amount (whole number only)
+        - Transaction date
+        - Inception date
+        - Authorised by
+        - Termination date
+    - Address:
+        - Residential Address -> Address line 1, Address line 2, City, Province, Country, Zip code
+        - Postal Address -> Address line 1, Address line 2, City, Province, Country, Zip code
+        - POBox Address -> Address line 1, Address line 2, City, Province, Country, Zip code
+    - Linked Parties:
+        - Natural Person
+            - Firstname (mandatory)
+            - Lastname (mandatory)
+            - Middle name
+            - Previous surname
+            - Country of birth (mandatory)
+            - Date of birth (mandatory)
+            - Nationality (mandatory)
+            - Country of residence (mandatory)
+            - Relationship to party (mandatory)
+            - ID number (mandatory)
+            - Passport number (mandatory)
+                - Passport Country (conditional mandatory)
+            - Tax registration (mandatory)
+                - Primary tax residence (conditional mandatory)
+        - Legal Entity
+            - Registered name (mandatory)
+            - Registration number (mandatory)
+            - Trading name
+            - Entity type (mandatory)
+            - Date of registration
+            - Country of registration (mandatory)
+            - Registration to party (mandatory)
