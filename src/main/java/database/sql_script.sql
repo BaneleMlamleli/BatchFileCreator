@@ -1,9 +1,10 @@
 DROP TABLE IF EXISTS natural_person;
-
 DROP TABLE IF EXISTS legal_entity;
+DROP TABLE IF EXISTS transaction_reasons;
+DROP TABLE IF EXISTS business_relationship_types;
 
-CREATE TABLE IF NOT EXISTS natural_person (
-    party_counter INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE natural_person (
+    party_counter INTEGER PRIMARY KEY,
     firstname TEXT NOT NULL,
     lastname TEXT NOT NULL,
     date_of_birth TEXT,
@@ -19,8 +20,8 @@ CREATE TABLE IF NOT EXISTS natural_person (
     address_country TEXT
 );
 
-CREATE TABLE IF NOT EXISTS legal_entity (
-    party_counter INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE legal_entity (
+    party_counter INTEGER PRIMARY KEY,
     entity_name TEXT,
     id_type TEXT,
     party_id TEXT NOT NULL,
@@ -31,3 +32,137 @@ CREATE TABLE IF NOT EXISTS legal_entity (
     postal_code TEXT,
     address_country TEXT
 );
+
+CREATE TABLE transaction_reasons (
+	id INTEGER PRIMARY KEY,
+	description TEXT NOT NULL,
+	enabled BOOLEAN NOT NULL DEFAULT TRUE,
+	code TEXT,
+	direction BOOLEAN
+);
+
+CREATE TABLE business_relationship_types (
+	id INTEGER PRIMARY KEY,
+	name TEXT NOT NULL,
+	enabled BOOLEAN NOT NULL DEFAULT false,
+	natural_person_enabled BOOLEAN NOT NULL DEFAULT false,
+	legal_entity_enabled BOOLEAN NOT NULL DEFAULT false,
+	code TEXT
+);
+
+
+INSERT INTO business_relationship_types (name, enabled, natural_person_enabled, legal_entity_enabled, code) VALUES
+('ANNUITANT', true, true, true, 'ANNUITANT'),
+('APPLICANT', true, true, true, 'APPLICANT'),
+('APPLICANT/ PLAN HOLDER', false, true, true, 'APPLICANT/ PLAN HOLDER'),
+('AUTHORISED REPRESENTATIVE', false, true, false, 'AUTHORISED REPRESENTATIVE'),
+('BENEFICIAL OWNERS (NATURAL)', false, true, false, 'BENEFICIAL OWNERS (NATURAL)'),
+('BENEFICIAL OWNERS (NON-NATURAL)', false, false, true, 'BENEFICIAL OWNERS (NON-NATURAL)'),
+('BENEFICIARY', true, true, true, 'BENEFICIARY'),
+('BENEFICIARY/ NOMINEE', false, true, false, 'BENEFICIARY/ NOMINEE'),
+('BOARD MEMBER', false, true, false, 'BOARD MEMBER'),
+('CESSIONARY', true, true, true, 'CESSIONARY'),
+('CIS INVESTOR', false, true, true, 'CIS INVESTOR'),
+('Co-Investor', false, true, true, 'CO-INVESTOR'),
+('COLLATERAL CESSIONARY', true, false, true, 'COLLATERAL CESSIONARY'),
+('COLLATORAL CESSIONARY', false, true, true, 'COLLATORAL CESSIONARY'),
+('CO-POLICY OWNER', false, true, true, 'CO-POLICY OWNER'),
+('CURATOR', false, true, false, 'CURATOR'),
+('DEPENDANT', false, true, false, 'DEPENDANT'),
+('DIRECTOR', false, true, false, 'DIRECTOR'),
+('EXECUTOR', false, true, false, 'EXECUTOR'),
+('Financial Service Provider', false, false, true, 'FINANCIAL SERVICE PROVIDER'),
+('FUND ANNUITANT', true, true, false, 'FUND ANNUITANT'),
+('FUND MEMBER', false, true, false, 'FUND MEMBER'),
+('FUND MEMBERS', false, true, false, 'FUND MEMBERS'),
+('GUARANTOR', false, true, true, 'GUARANTOR'),
+('Investee Company', true, false, true, 'INVESTEE COMPANY'),
+('JOINT ANNUITANT', false, true, false, 'JOINT ANNUITANT'),
+('JOINT OR CO-POLICY OWNER', false, true, false, 'JOINT OR CO-POLICY OWNER'),
+('LEGAL GUARDIAN', false, true, false, 'LEGAL GUARDIAN'),
+('LEGAL OWNER', false, true, false, 'LEGAL OWNER'),
+('LIFE INSURED', false, true, false, 'LIFE INSURED'),
+('MANAGER', false, true, false, 'MANAGER'),
+('MEMBER', false, true, false, 'MEMBER'),
+('MULTI DATA CLIENT', true, true, true, 'MULTI DATA CLIENT'),
+('NOMINEE OF OWNERSHIP', true, true, true, 'NOMINEE OF OWNERSHIP'),
+('NON-UNDERWITTEN LIVES (FUNERAL)', false, true, false, 'NON-UNDERWITTEN LIVES (FUNERAL)'),
+('PARENT', false, true, false, 'PARENT'),
+('PARLOUR (JURISTIC REPRESENTATIVE)', true, false, true, 'PARLOUR (JURISTIC REPRESENTATIVE)'),
+('PARTNER', false, true, false, 'PARTNER'),
+('PAYEE', false, true, true, 'PAYEE'),
+('POLICY OWNER', true, true, true, 'POLICY OWNER'),
+('POWER OF ATTORNEY', false, true, false, 'POWER OF ATTORNEY'),
+('PREMIUM PAYER', true, true, true, 'PREMIUM PAYER'),
+('SECONDARY BENEFICIARY', false, true, true, 'SECONDARY BENEFICIARY'),
+('SHAREHOLDER', false, true, true, 'SHAREHOLDER'),
+('SPOUSE', false, true, false, 'SPOUSE'),
+('SURETY', false, true, true, 'SURETY'),
+('THIRD PARTY PAYMENT', false, true, true, 'THIRD PARTY PAYMENT'),
+('THIRD PARTY PAYMENTS', false, true, true, 'THIRD PARTY PAYMENTS'),
+('TRUST BENEFICIARY', false, true, true, 'TRUST BENEFICIARY'),
+('TRUST FOUNDER / DONOR', false, true, true, 'TRUST FOUNDER / DONOR'),
+('TRUSTEE', true, true, true, 'TRUSTEE'),
+('DECEASED', true, true, false, 'DECEASED');
+
+INSERT INTO transaction_reasons (description, enabled, code, direction) VALUES
+('Additional premium', TRUE, 'ADDITIONAL PREMIUM', TRUE),
+('Cession to Financial Institution', TRUE, 'CESSION', TRUE),
+('Client / policy change', TRUE, 'CLIENT / POLICY CHANGE', TRUE),
+('Combined alteration', TRUE, 'COMBINED ALTERATION', TRUE),
+('Commission / service fee', TRUE, 'COMMISSION / SERVICE FEE', TRUE),
+('Continuation', TRUE, 'CONTINUATION', TRUE),
+('Conversion', TRUE, 'CONVERSION', TRUE),
+('New business', TRUE, 'NEW BUSINESS', TRUE),
+('Premium arrears', TRUE, 'PREMIUM ARREARS', TRUE),
+('RE-ISSUE WITH NO POLICY CHANGES', TRUE, 'RE-ISSUE WITH NO POLICY CHANGES', TRUE),
+('RENEWAL WITH NO POLICY / FUND CHANGES', TRUE, 'RENEWAL WITH NO POLICY / FUND CHANGES', TRUE),
+('Review underwriting', TRUE, 'REVIEW UNDERWRITING', TRUE),
+('Switch in', TRUE, 'SWITCH IN', TRUE),
+('Transfer of value (transfer in)', TRUE, 'TRANSFER OF VALUE (TRANSFER IN)', TRUE),
+('Ad hoc payment claim', TRUE, 'AD HOC PAYMENT CLAIM', FALSE),
+('Annuity / Income Payments', TRUE, 'ANNUITY / INCOME PAYMENTS', FALSE),
+('Benefit payment', TRUE, 'BENEFIT PAYMENT', FALSE),
+('Cash Flow Plan', TRUE, 'CASH FLOW PLAN', FALSE),
+('Claim', TRUE, 'CLAIM', FALSE),
+('Client / policy change out', TRUE, 'CLIENT / POLICY CHANGE OUT', FALSE),
+('Commutation', TRUE, 'COMMUTATION', FALSE),
+('Death claim', TRUE, 'DEATH CLAIM', FALSE),
+('Disability claim', TRUE, 'DISABILITY CLAIM', FALSE),
+('Dividend payment', TRUE, 'DIVIDEND PAYMENT', FALSE),
+('Divorce', TRUE, 'DIVORCE', FALSE),
+('External transfer', TRUE, 'EXTERNAL TRANSFER', FALSE),
+('Final distribution / termination', TRUE, 'FINAL DISTRIBUTION / TERMINATION', FALSE),
+('Full disinvestment', TRUE, 'FULL DISINVESTMENT', FALSE),
+('Full repurchase (Redemption)', TRUE, 'FULL REPURCHASE (REDEMPTION)', FALSE),
+('Full surrender', TRUE, 'FULL SURRENDER', FALSE),
+('Income protection payment', TRUE, 'INCOME PROTECTION PAYMENT', FALSE),
+('Internal transfer', TRUE, 'INTERNAL TRANSFER', FALSE),
+('Loan', TRUE, 'LOAN', FALSE),
+('Loan against Portfolio of Investments', TRUE, 'LOAN AGAINST PORTFOLIO OF INVESTMENTS', FALSE),
+('Lump sum disability', TRUE, 'LUMP SUM DISABILITY', FALSE),
+('Maturity of investment benefit', TRUE, 'MATURITY OF INVESTMENT BENEFIT', FALSE),
+('Monthly maintenance claim', TRUE, 'MONTHLY MAINTENANCE CLAIM', FALSE),
+('Partial disinvestment', TRUE, 'PARTIAL DISINVESTMENT', FALSE),
+('Partial repurchase (partial redemption)', TRUE, 'PARTIAL REPURCHASE (PARTIAL REDEMPTION)', FALSE),
+('Partial surrender', TRUE, 'PARTIAL SURRENDER', FALSE),
+('Pension fund', TRUE, 'PENSION FUND', FALSE),
+('Personal loan / credit', TRUE, 'PERSONAL LOAN / CREDIT', FALSE),
+('Provident fund', TRUE, 'PROVIDENT FUND', FALSE),
+('Recurring disability claim', TRUE, 'RECURRING DISABILITY CLAIM', FALSE),
+('Refund', TRUE, 'REFUND', FALSE),
+('Regular withdrawal', TRUE, 'REGULAR WITHDRAWAL', FALSE),
+('Retirement', TRUE, 'RETIREMENT', FALSE),
+('Switch out', TRUE, 'SWITCH OUT', FALSE),
+('Termination', TRUE, 'TERMINATION', FALSE),
+('Transfer of ownership', TRUE, 'TRANSFER OF OWNERSHIP', TRUE),
+('Transfer of value', TRUE, 'TRANSFER OF VALUE', FALSE),
+('Withdrawal', TRUE, 'WITHDRAWAL', FALSE),
+('Annual Maintenance screening', TRUE, 'ANNUAL MAINTENANCE', TRUE),
+('Cession to Non Financial Institution', TRUE, 'Cession to Non Financial Institution', TRUE),
+('Re-issue with Policy changes', TRUE, 'RE-ISSUE WITH POLICY CHANGES', TRUE),
+('RENEWAL WITH POLICY CHANGES OR ADDITIONAL FUNDS', TRUE, 'RENEWAL WITH POLICY CHANGES OR ADDITIONAL FUNDS', TRUE),
+('Annual Maintenance Screening', TRUE, 'ANNUAL MAINTENANCE SCREENING', FALSE),
+('LOAN REPAYMENT', TRUE, 'LOAN REPAYMENT', TRUE),
+('WEEKLY MAINTENANCE', TRUE, 'WEEKLY MAINTENANCE', TRUE);
+
