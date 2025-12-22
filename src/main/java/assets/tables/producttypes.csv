@@ -1,0 +1,104 @@
+Id,Enabled,Name,Code,NatureOfSanlamPayout,DefaultRiskProfileId
+1,True,ADVISORY SERVICES,ADS,UNKNOWN,1
+2,True,ALTERNATIVE INVESTMENTS,ALT,Invested Funds,3
+3,True,ANNUITIES,ANN,Monthly Funds,1
+4,True,ASSET MANAGEMENT,ASS,Invested Funds,3
+5,True,BUNDLED RISK PRODUCTS,BRP,Insurance Claim,1
+6,True,CAPITAL DISABILITY,CAP,Insurance Claim,1
+7,True,DS:ASSET BACKED FINANCE,DSAB,Loan (SCM/CCM = Lender),3
+8,True,DS:BONDS,DSB,Loan (SCM/CCM = Lender),3
+9,True,DS:CREDIT DERIVATIVES,DSCD,Loan (SCM/CCM = Lender),3
+10,True,DS:COMMERCIAL PAPER,DSCP,Loan (SCM = Borrower),3
+11,True,DS:CURRENCY SWAPS,DSCS,Foreign Currency,3
+12,True,DS:DEBT FUNDS,DSDF,Loan (SCM/CCM = Lender),3
+13,True,DS:EQUITY,DSE,Loan (SCM/CCM = Lender),3
+14,True,DS:EMPOWERMENT FUNDING,DSEP,Loan (SCM/CCM = Lender),3
+15,True,DS:STRUCTURED FINANCE,DSF,Loan (SCM/CCM = Lender),3
+16,True,DS:FOREIGN EXCHANGE CURRENCY FUTURES,DSFC,Hedging,3
+17,True,DS:EQUITY HYBRID INSTRUMENTS,DSHI,Loan (SCM/CCM = Lender),3
+18,True,DS:INTEREST RATE SWAPS AND OPTIONS,DSIS,Hedging,3
+19,True,DS:MEZZANINE / SUBORDINATED FINANCE,DSMS,Loan (SCM/CCM = Lender),3
+20,True,DS:PROJECT FINANCE,DSPF,Loan (SCM/CCM = Lender),3
+21,True,DS:SYNDICATED AND CLUB LOANS,DSSC,Loan (SCM/CCM = Lender),3
+22,True,DS:SECURITISATION,DST,Loan (SCM/CCM = Lender),3
+23,True,DS:TERM FUNDING,DSTF,Loan (SCM = Lender),3
+24,True,ENDOWMENT POLICIES,END,Invested Funds,2
+25,True,ES: HI: LISTED CURRENCY FUTURES,ESCF,Hedging,3
+26,True,ES : ATI : EQUITIES (THROUGH SPW),ESE,Loan (SCM/CCM = Lender),3
+27,True,ES: HI :FUTURES OPTIONS LISTED ON SAFEX,ESFO,Hedging,3
+28,True,ES: ATI: LOANS TO CLIENTS,ESLC,Loan,3
+29,True,ES: ATI: LOANS FROM MONEY MARKET,ESLM,Loan,3
+30,True,ES: HI: MONEY MARKET INSTRUMENTS,ESMM,Loan,3
+31,True,ES: ATI: OTC DERIVATIVES ON SPECIFIC STOCKS OR INDICES,ESOD,Hedging,3
+32,True,ES: HI: PREFERENCE SHARES,ESPS,Loan (SCM/CCM = Lender),3
+33,True,ES: ATI: SWAPS,ESS,Hedging,3
+34,True,ESTATE PLANNING,ESTE,UNKNOWN,1
+35,True,FUNERAL COVER,FUN,Insurance Claim,1
+36,True,GLA VENDOR ADMINISTRATIVE SERVICES,GAV,,1
+37,True,GLA EXTERNAL PLATFORM SERVICES,GES,,1
+38,True,GLA Interim PT,GIP,,3
+39,True,HEALTH CARE PRODUCTS,HLT,Medical Benefits,1
+40,True,INVESTMENT POLICY,INV,Invested Funds,3
+41,True,INCOME PROTECTION,IPP,Monthly Insurance Claim,1
+42,True,LIFE COVER,LIC,Insurance Claim,1
+43,True,MULTI DATA COLLECTIONS,MDCS,UNKNOWN,1
+44,True,MULTI DATA FILE TRANSFER,MDFT,UNKNOWN,1
+45,True,MULTI DATA PRODUCT,MDP,UNKNOWN,1
+46,True,MULTI DATA PAYMENTS,MDPS,UNKNOWN,1
+47,True,PERSONAL LOANS,PERSL,Loan,2
+48,True,RETIREMENT FUNDS,RET,Invested Funds,1
+49,True,REWARDS PROGRAMME,REW,Loyalty Rewards,1
+50,True,SAVINGS,SAV,Invested Funds,2
+51,True,SHORT TERM INSURANCE,STI,Insurance Claim,1
+52,True,TRUSTS,TRUS,Invested Funds,1
+53,True,UNIT TRUSTS,UTS,Invested Funds,2
+54,True,WILLS,WILL,UNKNOWN,1
+68,True,DS: FOREIGN EXCHANGE,DSFE,,3
+75,True,Advisory services: Financial and investments,AFI,,2
+77,True,Ad hoc savings and investment: Non insurance (unit trust funds, discretionary share portfolios, cash management solutions),ASIN,,2
+78,True,Advisory services: Non financial,ANF,,2
+79,True,Annuities and annuity contracts: Compulsory,AAC,,1
+80,True,Annuities and annuity contracts: Discretionary / Voluntary,AADV,,2
+81,True,Asset backed credit,ABC,,2
+82,True,Asset management: Institutional clients,AMI,,1
+83,True,Asset management: Retail,AMR,,2
+84,True,Cash management,CMN,,3
+85,True,Collection services,CSS,,3
+86,True,Deceased Estate and Will administration,DEW,,1
+87,True,Derivative Trading,DTD,,3
+89,True,Financial service provider: Intermediary service,FSPI,,2
+91,True,FINANCING SOLUTIONS : INSTITUTIONAL CREDIT,FSIC,,2
+92,True,Financing solutions : Retail credit,FSRC,,2
+93,True,Hedge Fund Regulated,HFR,,3
+94,True,Hedge Fund Unregulated,HFU,,3
+95,True,In Product Benefits,PBS,,1
+96,True,Insurance products: Retirement funds, group schemes and Institutional clients,IPRGI,,1
+97,True,Insurance risk cover,IRC,,1
+98,True,Insurance risk cover: Funeral,IRCF,,1
+99,True,Investment management / fund platform,IMF,,3
+100,True,Investment management: Institutional clients,IMI,,2
+101,True,Investment management: Retail clients,IMR,,2
+102,True,Listed Bond Solutions,LBS,,1
+103,True,Loyalty and Rewards,LAR,,1
+104,True,Market Making,MMK,,3
+105,True,Online Share Trading platform,OSTP,,3
+107,True,Payment service provider,PSP,,2
+108,True,Recurring premium savings insurance product,RPSI,,2
+109,True,Recurring savings and investment: Non insurance (unit trust funds, discretionary share portfolios, cash management solutions),RSIN,,2
+110,True,Retail credit,RCT,,2
+111,True,Single premium savings insurance product,SPSI,,2
+112,True,Stock broking,SBG,,3
+113,True,Tax Free savings products,TFS,,2
+114,True,Trust administration,TAN,,2
+
+CREATE TABLE "ProductTypes" (
+	"Id" BIGINT,
+	"Enabled" BIT,
+	"Name" VARCHAR(150) COLLATE Latin1_General_CI_AS,
+	"Code" VARCHAR(10) COLLATE Latin1_General_CI_AS,
+	"NatureOfSanlamPayout" VARCHAR(100) COLLATE Latin1_General_CI_AS,
+	"DefaultRiskProfileId" BIGINT,
+	FOREIGN KEY INDEX "FK_ProductTypes_RiskProfiles_DefaultRiskProfileId" ("DefaultRiskProfileId"),
+	PRIMARY KEY ("Id"),
+	CONSTRAINT "FK_ProductTypes_RiskProfiles_DefaultRiskProfileId" FOREIGN KEY ("DefaultRiskProfileId") REFERENCES "RiskProfiles" ("Id") ON UPDATE NO_ACTION ON DELETE NO_ACTION
+);

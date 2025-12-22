@@ -1,0 +1,70 @@
+Id,Description,Enabled,Code,Direction
+2,Additional premium,True,ADDITIONAL PREMIUM,True
+3,Cession to Financial Institution,True,CESSION,True
+4,Client / policy change,True,CLIENT / POLICY CHANGE,True
+5,Combined alteration,True,COMBINED ALTERATION,True
+6,Commission / service fee,True,COMMISSION / SERVICE FEE,True
+7,Continuation,True,CONTINUATION,True
+8,Conversion,True,CONVERSION,True
+9,New business,True,NEW BUSINESS,True
+10,Premium arrears,True,PREMIUM ARREARS,True
+11,RE-ISSUE WITH NO POLICY CHANGES,True,RE-ISSUE WITH NO POLICY CHANGES,True
+12,RENEWAL WITH NO POLICY / FUND CHANGES,True,RENEWAL WITH NO POLICY / FUND CHANGES,True
+13,Review underwriting,True,REVIEW UNDERWRITING,True
+14,Switch in,True,SWITCH IN,True
+15,Transfer of value (transfer in),True,TRANSFER OF VALUE (TRANSFER IN),True
+16,Ad hoc payment claim,True,AD HOC PAYMENT CLAIM,False
+17,Annuity / Income Payments,True,ANNUITY / INCOME PAYMENTS,False
+18,Benefit payment,True,BENEFIT PAYMENT,False
+19,Cash Flow Plan,True,CASH FLOW PLAN,False
+20,Claim,True,CLAIM,False
+21,Client / policy change out,True,CLIENT / POLICY CHANGE OUT,False
+22,Commutation,True,COMMUTATION,False
+23,Death claim,True,DEATH CLAIM,False
+24,Disability claim,True,DISABILITY CLAIM,False
+25,Dividend payment,True,DIVIDEND PAYMENT,False
+26,Divorce,True,DIVORCE,False
+27,External transfer,True,EXTERNAL TRANSFER,False
+28,Final distribution / termination,True,FINAL DISTRIBUTION / TERMINATION,False
+29,Full disinvestment,True,FULL DISINVESTMENT,False
+30,Full repurchase (Redemption),True,FULL REPURCHASE (REDEMPTION),False
+31,Full surrender,True,FULL SURRENDER,False
+32,Income protection payment,True,INCOME PROTECTION PAYMENT,False
+33,Internal transfer,True,INTERNAL TRANSFER,False
+34,Loan,True,LOAN,False
+35,Loan against Portfolio of Investments,True,LOAN AGAINST PORTFOLIO OF INVESTMENTS,False
+36,Lump sum disability,True,LUMP SUM DISABILITY,False
+37,Maturity of investment benefit,True,MATURITY OF INVESTMENT BENEFIT,False
+38,Monthly maintenance claim,True,MONTHLY MAINTENANCE CLAIM,False
+39,Partial disinvestment,True,PARTIAL DISINVESTMENT,False
+40,Partial repurchase (partial redemption),True,PARTIAL REPURCHASE (PARTIAL REDEMPTION),False
+41,Partial surrender,True,PARTIAL SURRENDER,False
+42,Pension fund,True,PENSION FUND,False
+43,Personal loan / credit,True,PERSONAL LOAN / CREDIT,False
+44,Provident fund,True,PROVIDENT FUND,False
+45,Recurring disability claim,True,RECURRING DISABILITY CLAIM,False
+46,Refund,True,REFUND,False
+47,Regular withdrawal,True,REGULAR WITHDRAWAL,False
+48,Retirement,True,RETIREMENT,False
+49,Switch out,True,SWITCH OUT,False
+50,Termination,True,TERMINATION,False
+51,Transfer of ownership,True,TRANSFER OF OWNERSHIP,True
+52,Transfer of value,True,TRANSFER OF VALUE,False
+53,Withdrawal,True,WITHDRAWAL,False
+65,Annual Maintenance screening,True,ANNUAL MAINTENANCE,True
+66,Cession to Non Financial Institution,True,Cession to Non Financial Institution,True
+67,Re-issue with Policy changes,True,RE-ISSUE WITH POLICY CHANGES,True
+68,RENEWAL WITH POLICY CHANGES OR ADDITIONAL FUNDS,True,RENEWAL WITH POLICY CHANGES OR ADDITIONAL FUNDS,True
+69,Annual Maintenance Screening,True,ANNUAL MAINTENANCE SCREENING,False
+70,LOAN REPAYMENT,True,LOAN REPAYMENT,True
+73,WEEKLY MAINTENANCE,True,WEEKLY MAINTENANCE,True
+
+
+CREATE TABLE "TransactionReasons" (
+	"Id" BIGINT,
+	"Description" VARCHAR(100) COLLATE Latin1_General_CI_AS,
+	"Enabled" BIT,
+	"Code" VARCHAR(100) COLLATE Latin1_General_CI_AS,
+	"Direction" BIT DEFAULT N'CONVERT([bit],(0))',
+	PRIMARY KEY ("Id")
+);

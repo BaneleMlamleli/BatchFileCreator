@@ -1,0 +1,18 @@
+Id,Code,Description,Rank,Enabled,HexColor
+1,L,Low,1,1,#008755
+2,M,Medium,1,1,#f2a900
+3,H,High,1,1,#cb333b
+4,HP,High Plus,1,0,#825474
+5,LM,LOW MINUS,1,0,#9db7b4
+6,I,Intolerable,1,1,#01020A
+7,II,INTOLERABLES,1,0,Orange
+
+CREATE TABLE "RiskProfiles" (
+	"Id" BIGINT,
+	"Code" VARCHAR(10) COLLATE Latin1_General_CI_AS,
+	"Description" VARCHAR(50) COLLATE Latin1_General_CI_AS,
+	"Rank" BIGINT,
+	"Enabled" BIT,
+	"HexColor" VARCHAR(7) COLLATE Latin1_General_CI_AS,
+	PRIMARY KEY ("Id")
+);

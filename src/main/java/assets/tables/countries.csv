@@ -1,0 +1,262 @@
+Id;Name;Code;Order;Enabled;RiskProfileId
+1;Andorra;AD;1;1;0
+2;United Arab Emirates;AE;1;1;0
+3;Afghanistan;AF;100;1;1
+4;Antigua and Barbuda;AG;1;1;0
+5;Anguilla;AI;1;1;0
+6;Albania;AL;1;1;0
+7;Armenia;AM;1;1;0
+8;Angola;AO;1;1;0
+9;Antarctica;AQ;1;1;0
+10;Argentina;AR;1;1;0
+11;American Samoa;AS;1;1;0
+12;Austria;AT;1;1;0
+13;Australia;AU;1;1;0
+14;Aruba;AW;1;1;0
+15;Auckland Islands;AX;1;1;0
+16;Azerbaijan;AZ;1;1;0
+17;Bosnia and Herzegovina;BA;1;1;0
+18;Barbados;BB;1;1;0
+19;Bangladesh;BD;1;1;0
+20;Belgium;BE;1;1;0
+21;Burkina Faso;BF;1;1;0
+22;Bulgaria;BG;1;1;0
+23;Bahrain;BH;1;1;0
+24;Burundi;BI;1;1;0
+25;Benin;BJ;1;1;0
+26;Saint Barthalemy;BL;1;1;0
+27;Bermuda;BM;1;1;0
+28;Brunei Darussalam;BN;1;1;0
+29;Bolivia;BO;1;1;0
+30;Bonaire, Sint Eustatius and Saba;BQ;1;1;0
+31;Brazil;BR;1;1;0
+32;Bahamas;BS;1;1;0
+33;Bhutan;BT;1;1;0
+34;Bouvet Island;BV;1;1;0
+35;Botswana;BW;1;1;0
+36;Belarus;BY;1;1;0
+37;Belize;BZ;1;1;0
+38;Canada;CA;1;1;0
+39;Cocos (Keeling) Islands;CC;1;1;0
+40;Congo, the Democratic Republic of the;CD;1;1;0
+41;Central African Republic;CF;1;1;0
+42;Congo;CG;1;1;0
+43;Switzerland;CH;1;1;0
+44;Côte d''Ivoire;CI;1;1;0
+45;Cook Islands;CK;1;1;0
+46;Chile;CL;1;1;0
+47;Cameroon;CM;1;1;0
+48;China;CN;1;1;0
+49;Colombia;CO;1;1;0
+50;Costa Rica;CR;1;1;0
+51;Cuba;CU;1;1;0
+52;Cape Verde;CV;1;1;0
+53;Curacao;CW;1;1;0
+54;Christmas Island;CX;1;1;0
+55;Cyprus;CY;1;1;0
+56;Czechia;CZ;1;1;0
+57;Germany;DE;1;1;0
+58;Djibouti;DJ;1;1;0
+59;Denmark;DK;1;1;0
+60;Dominica;DM;1;1;0
+61;Dominican Republic;DO;1;1;0
+62;Algeria;DZ;1;1;0
+63;Ecuador;EC;1;1;0
+64;Estonia;EE;1;1;0
+65;Egypt;EG;1;1;0
+66;Western Sahara;EH;1;1;0
+67;Eritrea;ER;1;1;0
+68;Spain;ES;1;1;0
+69;Ethiopia;ET;1;1;0
+70;Finland;FI;1;1;0
+71;Fiji;FJ;1;1;0
+72;Falkland Islands (Malvinas);FK;1;1;0
+73;Micronesia, Federated States of;FM;1;1;0
+74;Faroe Islands;FO;1;1;0
+75;France;FR;1;1;0
+76;Gabon;GA;1;1;0
+77;United Kingdom;GB;1;1;0
+78;Grenada;GD;1;1;0
+79;Georgia;GE;1;1;0
+80;French Guiana;GF;1;1;0
+81;Guernsey;GG;1;1;0
+82;Ghana;GH;1;1;0
+83;Gibraltar;GI;1;1;0
+84;Greenland;GL;1;1;0
+85;Gambia;GM;1;1;0
+86;Guinea;GN;1;1;0
+87;Guadeloupe;GP;1;1;0
+88;Equatorial Guinea;GQ;1;1;0
+89;Greece;GR;1;1;0
+90;South Georgia and the South Sandwich Islands;GS;1;1;0
+91;Guatemala;GT;1;1;0
+92;Guam;GU;1;1;0
+93;Guinea-Bissau;GW;1;1;0
+94;Guyana;GY;1;1;0
+95;Hong Kong;HK;1;1;0
+96;Heard Island and McDonald Islands;HM;1;1;0
+97;Honduras;HN;1;1;0
+98;Croatia;HR;1;1;0
+99;Haiti;HT;1;1;0
+100;Hungary;HU;1;1;0
+101;Indonesia;ID;1;1;0
+102;Ireland;IE;1;1;0
+103;Israel;IL;1;1;0
+104;Isle of Man;IM;1;1;0
+105;India;IN;1;1;0
+106;British Indian Ocean Territory;IO;1;1;0
+107;Iraq;IQ;1;1;0
+108;Iran, Islamic Republic of;IR;1;1;0
+109;Iceland;IS;1;1;0
+110;Italy;IT;1;1;0
+111;Jersey;JE;1;1;0
+112;Jamaica;JM;1;1;0
+113;Jordan;JO;1;1;0
+114;Japan;JP;1;1;0
+115;Kenya;KE;1;1;0
+116;Kyrgyzstan;KG;1;1;0
+117;Cambodia;KH;1;1;0
+118;Kiribati;KI;1;1;0
+119;Comoros;KM;1;1;0
+120;Saint Kitts and Nevis;KN;1;1;0
+121;Korea, Democratic People''s Republic of;KP;1;1;0
+122;Korea, Republic of;KR;1;1;0
+123;Kuwait;KW;1;1;0
+124;Cayman Islands;KY;1;1;0
+125;Kazakhstan;KZ;1;1;0
+126;Lao People''s Democratic Republic;LA;1;1;0
+127;Lebanon;LB;1;1;0
+128;Saint Lucia;LC;1;1;0
+129;Liechtenstein;LI;1;1;0
+130;Sri Lanka;LK;1;1;0
+131;Liberia;LR;1;1;0
+132;Lesotho;LS;1;1;0
+133;Lithuania;LT;1;1;0
+134;Luxembourg;LU;1;1;0
+135;Latvia;LV;1;1;0
+136;Libya;LY;1;1;0
+137;Morocco;MA;1;1;0
+138;Monaco;MC;1;1;0
+139;Moldova, Republic of;MD;1;1;0
+140;Montenegro;ME;1;1;0
+141;Saint Martin (French part);MF;1;1;0
+142;Madagascar;MG;1;1;0
+143;Marshall Islands;MH;1;1;0
+144;Macedonia, the Former Yugoslav Republic of;MK;1;1;0
+145;Mali;ML;1;1;0
+146;Myanmar;MM;1;1;0
+147;Mongolia;MN;1;1;0
+148;Macao;MO;1;1;0
+149;Northern Mariana Islands;MP;1;1;0
+150;Martinique;MQ;1;1;0
+151;Mauritania;MR;1;1;0
+152;Montserrat;MS;1;1;0
+153;Malta;MT;1;1;0
+154;Mauritius;MU;1;1;0
+155;Maldives;MV;1;1;0
+156;Malawi;MW;1;1;0
+157;Mexico;MX;1;1;0
+158;Malaysia;MY;1;1;0
+159;Mozambique;MZ;1;1;0
+160;Namibia;NA;1;1;0
+161;New Caledonia;NC;1;1;0
+162;Niger;NE;1;1;0
+163;Norfolk Island;NF;1;1;0
+164;Nigeria;NG;1;1;0
+165;Nicaragua;NI;1;1;0
+166;Netherlands;NL;1;1;0
+167;Norway;NO;1;1;0
+168;Nepal;NP;1;1;0
+169;Nauru;NR;1;1;0
+170;Niue;NU;1;1;0
+171;New Zealand;NZ;1;1;0
+172;Oman;OM;1;1;0
+173;Panama;PA;1;1;0
+174;Peru;PE;1;1;0
+175;French Polynesia;PF;1;1;0
+176;Papua New Guinea;PG;1;1;0
+177;Philippines;PH;1;1;0
+178;Pakistan;PK;1;1;0
+179;Poland;PL;1;1;0
+180;Saint Pierre and Miquelon;PM;1;1;0
+181;Pitcairn;PN;1;1;0
+182;Puerto Rico;PR;1;1;0
+183;Palestine, State of;PS;1;1;0
+184;Portugal;PT;1;1;0
+185;Palau;PW;1;1;0
+186;Paraguay;PY;1;1;0
+187;Qatar;QA;1;1;0
+188;Reunion;RE;1;1;0
+189;Romania;RO;1;1;0
+190;Serbia;RS;1;1;0
+191;Russian Federation;RU;1;1;0
+192;Rwanda;RW;1;1;0
+193;Saudi Arabia;SA;1;1;0
+194;Solomon Islands;SB;1;1;0
+195;Seychelles;SC;1;1;0
+196;Sudan;SD;1;1;0
+197;Sweden;SE;1;1;0
+198;Singapore;SG;1;1;0
+199;Saint Helena, Ascension and Tristan da Cunha;SH;1;1;0
+200;Slovenia;SI;1;1;0
+201;Svalbard and Jan Mayen;SJ;1;1;0
+202;Slovakia;SK;1;1;0
+203;Sierra Leone;SL;1;1;0
+204;San Marino;SM;1;1;0
+205;Senegal;SN;1;1;0
+206;Somalia;SO;1;1;0
+207;Suriname;SR;1;1;0
+208;South Sudan;SS;1;1;0
+209;Sao Tome and Principe;ST;1;1;0
+210;El Salvador;SV;1;1;0
+211;Sint Maarten (Dutch part);SX;1;1;0
+212;Syrian Arab Republic;SY;1;1;0
+213;Eswatini;SZ;1;1;0
+214;Turks and Caicos Islands;TC;1;1;0
+215;Chad;TD;1;1;0
+216;French Southern Territories;TF;1;1;0
+217;Togo;TG;1;1;0
+218;Thailand;TH;1;1;0
+219;Tajikistan;TJ;1;1;0
+220;Tokelau;TK;1;1;0
+221;Timor-Leste;TL;1;1;0
+222;Turkmenistan;TM;1;1;0
+223;Tunisia;TN;1;1;0
+224;Tonga;TO;1;1;0
+225;Turkey;TR;1;1;0
+226;Trinidad and Tobago;TT;1;1;0
+227;Tuvalu;TV;1;1;0
+228;Taiwan, Province of China;TW;1;1;0
+229;Tanzania, United Republic of;TZ;1;1;0
+230;Ukraine;UA;1;1;0
+231;Uganda;UG;1;1;0
+232;United States Minor Outlying Islands;UM;1;1;0
+233;United States;US;1;1;0
+234;Uruguay;UY;1;1;0
+235;Uzbekistan;UZ;1;1;0
+236;Holy See (Vatican City State);VA;1;1;0
+237;Saint Vincent and the Grenadines;VC;1;1;0
+238;Venezuela, Bolivarian Republic of;VE;1;1;0
+239;Virgin Islands, British;VG;1;1;0
+240;Virgin Islands, U.S.;VI;1;1;0
+241;Viet Nam;VN;1;1;0
+242;Vanuatu;VU;1;1;0
+243;Wallis and Futuna;WF;1;1;0
+244;Samoa;WS;1;1;0
+245;Yemen;YE;1;1;0
+246;Mayotte;YT;1;1;0
+247;South Africa;ZA;0;1;0
+248;Zambia;ZM;1;1;0
+249;Zimbabwe;ZW;1;1;0
+250;Unknown;ZZ;1;1;0
+252;Kosovo;XK;1;1;0
+
+CREATE TABLE "Countries" (
+	"Id" BIGINT,
+	"Name" VARCHAR(200) COLLATE Latin1_General_CI_AS,
+	"Code" VARCHAR(5) COLLATE Latin1_General_CI_AS,
+	"Order" BIGINT,
+	"Enabled" BIT,
+	"RiskProfileId" BIGINT DEFAULT N'CONVERT([bigint],(0))',
+	PRIMARY KEY ("Id")
+);
