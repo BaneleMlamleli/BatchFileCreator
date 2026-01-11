@@ -2,6 +2,9 @@
 scraped_entities.csv
 scraped_individuals.csv
 
+# logs
+logs/
+
 # VSCode
 .VSCode
 
