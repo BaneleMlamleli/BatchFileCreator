@@ -3,6 +3,7 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Batch File Creator"/>
     <Property name="name" type="java.lang.String" value="frmHomePage" noResource="true"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
@@ -28,49 +29,47 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
-                              <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              <Component id="jLabel17" min="-2" pref="370" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jComboBox1" min="-2" pref="267" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="jSeparator4" max="32767" attributes="0"/>
+                  <Component id="jSeparator3" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
+                      <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="jLabel17" min="-2" pref="370" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
+                      <Component id="btnDownloadTxtFile" min="-2" pref="228" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnDownloadCsvFile" min="-2" pref="228" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                      <Component id="btnDownloadExcelFile" min="-2" pref="228" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cmbBusinessUnit" min="-2" pref="167" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="12" max="32767" attributes="0"/>
-                              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jSeparator4" max="32767" attributes="0"/>
-                          <Component id="jSeparator3" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="btnDownloadTxtFile" min="-2" pref="218" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnDownloadCsvFile" min="-2" pref="218" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                              <Component id="btnDownloadExcelFile" min="-2" pref="218" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jSeparator5" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="cmbProductType" min="-2" pref="215" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cmbRiskClass" min="-2" pref="157" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jSeparator5" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -87,23 +86,29 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbRiskClass" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbProductType" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbBusinessUnit" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jSeparator5" min="-2" pref="11" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jPanel2" min="-2" pref="284" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jPanel3" max="32767" attributes="0"/>
+                  <Component id="jPanel2" pref="290" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnDownloadCsvFile" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="btnDownloadTxtFile" min="-2" pref="49" max="-2" attributes="0"/>
-                  <Component id="btnDownloadExcelFile" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnDownloadExcelFile" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="btnDownloadCsvFile" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -145,7 +150,6 @@
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -153,24 +157,24 @@
                       <Component id="txtNaturalPersonMasterParty" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtNPLinkedParty" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtLELinkedParty" alignment="0" max="32767" attributes="0"/>
-                      <Component id="cmbNPWhichPartyMustAlert" pref="221" max="32767" attributes="0"/>
-                      <Component id="cmbNPCombination" alignment="0" max="32767" attributes="0"/>
+                      <Component id="cmbNPCombination" alignment="0" pref="221" max="32767" attributes="0"/>
                   </Group>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cmbNPWhichPartyMustAlert" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace pref="9" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cmbNPCombination" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                      <Component id="cmbNPWhichPartyMustAlert" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -186,6 +190,11 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtNPLinkedParty" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="cmbNPWhichPartyMustAlert" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
@@ -304,6 +313,14 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
+        <Component class="javax.swing.JLabel" name="jLabel15">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Noto Sans" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Combinations:"/>
+          </Properties>
+        </Component>
         <Component class="javax.swing.JComboBox" name="cmbNPWhichPartyMustAlert">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -326,14 +343,6 @@
               <Font name="Noto Sans" size="11" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Which party must alert:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel15">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Noto Sans" size="11" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Combinations:"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -365,28 +374,29 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+                          <Component id="cmbLECombination" pref="225" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <Component id="txtLegalEntityMasterParty" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cmbLEWhichPartyMustAlert" max="32767" attributes="0"/>
                               <Component id="txtLegalEntityLinkedParty" alignment="1" max="32767" attributes="0"/>
                               <Component id="txtNaturalPersonLinkedParty" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cmbLEWhichPartyMustAlert" pref="225" max="32767" attributes="0"/>
-                              <Component id="txtLegalEntityMasterParty" max="32767" attributes="0"/>
-                              <Component id="cmbLECombination" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -397,15 +407,10 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="12" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cmbLECombination" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="cmbLEWhichPartyMustAlert" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -421,6 +426,11 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtNaturalPersonLinkedParty" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="cmbLEWhichPartyMustAlert" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
@@ -678,10 +688,146 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Noto Sans" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Select your Business Unit:"/>
+        <Property name="text" type="java.lang.String" value="Business Unit:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="cmbRiskClass">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="L | Low"/>
+            <StringItem index="1" value="M | Medium"/>
+            <StringItem index="2" value="H | High"/>
+            <StringItem index="3" value="I | Intolerable"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel19">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Noto Sans" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Product Type:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel21">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Noto Sans" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Risk Class:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbProductType">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="91">
+            <StringItem index="0" value="ADS | ADVISORY SERVICES | 1"/>
+            <StringItem index="1" value="ALT | ALTERNATIVE INVESTMENTS | 3"/>
+            <StringItem index="2" value="ANN | ANNUITIES | 1"/>
+            <StringItem index="3" value="ASS | ASSET MANAGEMENT | 3"/>
+            <StringItem index="4" value="BRP | BUNDLED RISK PRODUCTS | 1"/>
+            <StringItem index="5" value="CAP | CAPITAL DISABILITY | 1"/>
+            <StringItem index="6" value="DSAB | DS:ASSET BACKED FINANCE | 3"/>
+            <StringItem index="7" value="DSB | DS:BONDS | 3"/>
+            <StringItem index="8" value="DSCD | DS:CREDIT DERIVATIVES | 3"/>
+            <StringItem index="9" value="DSCP | DS:COMMERCIAL PAPER | 3"/>
+            <StringItem index="10" value="DSCS | DS:CURRENCY SWAPS | 3"/>
+            <StringItem index="11" value="DSDF | DS:DEBT FUNDS | 3"/>
+            <StringItem index="12" value="DSE | DS:EQUITY | 3"/>
+            <StringItem index="13" value="DSEP | DS:EMPOWERMENT FUNDING | 3"/>
+            <StringItem index="14" value="DSF | DS:STRUCTURED FINANCE | 3"/>
+            <StringItem index="15" value="DSFC | DS:FOREIGN EXCHANGE CURRENCY FUTURES | 3"/>
+            <StringItem index="16" value="DSHI | DS:EQUITY HYBRID INSTRUMENTS | 3"/>
+            <StringItem index="17" value="DSIS | DS:INTEREST RATE SWAPS AND OPTIONS | 3"/>
+            <StringItem index="18" value="DSMS | DS:MEZZANINE / SUBORDINATED FINANCE | 3"/>
+            <StringItem index="19" value="DSPF | DS:PROJECT FINANCE | 3"/>
+            <StringItem index="20" value="DSSC | DS:SYNDICATED AND CLUB LOANS | 3"/>
+            <StringItem index="21" value="DST | DS:SECURITISATION | 3"/>
+            <StringItem index="22" value="DSTF | DS:TERM FUNDING | 3"/>
+            <StringItem index="23" value="END | ENDOWMENT POLICIES | 2"/>
+            <StringItem index="24" value="ESCF | ES: HI: LISTED CURRENCY FUTURES | 3"/>
+            <StringItem index="25" value="ESE | ES : ATI : EQUITIES (THROUGH SPW) | 3"/>
+            <StringItem index="26" value="ESFO | ES: HI :FUTURES OPTIONS LISTED ON SAFEX | 3"/>
+            <StringItem index="27" value="ESLC | ES: ATI: LOANS TO CLIENTS | 3"/>
+            <StringItem index="28" value="ESLM | ES: ATI: LOANS FROM MONEY MARKET | 3"/>
+            <StringItem index="29" value="ESMM | ES: HI: MONEY MARKET INSTRUMENTS | 3"/>
+            <StringItem index="30" value="ESOD | ES: ATI: OTC DERIVATIVES ON SPECIFIC STOCKS OR INDICES | 3"/>
+            <StringItem index="31" value="ESPS | ES: HI: PREFERENCE SHARES | 3"/>
+            <StringItem index="32" value="ESS | ES: ATI: SWAPS | 3"/>
+            <StringItem index="33" value="ESTE | ESTATE PLANNING | 1"/>
+            <StringItem index="34" value="FUN | FUNERAL COVER | 1"/>
+            <StringItem index="35" value="GAV | GLA VENDOR ADMINISTRATIVE SERVICES | 1"/>
+            <StringItem index="36" value="GES | GLA EXTERNAL PLATFORM SERVICES | 1"/>
+            <StringItem index="37" value="GIP | GLA Interim PT | 3"/>
+            <StringItem index="38" value="HLT | HEALTH CARE PRODUCTS | 1"/>
+            <StringItem index="39" value="INV | INVESTMENT POLICY | 3"/>
+            <StringItem index="40" value="IPP | INCOME PROTECTION | 1"/>
+            <StringItem index="41" value="LIC | LIFE COVER | 1"/>
+            <StringItem index="42" value="MDCS | MULTI DATA COLLECTIONS | 1"/>
+            <StringItem index="43" value="MDFT | MULTI DATA FILE TRANSFER | 1"/>
+            <StringItem index="44" value="MDP | MULTI DATA PRODUCT | 1"/>
+            <StringItem index="45" value="MDPS | MULTI DATA PAYMENTS | 1"/>
+            <StringItem index="46" value="PERSL | PERSONAL LOANS | 2"/>
+            <StringItem index="47" value="RET | RETIREMENT FUNDS | 1"/>
+            <StringItem index="48" value="REW | REWARDS PROGRAMME | 1"/>
+            <StringItem index="49" value="SAV | SAVINGS | 2"/>
+            <StringItem index="50" value="STI | SHORT TERM INSURANCE | 1"/>
+            <StringItem index="51" value="TRUS | TRUSTS | 1"/>
+            <StringItem index="52" value="UTS | UNIT TRUSTS | 2"/>
+            <StringItem index="53" value="WILL | WILLS | 1"/>
+            <StringItem index="54" value="DSFE | DS: FOREIGN EXCHANGE | 3"/>
+            <StringItem index="55" value="AFI | Advisory services: Financial and investments | 2"/>
+            <StringItem index="56" value="ASIN | Ad hoc savings and investment: Non insurance... | 2"/>
+            <StringItem index="57" value="ANF | Advisory services: Non financial | 2"/>
+            <StringItem index="58" value="AAC | Annuities and annuity contracts: Compulsory | 1"/>
+            <StringItem index="59" value="AADV | Annuities and annuity contracts: Discretionary / Voluntary | 2"/>
+            <StringItem index="60" value="ABC | Asset backed credit | 2"/>
+            <StringItem index="61" value="AMI | Asset management: Institutional clients | 1"/>
+            <StringItem index="62" value="AMR | Asset management: Retail | 2"/>
+            <StringItem index="63" value="CMN | Cash management | 3"/>
+            <StringItem index="64" value="CSS | Collection services | 3"/>
+            <StringItem index="65" value="DEW | Deceased Estate and Will administration | 1"/>
+            <StringItem index="66" value="DTD | Derivative Trading | 3"/>
+            <StringItem index="67" value="FSPI | Financial service provider: Intermediary service | 2"/>
+            <StringItem index="68" value="FSIC | FINANCING SOLUTIONS : INSTITUTIONAL CREDIT | 2"/>
+            <StringItem index="69" value="FSRC | Financing solutions : Retail credit | 2"/>
+            <StringItem index="70" value="HFR | Hedge Fund Regulated | 3"/>
+            <StringItem index="71" value="HFU | Hedge Fund Unregulated | 3"/>
+            <StringItem index="72" value="PBS | In Product Benefits | 1"/>
+            <StringItem index="73" value="IPRGI | Insurance products: Retirement funds |  group schemes and Institutional clients | 1"/>
+            <StringItem index="74" value="IRC | Insurance risk cover | 1"/>
+            <StringItem index="75" value="IRCF | Insurance risk cover: Funeral | 1"/>
+            <StringItem index="76" value="IMF | Investment management / fund platform | 3"/>
+            <StringItem index="77" value="IMI | Investment management: Institutional clients | 2"/>
+            <StringItem index="78" value="IMR | Investment management: Retail clients | 2"/>
+            <StringItem index="79" value="LBS | Listed Bond Solutions | 1"/>
+            <StringItem index="80" value="LAR | Loyalty and Rewards | 1"/>
+            <StringItem index="81" value="MMK | Market Making | 3"/>
+            <StringItem index="82" value="OSTP | Online Share Trading platform | 3"/>
+            <StringItem index="83" value="PSP | Payment service provider | 2"/>
+            <StringItem index="84" value="RPSI | Recurring premium savings insurance product | 2"/>
+            <StringItem index="85" value="RSIN | Recurring savings and investment: Non insurance... | 2"/>
+            <StringItem index="86" value="RCT | Retail credit | 2"/>
+            <StringItem index="87" value="SPSI | Single premium savings insurance product | 2"/>
+            <StringItem index="88" value="SBG | Stock broking | 3"/>
+            <StringItem index="89" value="TFS | Tax Free savings products | 2"/>
+            <StringItem index="90" value="TAN | Trust administration | 2"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbProductTypeActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbBusinessUnit">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="124">

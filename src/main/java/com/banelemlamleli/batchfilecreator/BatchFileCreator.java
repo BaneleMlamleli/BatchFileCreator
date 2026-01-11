@@ -4,6 +4,8 @@
  */
 package com.banelemlamleli.batchfilecreator;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author banele
@@ -41,9 +43,9 @@ public class BatchFileCreator extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         txtNPNaturalPersonMasterParty = new javax.swing.JTextField();
         cmbNPCombination = new javax.swing.JComboBox<>();
+        jLabel15 = new javax.swing.JLabel();
         cmbNPWhichPartyMustAlert = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -70,9 +72,14 @@ public class BatchFileCreator extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbRiskClass = new javax.swing.JComboBox<>();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        cmbProductType = new javax.swing.JComboBox<>();
+        cmbBusinessUnit = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Batch File Creator");
         setName("frmHomePage"); // NOI18N
         setResizable(false);
 
@@ -127,13 +134,13 @@ public class BatchFileCreator extends javax.swing.JFrame {
 
         cmbNPCombination.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
 
+        jLabel15.setFont(new java.awt.Font("Noto Sans", 1, 11)); // NOI18N
+        jLabel15.setText("Combinations:");
+
         cmbNPWhichPartyMustAlert.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "All parties", "Linked parties", "One NP linked party", "One LE linked party" }));
 
         jLabel12.setFont(new java.awt.Font("Noto Sans", 1, 11)); // NOI18N
         jLabel12.setText("Which party must alert:");
-
-        jLabel15.setFont(new java.awt.Font("Noto Sans", 1, 11)); // NOI18N
-        jLabel15.setText("Combinations:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -154,27 +161,26 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addComponent(jLabel3)
                         .addComponent(jLabel2))
-                    .addComponent(jLabel12)
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNaturalPersonMasterParty)
                     .addComponent(txtNPLinkedParty)
                     .addComponent(txtLELinkedParty)
-                    .addComponent(cmbNPWhichPartyMustAlert, 0, 221, Short.MAX_VALUE)
-                    .addComponent(cmbNPCombination, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(cmbNPCombination, 0, 221, Short.MAX_VALUE)))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbNPWhichPartyMustAlert, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbNPCombination, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(cmbNPWhichPartyMustAlert, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -187,6 +193,10 @@ public class BatchFileCreator extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNPLinkedParty, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbNPWhichPartyMustAlert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -274,37 +284,34 @@ public class BatchFileCreator extends javax.swing.JFrame {
                             .addComponent(txtLEMasterParty)
                             .addComponent(txtNPMasterParty)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(85, 85, 85)
+                        .addComponent(cmbLECombination, 0, 225, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(21, 21, 21)
+                        .addComponent(txtLegalEntityMasterParty))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel7))
+                            .addComponent(jLabel11))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbLEWhichPartyMustAlert, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtLegalEntityLinkedParty, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtNaturalPersonLinkedParty)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel6))
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbLEWhichPartyMustAlert, 0, 225, Short.MAX_VALUE)
-                            .addComponent(txtLegalEntityMasterParty)
-                            .addComponent(cmbLECombination, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(txtNaturalPersonLinkedParty))))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(12, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbLECombination, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbLEWhichPartyMustAlert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -317,6 +324,10 @@ public class BatchFileCreator extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtNaturalPersonLinkedParty, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbLEWhichPartyMustAlert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -363,48 +374,61 @@ public class BatchFileCreator extends javax.swing.JFrame {
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/batch_file.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
-        jLabel1.setText("Select your Business Unit:");
+        jLabel1.setText("Business Unit:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "GLA | Glacier | 0001", "GAO | Glacier International (GLA/GAO) | 0001", "GAF | Glacier Partners Alexander Forbes | 0001", "CRS | Glacier Test | 0001", "TMR | Turnberry Management Risk Solutions (Sky Group Risk) | 0002", "SKY | Sanlam SKY | 0002", "PTL | Platinum Life (SKY Administrator) | 0002", "POP | Personal Operations Partner | 0002", "PKA | Phakama Administration Services (Sky Group Risk) | 0002", "NCL | Ness Consulting (Sky Group Risk Administrator) | 0002", "KIA | Kganya Insurance Administrators (Sky Group Risk) | 0002", "GAP | Group Application Platform | 0002", "FSA | Futura SA Administrators (Sky Group Risk ) | 0002", "CPS | Capitec (Sanlam Sky) | 0002", "CGB | Channel Group Benefits | 0002", "CFL | Channel (Sky) | 0002", "ARL | African Rainbow Life | 0002", "SPW | Sanlam Private Wealth | 0003", "SPM | SPW - Mauritius | 0003", "SPG | SPW Guernsey | 0003", "SDD | SPW - Derivatives | 0003", "PSB | SPW - Stellenbosch Branch | 0003", "PPT | SPW - Pretoria Branch | 0003", "PJB | SPW- Johannesburg Branch | 0003", "PIT | SPW - I- Trade Branch | 0003", "PIN | SPW - Johannesburg SCM | 0003", "PGE | SPW - George Branch | 0003", "PFX | SPW - Offshore Branch | 0003", "PFT | SPW Fiduciary & Tax | 0003", "PDB | SPW - Durban Branch | 0003", "PCT | SPW - Tygervalley | 0003", "PCL | SPW - Claremont Branch | 0003", "PCF | SPW - Knysna Branch | 0003", "SUS | Sanlam Umbrella Solutions (SEB) | 0004", "SIH | SIMEKA Health (SEB) | 0004", "SHC | Sanlam Healthcare Consultants (SEB) | 0004", "SGR | Sanlam Group Risk (SEB) | 0004", "SEB | Sanlam Employee Benefits (SEB) | 0004", "RFA | Retirement Fund Administration (SEB) | 0004", "EBI | Sanlam Employee Benefits Investments (SEB) | 0004", "EBC | SEB Core (SEB) | 0004", "ACA | ACA | 0004", "SIK | SIMEKA | 0005", "DIG | Digisure | 0006", "SIN | Sanlam Investments Namibia (NAM) | 0007", "NAM | Sanlam Namibia (NAM) | 0007", "NAL | Affluent Namibia (NAM) | 0007", "LBN | Legacy Business Namibia (NAM) | 0007", "ELM | Entry Level Market Namibia (NAM) | 0007", "EBN | Sanlam Employee Benefits Namibia (NAM) | 0007", "CLN | Credit Life Namibia (NAM) | 0007", "SWA | SIM Swaziland UT (SCI) | 0009", "SCI | Sanlam Collective Investments (SCI) | 0009", "SAT | SATRIX | 0009", "GLM | Glacier Manco (SCI) | 0009", "BIF | Botswana Insurance Fund Management Limited (SCI) | 0009", "AFM | Absa Fund Managers (SCI Manco) | 0009", "SLS | SILS Savings (SIL) | 0010", "SLR | SILS Risk (SIL) | 0010", "SLL | SILS Legacy (SIL) | 0010", "SLC | SILS Closed Book (SIL) | 0010", "SIL | Sanlam Individual Life (SIL) | 0010", "SFP | SFP | 0010", "PAC | SILS Policy Administration (SIL) | 0010", "GIL | Glacier Life Investments (SIL) | 0010", "CCC | SILS Call Centre (SIL) | 0010", "GCO | Sanlam Group Compliance Office | 0011", "GAN | Glacier Namibia (GAN) | 0012", "IND | INDIEFIN | 0013", "EQT | Easy Equities (IND) | 0013", "MWL | MiWay Life | 0014", "SWE | Sanlam Trust Estates | 0015", "SVT | Inter Vivos & Testamentary Trust | 0015", "STT | Sanlam Trust WILLS | 0015", "STA | Sanlam Umbrella Trust Admin | 0015", "SRY | Reality | 0015", "SPL | Sanlam Personal Loans | 0015", "SBE | Sanlam Trust Beneficiary Funds | 0015", "MUL | Multidata | 0015", "BRI | Brightrock | 0016", "STN | Satrix Now (SIG Easy Equities - Satrix) | 0017", "SSI | Sanlam Sustainable Infrastructure Fund (SIG) | 0017", "SPE | Sanlam Private Equity | 0017", "SMM | Sanlam Multi Manager (SIG) | 0017", "SMG | Sanlam Investment Management (SIG) General Partner | 0017", "SIS | Smaller Institution (SIG) | 0017", "SIM | Sanlam Investment Manager (SIG) | 0017", "SGP | Sanlam Investment General Partners | 0017", "SGI | Sanlam Global Investment Solutions | 0017", "SED | South African Small Medium Enterprise Debt Fund eCP (SIG) | 0017", "SCM | Sanfin (Sanlam Capital Markets) | 0017", "SAR | Sanlam Africa Real Estate Advisors | 0017", "REF | Resilient Investment Fund (SIG) | 0017", "MMF | SPE Mid-Market Fund 1 General Partner | 0017", "LDF | Sanlam Investors Legacy SME Debt Fund (SIG) | 0017", "GXF | Gen-X Credit Opportunities (SIG) | 0017", "GSI | Sanlam Investment Management GP (SIG) | 0017", "GRA | Graviton Wealth (SIG) | 0017", "GFP | Graviton Financial Partners (SIG) | 0017", "ESF | EPPF SME DEBT FUND PARTNERSHIP (SIG) | 0017", "DEN | DENKER | 0017", "CRF | Consolidated Retirement Fund (SIG) | 0017", "CAT | Catalyst | 0017", "BLU | Amplify | 0017", "ABA | ABSA Bank Asset Management (SIG) | 0017", "AAM | ABSA Bank Alternatives Investments (SIG) | 0017", "TSA | Transafrica (safrican administrator) | 0018", "SMB | Salt Employee Benefits (safrican administrator) | 0018", "SAF | SAFRICAN | 0018", "RSF | Riskfin (safrican administrator) | 0018", "PKM | Pharkarma (Safrican Administrator) | 0018", "NES | Ness (Safrican Administrator) | 0018", "MWM | Moriting Wealth Managers (safrican administrator) | 0018", "IEA | Insurance Enterprise (Safrican administrator) | 0018", "ENG | Econo Group (safrican administrator) | 0018", "WAS | Worldwide Advisory Services (WWAS) | 0019", "SRM | Sanlam Retail Mass Data Pulse | 0019", "SAS | Structured Administrator Solutions (Sanlam Sky) | 0019", "IFS | Icebolethu Funerals (SKY) | 0019", "GRU | Groups R US (Sanlam SKY) | 0019", "AYO | MTN AYO (Sanlam Sky) | 0019", "SNP | Santam Namibia Personal | 0020", "SNN | Santam Namibia Niche | 0020", "SNC | Santam Namibia Commercial | 0020" }));
+        cmbRiskClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "L | Low", "M | Medium", "H | High", "I | Intolerable" }));
+
+        jLabel19.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
+        jLabel19.setText("Product Type:");
+
+        jLabel21.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
+        jLabel21.setText("Risk Class:");
+
+        cmbProductType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADS | ADVISORY SERVICES | 1", "ALT | ALTERNATIVE INVESTMENTS | 3", "ANN | ANNUITIES | 1", "ASS | ASSET MANAGEMENT | 3", "BRP | BUNDLED RISK PRODUCTS | 1", "CAP | CAPITAL DISABILITY | 1", "DSAB | DS:ASSET BACKED FINANCE | 3", "DSB | DS:BONDS | 3", "DSCD | DS:CREDIT DERIVATIVES | 3", "DSCP | DS:COMMERCIAL PAPER | 3", "DSCS | DS:CURRENCY SWAPS | 3", "DSDF | DS:DEBT FUNDS | 3", "DSE | DS:EQUITY | 3", "DSEP | DS:EMPOWERMENT FUNDING | 3", "DSF | DS:STRUCTURED FINANCE | 3", "DSFC | DS:FOREIGN EXCHANGE CURRENCY FUTURES | 3", "DSHI | DS:EQUITY HYBRID INSTRUMENTS | 3", "DSIS | DS:INTEREST RATE SWAPS AND OPTIONS | 3", "DSMS | DS:MEZZANINE / SUBORDINATED FINANCE | 3", "DSPF | DS:PROJECT FINANCE | 3", "DSSC | DS:SYNDICATED AND CLUB LOANS | 3", "DST | DS:SECURITISATION | 3", "DSTF | DS:TERM FUNDING | 3", "END | ENDOWMENT POLICIES | 2", "ESCF | ES: HI: LISTED CURRENCY FUTURES | 3", "ESE | ES : ATI : EQUITIES (THROUGH SPW) | 3", "ESFO | ES: HI :FUTURES OPTIONS LISTED ON SAFEX | 3", "ESLC | ES: ATI: LOANS TO CLIENTS | 3", "ESLM | ES: ATI: LOANS FROM MONEY MARKET | 3", "ESMM | ES: HI: MONEY MARKET INSTRUMENTS | 3", "ESOD | ES: ATI: OTC DERIVATIVES ON SPECIFIC STOCKS OR INDICES | 3", "ESPS | ES: HI: PREFERENCE SHARES | 3", "ESS | ES: ATI: SWAPS | 3", "ESTE | ESTATE PLANNING | 1", "FUN | FUNERAL COVER | 1", "GAV | GLA VENDOR ADMINISTRATIVE SERVICES | 1", "GES | GLA EXTERNAL PLATFORM SERVICES | 1", "GIP | GLA Interim PT | 3", "HLT | HEALTH CARE PRODUCTS | 1", "INV | INVESTMENT POLICY | 3", "IPP | INCOME PROTECTION | 1", "LIC | LIFE COVER | 1", "MDCS | MULTI DATA COLLECTIONS | 1", "MDFT | MULTI DATA FILE TRANSFER | 1", "MDP | MULTI DATA PRODUCT | 1", "MDPS | MULTI DATA PAYMENTS | 1", "PERSL | PERSONAL LOANS | 2", "RET | RETIREMENT FUNDS | 1", "REW | REWARDS PROGRAMME | 1", "SAV | SAVINGS | 2", "STI | SHORT TERM INSURANCE | 1", "TRUS | TRUSTS | 1", "UTS | UNIT TRUSTS | 2", "WILL | WILLS | 1", "DSFE | DS: FOREIGN EXCHANGE | 3", "AFI | Advisory services: Financial and investments | 2", "ASIN | Ad hoc savings and investment: Non insurance... | 2", "ANF | Advisory services: Non financial | 2", "AAC | Annuities and annuity contracts: Compulsory | 1", "AADV | Annuities and annuity contracts: Discretionary / Voluntary | 2", "ABC | Asset backed credit | 2", "AMI | Asset management: Institutional clients | 1", "AMR | Asset management: Retail | 2", "CMN | Cash management | 3", "CSS | Collection services | 3", "DEW | Deceased Estate and Will administration | 1", "DTD | Derivative Trading | 3", "FSPI | Financial service provider: Intermediary service | 2", "FSIC | FINANCING SOLUTIONS : INSTITUTIONAL CREDIT | 2", "FSRC | Financing solutions : Retail credit | 2", "HFR | Hedge Fund Regulated | 3", "HFU | Hedge Fund Unregulated | 3", "PBS | In Product Benefits | 1", "IPRGI | Insurance products: Retirement funds |  group schemes and Institutional clients | 1", "IRC | Insurance risk cover | 1", "IRCF | Insurance risk cover: Funeral | 1", "IMF | Investment management / fund platform | 3", "IMI | Investment management: Institutional clients | 2", "IMR | Investment management: Retail clients | 2", "LBS | Listed Bond Solutions | 1", "LAR | Loyalty and Rewards | 1", "MMK | Market Making | 3", "OSTP | Online Share Trading platform | 3", "PSP | Payment service provider | 2", "RPSI | Recurring premium savings insurance product | 2", "RSIN | Recurring savings and investment: Non insurance... | 2", "RCT | Retail credit | 2", "SPSI | Single premium savings insurance product | 2", "SBG | Stock broking | 3", "TFS | Tax Free savings products | 2", "TAN | Trust administration | 2" }));
+        cmbProductType.addActionListener(this::cmbProductTypeActionPerformed);
+
+        cmbBusinessUnit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "GLA | Glacier | 0001", "GAO | Glacier International (GLA/GAO) | 0001", "GAF | Glacier Partners Alexander Forbes | 0001", "CRS | Glacier Test | 0001", "TMR | Turnberry Management Risk Solutions (Sky Group Risk) | 0002", "SKY | Sanlam SKY | 0002", "PTL | Platinum Life (SKY Administrator) | 0002", "POP | Personal Operations Partner | 0002", "PKA | Phakama Administration Services (Sky Group Risk) | 0002", "NCL | Ness Consulting (Sky Group Risk Administrator) | 0002", "KIA | Kganya Insurance Administrators (Sky Group Risk) | 0002", "GAP | Group Application Platform | 0002", "FSA | Futura SA Administrators (Sky Group Risk ) | 0002", "CPS | Capitec (Sanlam Sky) | 0002", "CGB | Channel Group Benefits | 0002", "CFL | Channel (Sky) | 0002", "ARL | African Rainbow Life | 0002", "SPW | Sanlam Private Wealth | 0003", "SPM | SPW - Mauritius | 0003", "SPG | SPW Guernsey | 0003", "SDD | SPW - Derivatives | 0003", "PSB | SPW - Stellenbosch Branch | 0003", "PPT | SPW - Pretoria Branch | 0003", "PJB | SPW- Johannesburg Branch | 0003", "PIT | SPW - I- Trade Branch | 0003", "PIN | SPW - Johannesburg SCM | 0003", "PGE | SPW - George Branch | 0003", "PFX | SPW - Offshore Branch | 0003", "PFT | SPW Fiduciary & Tax | 0003", "PDB | SPW - Durban Branch | 0003", "PCT | SPW - Tygervalley | 0003", "PCL | SPW - Claremont Branch | 0003", "PCF | SPW - Knysna Branch | 0003", "SUS | Sanlam Umbrella Solutions (SEB) | 0004", "SIH | SIMEKA Health (SEB) | 0004", "SHC | Sanlam Healthcare Consultants (SEB) | 0004", "SGR | Sanlam Group Risk (SEB) | 0004", "SEB | Sanlam Employee Benefits (SEB) | 0004", "RFA | Retirement Fund Administration (SEB) | 0004", "EBI | Sanlam Employee Benefits Investments (SEB) | 0004", "EBC | SEB Core (SEB) | 0004", "ACA | ACA | 0004", "SIK | SIMEKA | 0005", "DIG | Digisure | 0006", "SIN | Sanlam Investments Namibia (NAM) | 0007", "NAM | Sanlam Namibia (NAM) | 0007", "NAL | Affluent Namibia (NAM) | 0007", "LBN | Legacy Business Namibia (NAM) | 0007", "ELM | Entry Level Market Namibia (NAM) | 0007", "EBN | Sanlam Employee Benefits Namibia (NAM) | 0007", "CLN | Credit Life Namibia (NAM) | 0007", "SWA | SIM Swaziland UT (SCI) | 0009", "SCI | Sanlam Collective Investments (SCI) | 0009", "SAT | SATRIX | 0009", "GLM | Glacier Manco (SCI) | 0009", "BIF | Botswana Insurance Fund Management Limited (SCI) | 0009", "AFM | Absa Fund Managers (SCI Manco) | 0009", "SLS | SILS Savings (SIL) | 0010", "SLR | SILS Risk (SIL) | 0010", "SLL | SILS Legacy (SIL) | 0010", "SLC | SILS Closed Book (SIL) | 0010", "SIL | Sanlam Individual Life (SIL) | 0010", "SFP | SFP | 0010", "PAC | SILS Policy Administration (SIL) | 0010", "GIL | Glacier Life Investments (SIL) | 0010", "CCC | SILS Call Centre (SIL) | 0010", "GCO | Sanlam Group Compliance Office | 0011", "GAN | Glacier Namibia (GAN) | 0012", "IND | INDIEFIN | 0013", "EQT | Easy Equities (IND) | 0013", "MWL | MiWay Life | 0014", "SWE | Sanlam Trust Estates | 0015", "SVT | Inter Vivos & Testamentary Trust | 0015", "STT | Sanlam Trust WILLS | 0015", "STA | Sanlam Umbrella Trust Admin | 0015", "SRY | Reality | 0015", "SPL | Sanlam Personal Loans | 0015", "SBE | Sanlam Trust Beneficiary Funds | 0015", "MUL | Multidata | 0015", "BRI | Brightrock | 0016", "STN | Satrix Now (SIG Easy Equities - Satrix) | 0017", "SSI | Sanlam Sustainable Infrastructure Fund (SIG) | 0017", "SPE | Sanlam Private Equity | 0017", "SMM | Sanlam Multi Manager (SIG) | 0017", "SMG | Sanlam Investment Management (SIG) General Partner | 0017", "SIS | Smaller Institution (SIG) | 0017", "SIM | Sanlam Investment Manager (SIG) | 0017", "SGP | Sanlam Investment General Partners | 0017", "SGI | Sanlam Global Investment Solutions | 0017", "SED | South African Small Medium Enterprise Debt Fund eCP (SIG) | 0017", "SCM | Sanfin (Sanlam Capital Markets) | 0017", "SAR | Sanlam Africa Real Estate Advisors | 0017", "REF | Resilient Investment Fund (SIG) | 0017", "MMF | SPE Mid-Market Fund 1 General Partner | 0017", "LDF | Sanlam Investors Legacy SME Debt Fund (SIG) | 0017", "GXF | Gen-X Credit Opportunities (SIG) | 0017", "GSI | Sanlam Investment Management GP (SIG) | 0017", "GRA | Graviton Wealth (SIG) | 0017", "GFP | Graviton Financial Partners (SIG) | 0017", "ESF | EPPF SME DEBT FUND PARTNERSHIP (SIG) | 0017", "DEN | DENKER | 0017", "CRF | Consolidated Retirement Fund (SIG) | 0017", "CAT | Catalyst | 0017", "BLU | Amplify | 0017", "ABA | ABSA Bank Asset Management (SIG) | 0017", "AAM | ABSA Bank Alternatives Investments (SIG) | 0017", "TSA | Transafrica (safrican administrator) | 0018", "SMB | Salt Employee Benefits (safrican administrator) | 0018", "SAF | SAFRICAN | 0018", "RSF | Riskfin (safrican administrator) | 0018", "PKM | Pharkarma (Safrican Administrator) | 0018", "NES | Ness (Safrican Administrator) | 0018", "MWM | Moriting Wealth Managers (safrican administrator) | 0018", "IEA | Insurance Enterprise (Safrican administrator) | 0018", "ENG | Econo Group (safrican administrator) | 0018", "WAS | Worldwide Advisory Services (WWAS) | 0019", "SRM | Sanlam Retail Mass Data Pulse | 0019", "SAS | Structured Administrator Solutions (Sanlam Sky) | 0019", "IFS | Icebolethu Funerals (SKY) | 0019", "GRU | Groups R US (Sanlam SKY) | 0019", "AYO | MTN AYO (Sanlam Sky) | 0019", "SNP | Santam Namibia Personal | 0020", "SNN | Santam Namibia Niche | 0020", "SNC | Santam Namibia Commercial | 0020" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jSeparator4)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(166, 166, 166)
+                        .addComponent(jLabel18)
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel16))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(172, 172, 172)
-                                .addComponent(jLabel18)
-                                .addGap(39, 39, 39)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabel16))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(216, 216, 216)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(btnDownloadTxtFile, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDownloadCsvFile, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77)
+                        .addComponent(btnDownloadExcelFile, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator4)
-                            .addComponent(jSeparator3)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnDownloadTxtFile, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnDownloadCsvFile, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(88, 88, 88)
-                                .addComponent(btnDownloadExcelFile, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator5))))
-                .addContainerGap())
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmbBusinessUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbProductType, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbRiskClass, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -418,21 +442,26 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbRiskClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel19)
+                    .addComponent(cmbProductType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbBusinessUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDownloadCsvFile, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDownloadTxtFile, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDownloadExcelFile, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnDownloadExcelFile, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDownloadCsvFile, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -444,6 +473,14 @@ public class BatchFileCreator extends javax.swing.JFrame {
     private void btnDownloadTxtFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadTxtFileActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDownloadTxtFileActionPerformed
+
+    private void cmbProductTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProductTypeActionPerformed
+        // TODO add your handling code here:
+        int lengthOfProductType = cmbProductType.getSelectedItem().toString().length();
+        int riskValue = Integer.parseInt(cmbProductType.getSelectedItem().toString().substring(lengthOfProductType-1));
+        cmbRiskClass.setSelectedIndex(riskValue-1);
+        
+    }//GEN-LAST:event_cmbProductTypeActionPerformed
 
     private void txtNPLinkedPartyActionPerformed(java.awt.event.ActionEvent evt) {
     }
@@ -550,11 +587,13 @@ public class BatchFileCreator extends javax.swing.JFrame {
     private javax.swing.JButton btnDownloadCsvFile;
     private javax.swing.JButton btnDownloadExcelFile;
     private javax.swing.JButton btnDownloadTxtFile;
+    private javax.swing.JComboBox<String> cmbBusinessUnit;
     private javax.swing.JComboBox<String> cmbLECombination;
     private javax.swing.JComboBox<String> cmbLEWhichPartyMustAlert;
     private javax.swing.JComboBox<String> cmbNPCombination;
     private javax.swing.JComboBox<String> cmbNPWhichPartyMustAlert;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cmbProductType;
+    private javax.swing.JComboBox<String> cmbRiskClass;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -565,7 +604,9 @@ public class BatchFileCreator extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
