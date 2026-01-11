@@ -5,37 +5,67 @@ DROP TABLE IF EXISTS business_relationship_types;
 DROP TABLE IF EXISTS countries;
 DROP TABLE IF EXISTS industry_types;
 DROP TABLE IF EXISTS product_types;
-DROP TABLE IF EXISTS risk_profiles;
+DROP TABLE IF EXISTS risk_class;
 DROP TABLE IF EXISTS source_of_funds;
+DROP TABLE IF EXISTS parties;
 
-CREATE TABLE natural_person (
-    party_counter INTEGER PRIMARY KEY,
-    firstname TEXT NOT NULL,
-    lastname TEXT NOT NULL,
-    date_of_birth TEXT,
-    nationality TEXT,
-    citizenship TEXT,
-    id_type TEXT,
-    party_id TEXT NOT NULL,
-    country TEXT,
-    address_field TEXT,
-    city TEXT,
-    province TEXT,
-    postal_code TEXT,
-    address_country TEXT
-);
+select * FROM parties;
 
-CREATE TABLE legal_entity (
-    party_counter INTEGER PRIMARY KEY,
-    entity_name TEXT,
-    id_type TEXT,
-    party_id TEXT NOT NULL,
-    country TEXT,
-    address_field TEXT,
-    city TEXT,
-    province TEXT,
-    postal_code TEXT,
-    address_country TEXT
+CREATE TABLE parties (
+	id INTEGER PRIMARY KEY,
+	party_type TEXT, -- N or L
+	party_alert BOOLEAN, -- true or false
+	firstname TEXT,
+	surname TEXT,
+	middle_name TEXT,
+	previous_surname TEXT,
+	date_of_birth TEXT,
+	country_of_birth TEXT,
+	nationality TEXT,
+	country_of_residence TEXT,
+	gender TEXT,
+	profession TEXT,
+	monthly_income INTEGER,
+	date_of_last_income TEXT,
+	id_number TEXT,
+	nationality2 TEXT,
+	nationality3 TEXT,
+	passport TEXT,
+	passport_country TEXT,
+	tax_registration_number TEXT,
+	primary_tax_residence TEXT,
+	foreign_tin TEXT,
+	foreign_tin_issuing_country TEXT,
+	-- relationship
+	reason_for_transaction TEXT, -- Default value will be used when generating the batch file
+	product_type TEXT, -- not using this column as values are in the dropdown
+	risk_class TEXT, -- not using this column as values are in the dropdown
+	business_relationship TEXT, -- Default value will be used when generating the batch file
+	source_of_funds TEXT,
+	account_number TEXT,
+	transaction_amount INTEGER,
+	transaction_date TEXT,
+	inception_date TEXT,
+	authorised_by TEXT,
+	termination_date TEXT,
+	-- LE details
+	registered_name TEXT,
+	registration_number TEXT,
+	date_of_registration TEXT,
+	country_of_registration TEXT,
+	industry_type TEXT,
+	additional_tax_residence TEXT,
+	vat_registration_number TEXT,
+	-- NP address information
+	np_residential_address TEXT,
+	np_postal_address TEXT,
+	np_pobox_address TEXT,
+	-- LE address information
+	le_postal_address TEXT,
+	le_pobox_address TEXT,
+	le_registered_address TEXT,
+	le_gcoheadoffice_address TEXT,
+	le_operational_address TEXT
 );
 
 CREATE TABLE industry_types (
@@ -73,7 +103,9 @@ CREATE TABLE business_relationship_types (
 	code TEXT
 );
 
-CREATE TABLE risk_profiles (
+-- NOTE: This table is no longer required as I'm using a dropdown box to list keep and list all the options
+-- I will keep it for future reference
+CREATE TABLE risk_class (
 	id INTEGER PRIMARY KEY,
 	code TEXT,
 	description TEXT,
@@ -82,6 +114,8 @@ CREATE TABLE risk_profiles (
 	hex_color TEXT
 );
 
+-- NOTE: This table is no longer required as I'm using a dropdown box to list keep and list all the options
+-- I will keep it for future reference
 CREATE TABLE product_types (
     id INTEGER PRIMARY KEY,
     enabled BOOLEAN,
@@ -100,7 +134,7 @@ CREATE TABLE source_of_funds (
 	code TEXT NOT NULL UNIQUE
 );
 
-INSERT INTO risk_profiles (code, description, rank, enabled, hex_color)
+INSERT INTO risk_class (code, description, rank, enabled, hex_color)
 VALUES	('L', 'Low', 1, TRUE, '#008755'),
 ('M', 'Medium', 1, TRUE, '#f2a900'),
 ('H', 'High', 1, TRUE, '#cb333b'),
