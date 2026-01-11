@@ -1,3 +1,7 @@
+# temporary scraped data before being written to the database should be ignored
+scraped_entities.csv
+scraped_individuals.csv
+
 # VSCode
 .VSCode
 
