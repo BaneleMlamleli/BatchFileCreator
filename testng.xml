@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Sanctions Suite">
-    <parameter name="partyType" value="Individual" />
+    <parameter name="partyType" value="Entity" />
     <test name="RunSanctionsListData">
         <classes>
             <class name="scrapesanctionslist.SanctionsListData" />
