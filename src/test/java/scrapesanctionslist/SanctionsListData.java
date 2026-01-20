@@ -62,25 +62,25 @@ public class SanctionsListData {
     Faker faker = new Faker();
 
     @Test
-    @BeforeTest
     public void launchAndGetPartyData(){
-        // driver = new FirefoxDriver();
-        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
+        // driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://sanctionssearch.ofac.treas.gov/");
 
         ReadAndWriteToFile.deleteFileAtInitialExecution();
         
-
         Select selectType = new Select(driver.findElement(By.id("ctl00_MainContent_ddlType")));
         Select selectCountry = new Select(driver.findElement(By.id("ctl00_MainContent_ddlCountry")));
         int allCountries = selectCountry.getOptions().size();
 
         // This will loop 2 times, It will start at index 2 for 'Entity' and index 3 for 'Individual'
         for (int p = 2; p <= 3; p++) {
+            String partyType = "";
             try {
                  // 1 - Select party type
                 selectType.selectByIndex(p);
+                partyType = selectType.getFirstSelectedOption().getText();
                 allCountries = selectCountry.getOptions().size();
             } catch (Exception e) {
                 selectType = new Select(driver.findElement(By.id("ctl00_MainContent_ddlType")));
@@ -88,17 +88,21 @@ public class SanctionsListData {
                 allCountries = selectCountry.getOptions().size();
                  // 1 - Select party type
                 selectType.selectByIndex(p);
+                partyType = selectType.getFirstSelectedOption().getText();
             }
 
             // starting at 1 because index 0 will select the 'All' option which is not what we need
-            for (int a = 1; a <= allCountries; a++) {
+            for (int a = 2; a <= 3; a++) {
+                String partyCountry = "";
                 try {
                     // 2 - Select first country
                     selectCountry.selectByIndex(a);
+                    partyCountry = selectCountry.getFirstSelectedOption().getText();
                 } catch (StaleElementReferenceException e) {
                     selectCountry = new Select(driver.findElement(By.id("ctl00_MainContent_ddlCountry")));
                     // 2 - Select first country
                     selectCountry.selectByIndex(a);
+                    partyCountry = selectCountry.getFirstSelectedOption().getText();
                 }
                 // 3 - Click on the 'Search' button
                 driver.findElement(By.id("ctl00_MainContent_btnSearch")).click();
@@ -107,51 +111,96 @@ public class SanctionsListData {
                 // Sum of all links for all listed parties for the selected country 
                 By linksLocator = By.xpath("//table[@id='gvSearchResults']//tr//td//a");
                 List<WebElement> currentLinks = driver.findElements(linksLocator);
-                int sumOfLinks = driver.findElements(linksLocator).size();
+                int sumOfLinks = driver.findElements(linksLocator).size()-1;
 
                 // This condition caters for a scenario where there is no links and this message is displayed 'Your search has not returned any results.' 
                 if (sumOfLinks == 0) {
-                    
+                    continue;
                 }
 
                 // 4 - Loop through the links to display each party details
                 int increment = 0;
-                while (sumOfLinks <= increment) {
+                while (increment <= sumOfLinks) {
                     try {
-                        System.out.println("CYCLE " + increment + ", currentLinks: " + currentLinks.size());
+                        // 5 - Click on each link to get the party information
                         currentLinks.get(increment).click();
 
                         // Check amount of div to make sure all divs that have required data are available
                         List<WebElement> divs = driver.findElements(By.xpath("//div[@id='mainContentBox']//div[@class='groupedContent']//div[@class='content']//div"));
-                        System.out.println("Size of divs: " + divs.size());
+                        // System.out.println("Size of divs: " + divs.size());
 
-                        if (divs.get(2).equals("Identifications:")) {
-                            // 5 - Get the entity name
-                            String entityName = driver.findElement(By.id("ctl00_MainContent_lblNameOther")).getText();
-                            String entityId = driver.findElement(By.xpath("//table[@id='ctl00_MainContent_gvIdentification']//*//tr//td[2]")).getText();
-                            System.out.println(increment+". Entity Name: " + entityName + " - Entity ID: " + entityId);
-                            // 6 - Click on the 'Back' button
-                            driver.findElement(By.xpath("//input[@id='ctl00_MainContent_btnBack']")).click();
-                        }else{
-                            // TODO: I need to add data using faker. This will depend on which party type it is.
-                            System.out.println("DIV FOR 'Identifications' does not exist");
-                            System.out.println("Fake data for ID valude: " + faker.commerce().promotionCode());
-                            driver.findElement(By.xpath("//input[@id='ctl00_MainContent_btnBack']")).click();
-                        }                
+                        // If the 'Identifications' information box is not displayed then skip that party
+                        if (!divs.get(2).getText().equals("Identifications:")) {
+                            continue;
+                        }
+                        
+                        // 6 - Get the party name
+                        switch (partyType) {
+                            case "Individual":
+                                String name = driver.findElement(By.id("ctl00_MainContent_lblFirstName")).getText();
+                                String srname = driver.findElement(By.id("ctl00_MainContent_lblLastName")).getText();
+                                String entIdType = driver.findElement(By.xpath("//table[@id='ctl00_MainContent_gvIdentification']//tr[2]//td[1]")).getText();
+                                System.out.println(increment+". Individual Name and Surname: " + name + srname + " - Entity ID: " + entIdType);
+                                createIndividualData(partyCountry, currentLinks);
+                                // 7 - Click on the 'Back' button
+                                driver.findElement(By.xpath("//input[@id='ctl00_MainContent_btnBack']")).click();
+                                break;
+                            case "Entity":
+                                String entityName = driver.findElement(By.id("ctl00_MainContent_lblNameOther")).getText();
+                                String entityId = driver.findElement(By.xpath("//table[@id='ctl00_MainContent_gvIdentification']//*//tr//td[2]")).getText();
+                                System.out.println(increment+". Entity Name: " + entityName + " - Entity ID: " + entityId);
+                                createEntityData(partyCountry, currentLinks);
+                                // 7 - Click on the 'Back' button
+                                driver.findElement(By.xpath("//input[@id='ctl00_MainContent_btnBack']")).click();    
+                                break;
+                            default: logger.error("The select option does not exist, only 'Individual' or 'Entity' can be selected. Issue in method '" + new Object() {}.getClass().getEnclosingMethod().getName() + "'");break;
+                        }
+                        // String entityName = driver.findElement(By.id("ctl00_MainContent_lblNameOther")).getText();
+                        // String entityId = driver.findElement(By.xpath("//table[@id='ctl00_MainContent_gvIdentification']//*//tr//td[2]")).getText();
+                        // System.out.println(increment+". Entity Name: " + entityName + " - Entity ID: " + entityId);
+                        // // 7 - Click on the 'Back' button
+                        // driver.findElement(By.xpath("//input[@id='ctl00_MainContent_btnBack']")).click();
                     } catch (StaleElementReferenceException e) {
                         currentLinks = driver.findElements(linksLocator);
                         currentLinks.get(increment).click();
-                        String entityName = driver.findElement(By.id("ctl00_MainContent_lblNameOther")).getText();
-                        System.out.println(increment+". Entity Name: " + entityName + " - size: " + currentLinks.size());
-                        driver.findElement(By.xpath("//input[@id='ctl00_MainContent_btnBack']")).click();
+                        // 6 - Get the party name
+                        switch (partyType) {
+                            case "Individual":
+                                String name = driver.findElement(By.id("ctl00_MainContent_lblFirstName")).getText();
+                                String srname = driver.findElement(By.id("ctl00_MainContent_lblLastName")).getText();
+                                String entIdType = driver.findElement(By.xpath("//table[@id='ctl00_MainContent_gvIdentification']//tr[2]//td[1]")).getText();
+                                System.out.println(increment+". Individual Name and Surname: " + name + srname + " - Entity ID: " + entIdType);
+                                createIndividualData(partyCountry, currentLinks);
+                                // 7 - Click on the 'Back' button
+                                driver.findElement(By.xpath("//input[@id='ctl00_MainContent_btnBack']")).click();
+                                break;
+                            case "Entity":
+                                String entityName = driver.findElement(By.id("ctl00_MainContent_lblNameOther")).getText();
+                                String entityId = driver.findElement(By.xpath("//table[@id='ctl00_MainContent_gvIdentification']//*//tr//td[2]")).getText();
+                                System.out.println(increment+". Entity Name: " + entityName + " - Entity ID: " + entityId);
+                                createEntityData(partyCountry, currentLinks);
+                                // 7 - Click on the 'Back' button
+                                driver.findElement(By.xpath("//input[@id='ctl00_MainContent_btnBack']")).click();    
+                                break;
+                            default: logger.error("The select option does not exist, only 'Individual' or 'Entity' can be selected. Issue in method '" + new Object() {}.getClass().getEnclosingMethod().getName() + "'");break;
+                        }
+                        // String entityName = driver.findElement(By.id("ctl00_MainContent_lblNameOther")).getText();
+                        // System.out.println(increment+". Entity Name: " + entityName + " - size: " + currentLinks.size());
+                        // driver.findElement(By.xpath("//input[@id='ctl00_MainContent_btnBack']")).click();
                     }
                     increment += 1;
                 }
+                System.out.println("===============================================================================");
             }
         }
+        terminateBrowser();
+        DBConnection.writeDataIntoDb();
+        System.out.println("END.....FINISHED DATA SCRAPTING....\n=============================");
+
     }
 
     public void createEntityData(String selectedCountry, List<WebElement> currentLinks){
+        System.out.println("IN THE createEntityData METHOD");
         new WebDriverWait(driver, Duration.ofSeconds(10))
             .until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_MainContent_lblNameOther")));
 
@@ -363,6 +412,7 @@ public class SanctionsListData {
     }
 
     public void createIndividualData(String selectedCountry, List<WebElement> currentLinks){
+        System.out.println("IN THE createIndividualData METHOD");
         new WebDriverWait(driver, Duration.ofSeconds(10))
             .until(ExpectedConditions.visibilityOfElementLocated(By.id("ctl00_MainContent_lblFirstName")));
 
@@ -565,11 +615,9 @@ public class SanctionsListData {
         }
     }
 
-    @AfterTest
+    @Test
     public void terminateBrowser(){
         driver.close();
         driver.quit();
-        DBConnection.writeDataIntoDb();
-        System.out.println("END.....FINISH....\n=============================");
     }
 }
