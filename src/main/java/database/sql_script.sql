@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS risk_class;
 DROP TABLE IF EXISTS source_of_funds;
 DROP TABLE IF EXISTS parties;
 
-select * FROM parties;
+SELECT * FROM countries ORDER BY name ASC;
 
 CREATE TABLE parties (
 	id INTEGER PRIMARY KEY,
@@ -425,9 +425,10 @@ INSERT INTO countries (name, code, display_order, enabled, risk_profile_id) VALU
 ('Belize','BZ',1,1,0),
 ('Canada','CA',1,1,0),
 ('Cocos (Keeling) Islands','CC',1,1,0),
-('Congo, the Democratic Republic of the','CD',1,1,0),
+('Congo, Democratic Republic of the','CD',1,1,0),
 ('Central African Republic','CF',1,1,0),
 ('Congo','CG',1,1,0),
+('Congo, Republic of the','CG',1,1,0),
 ('Switzerland','CH',1,1,0),
 ('Côte d''Ivoire','CI',1,1,0),
 ('Cook Islands','CK',1,1,0),
@@ -508,6 +509,8 @@ INSERT INTO countries (name, code, display_order, enabled, risk_profile_id) VALU
 ('Saint Kitts and Nevis','KN',1,1,0),
 ('Korea, Democratic People''s Republic of','KP',1,1,0),
 ('Korea, Republic of','KR',1,1,0),
+('Korea, North','KR',1,1,0),
+('Korea, South','KR',1,1,0),
 ('Kuwait','KW',1,1,0),
 ('Cayman Islands','KY',1,1,0),
 ('Kazakhstan','KZ',1,1,0),
@@ -530,6 +533,7 @@ INSERT INTO countries (name, code, display_order, enabled, risk_profile_id) VALU
 ('Madagascar','MG',1,1,0),
 ('Marshall Islands','MH',1,1,0),
 ('Macedonia, the Former Yugoslav Republic of','MK',1,1,0),
+('North Macedonia, The Republic of','MK',1,1,0),
 ('Mali','ML',1,1,0),
 ('Myanmar','MM',1,1,0),
 ('Mongolia','MN',1,1,0),
@@ -552,6 +556,7 @@ INSERT INTO countries (name, code, display_order, enabled, risk_profile_id) VALU
 ('Nigeria','NG',1,1,0),
 ('Nicaragua','NI',1,1,0),
 ('Netherlands','NL',1,1,0),
+('Netherlands Antilles','NL',1,1,0),
 ('Norway','NO',1,1,0),
 ('Nepal','NP',1,1,0),
 ('Nauru','NR',1,1,0),
@@ -630,12 +635,14 @@ INSERT INTO countries (name, code, display_order, enabled, risk_profile_id) VALU
 ('Vanuatu','VU',1,1,0),
 ('Wallis and Futuna','WF',1,1,0),
 ('Samoa','WS',1,1,0),
+('West Bank','PS',1,1,0),
 ('Yemen','YE',1,1,0),
 ('Mayotte','YT',1,1,0),
 ('South Africa','ZA',0,1,0),
 ('Zambia','ZM',1,1,0),
 ('Zimbabwe','ZW',1,1,0),
 ('Unknown','ZZ',1,1,0),
+('Undetermined','ZZ',1,1,0),
 ('Kosovo','XK',1,1,0);
 
 INSERT INTO business_relationship_types (name, enabled, natural_person_enabled, legal_entity_enabled, code) VALUES
