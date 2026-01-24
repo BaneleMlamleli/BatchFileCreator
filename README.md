@@ -14,7 +14,7 @@ This project is split into three main parts.
 
 - ![Apache NetBeans IDE](./src/main/java/icons/netbeans.png) NetBeans IDE 28
 - ![Java 25](./src/main/java/icons/java.png) Java 25
-- ![SQLite](./src/main/java/icons/sqlite.png) SQLite
+- ![SQLite](./src/main/java/icons/sqlite.png) SQLite3
 - ![Maven](./src/main/java/icons/Maven.png) Maven
 - ![Selenium 4](./src/main/java/icons/selenium.png) Selenium 4
 - ![Git-flow](./src/main/java/icons/git.png) Git
@@ -40,3 +40,13 @@ Icons used are from [flaticon](https://www.flaticon.com/)
 - [file type](https://www.flaticon.com/free-icons/file-type) icon
 - [csv file](https://www.flaticon.com/free-icons/csv-file) icon
 - [batch processing](https://www.flaticon.com/free-icons/batch-processing) icon
+
+## Operating System used when developing application
+
+This project is developed on a linux operating system. At the time of adding this information in the README file the below were the versions.
+
+- Fedora Linux 43 - KDE Plasma Desktop Edition
+- KDE Plasma Version: 6.5.5
+- KDE Frameworks Version: 6.22.0
+- Kernel Version: 6.18.5-200.fc43.x86_64 (64-bit)
+- Graphics Platform: Wayland
