@@ -18,6 +18,8 @@ This project is split into three main parts.
 - ![Maven](./src/main/java/icons/Maven.png) Maven
 - ![Selenium 4](./src/main/java/icons/selenium.png) Selenium 4
 - ![Git-flow](./src/main/java/icons/git.png) Git
+- ![Log4J](./src/main/java/icons/log4j.png) Log4J
+- ![VSCode](./src/main/java/icons/vscode.png) VSCode
 
 ## Execution
 
