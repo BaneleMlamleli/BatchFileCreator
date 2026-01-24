@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS risk_class;
 DROP TABLE IF EXISTS source_of_funds;
 DROP TABLE IF EXISTS parties;
 
-SELECT * FROM countries ORDER BY name ASC;
+SELECT * FROM parties;
 
 CREATE TABLE parties (
 	id INTEGER PRIMARY KEY,
