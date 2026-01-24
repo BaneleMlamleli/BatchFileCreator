@@ -58,12 +58,4 @@ public class SAIDNumberGenerator {
         }
         return checksum;
     }
-
-    // NOTE: Don't delete this main method
-    // public static void main(String[] args) {
-    //     // Example usage: Generate an ID for a male, SA citizen born on Dec 25, 1990
-    //     LocalDate dob = LocalDate.of(1990, 12, 25);
-    //     String newId = generateSAID(dob, true, true);
-    //     System.out.println("Generated SA ID Number: " + newId);
-    // }
 }
