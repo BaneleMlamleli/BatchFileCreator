@@ -42,6 +42,7 @@ public class DBConnection {
     }
 
     public static void insertPartyIntoDB(String partyType, boolean partyAlert, String firstname, String surname, String middleName, String previousSurname, String dateOfBirth, String countryOBirth, String nationality, String countryOfResidence, String partyGenderFromID, String profession, long monthlyIncome, String dateOfLastIncome, String SAIDNumber, String nationality2, String nationality3, String passport, String passportCountry, String taxRegistrationNumber, String primaryTaxResidence, String foreignTin, String foreignTinIssuingCountry, String reasonForTransaction, String productType, String riskClass, String businessRelationship, String sourceOfFunds, String accountNumber, int transactionAmount, String transactionDate, String inceptionDate, String authorisedBy, String terminationDate, String registeredName, String registrationNumber, String dateOfRegistration, String countryOfRegistration, String industryType, String additionalTaxResidence, String vatRegistrationNumber, String npResidentialAddress, String npPostalAddress, String npPoboxAddress, String lePostalAddress, String lePoboxAddress, String leRegisteredAddress, String leGcoheadofficeAddress, String leOperationalAddress){
+        System.out.println("INSERTING INTO DB");
         Connection con = DBConnection.connection();
         PreparedStatement preparedStatement = null;
         try {
@@ -102,8 +103,15 @@ public class DBConnection {
         } catch (Exception e) {
             logger.error("'" + e.getMessage() + "' in method '" + new Object() {
             }.getClass().getEnclosingMethod().getName() + "'");
-        } 
-
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                logger.error("'" + e.getMessage() + "' in method '" + new Object() {}.getClass().getEnclosingMethod().getName() + "'");
+            }
+        }
     }
 
     public static String returnCountryCode(String country){
@@ -116,21 +124,26 @@ public class DBConnection {
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, country);
             resultSet = preparedStatement.executeQuery();
-            code = resultSet.getString(1);
+            while (resultSet.next()) {
+                code = resultSet.getString("code");
+                break;
+            }
         } catch (Exception e) {
             logger.error("'" + e.getMessage() + "' in method '" + new Object() {
             }.getClass().getEnclosingMethod().getName() + "'");
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                logger.error("'" + e.getMessage() + "' in method '" + new Object() {}.getClass().getEnclosingMethod().getName() + "'");
+            }
         }
         return code;
     }
 
     public static void writeDataIntoDb(){
-        /**
- * TODO: NOTE:
- * 1. Create a method that writes all of the scraped data into a text file. DONE
- * 2. Read from file and write the data into the 'parties' database table
- * */ 
-        System.out.println("Write data into DB");
         List<String> csvFiles = new ArrayList<>();
         try {
             Path resourcesDir = Paths.get("src/main/resources");
@@ -155,7 +168,7 @@ public class DBConnection {
         try {
             for (int i = 0; i < csvFiles.size(); i++) {
                 System.out.println("FILE NAME: " + csvFiles.get(i).toString());
-                java.nio.file.Path csvPath = java.nio.file.Paths.get("src/main/java/database/"+csvFiles.get(i).toString());
+                java.nio.file.Path csvPath = java.nio.file.Paths.get("src/main/resources/"+csvFiles.get(i).toString());
                 if (!java.nio.file.Files.exists(csvPath)) {
                     logger.error("CSV file not found: " + csvPath.toString());
                     return;
