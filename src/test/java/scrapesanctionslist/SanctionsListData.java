@@ -1,7 +1,5 @@
 package scrapesanctionslist;
 
-import java.io.IOException;
-import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -9,7 +7,6 @@ import java.nio.file.StandardOpenOption;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -18,20 +15,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
 import com.github.javafaker.Faker;
 
 import util.DBConnection;
@@ -56,6 +46,8 @@ import util.SAIDNumberGenerator;
 public class SanctionsListData {
 
     WebDriver driver;
+    ChromeOptions chromeOptions;
+    FirefoxOptions firefoxOptions;
     String partyType = "Entity"; // Individual
     public static Logger logger = LogManager.getLogger(new Object() {
     }.getClass().getName());
@@ -63,8 +55,14 @@ public class SanctionsListData {
 
     @Test
     public void launchAndGetPartyData(){
-        driver = new FirefoxDriver();
-        // driver = new ChromeDriver();
+        firefoxOptions = new FirefoxOptions();
+        firefoxOptions.addArguments("--headless");
+        driver = new FirefoxDriver(firefoxOptions);
+        
+        // Configure ChromeOptions for headless mode
+        // chromeOptions = new ChromeOptions();
+        // chromeOptions.addArguments("--headless=new"); // Use the modern headless mode
+        // driver = new ChromeDriver(chromeOptions);
         driver.manage().window().maximize();
         driver.get("https://sanctionssearch.ofac.treas.gov/");
 
@@ -127,6 +125,8 @@ public class SanctionsListData {
 
                         // If the 'Identifications' information box is not displayed then skip that party
                         if (!divs.get(2).getText().equals("Identifications:")) {
+                            increment++;
+                            driver.findElement(By.xpath("//input[@id='ctl00_MainContent_btnBack']")).click();
                             continue;
                         }
                         
@@ -146,7 +146,18 @@ public class SanctionsListData {
                         }
                     } catch (StaleElementReferenceException e) {
                         currentLinks = driver.findElements(linksLocator);
-                        currentLinks.get(increment).click();
+                        // currentLinks.get(increment).click();
+                        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(currentLinks.get(increment))).click();
+
+                        // Check amount of div to make sure all divs that have required data are available
+                        List<WebElement> divs = driver.findElements(By.xpath("//div[@id='mainContentBox']//div[@class='groupedContent']//div[@class='content']//div"));
+                        // If the 'Identifications' information box is not displayed then skip that party
+                        if (!divs.get(2).getText().equals("Identifications:")) {
+                            increment += 1;
+                            driver.findElement(By.xpath("//input[@id='ctl00_MainContent_btnBack']")).click();
+                            continue;
+                        }
+
                         // 6 - Get the party name
                         switch (partyType) {
                             case "Individual":
@@ -164,7 +175,9 @@ public class SanctionsListData {
                     }
                     increment += 1;
                 }
-                System.out.println("===============================================================================");
+                logger.info(a + " of " + allCountries + " - " + partyCountry + " DONE\n======================================================");
+                System.out.println(a + " of " + allCountries + " - " + partyCountry + " DONE");
+                System.out.println("=====================================================");
             }
         }
         DBConnection.writeDataIntoDb();

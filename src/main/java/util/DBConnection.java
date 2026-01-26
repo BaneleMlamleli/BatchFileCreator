@@ -33,7 +33,6 @@ public class DBConnection {
         try {
             Class.forName("org.sqlite.JDBC");
             connect = DriverManager.getConnection("jdbc:sqlite:src/main/java/database/parties.db");
-            logger.info("Connection established successfully...");
         } catch (ClassNotFoundException | SQLException e) {
             logger.error("'" + e.getMessage() + "' in method '" + new Object() {
             }.getClass().getEnclosingMethod().getName() + "'");
@@ -42,7 +41,6 @@ public class DBConnection {
     }
 
     public static void insertPartyIntoDB(String partyType, boolean partyAlert, String firstname, String surname, String middleName, String previousSurname, String dateOfBirth, String countryOBirth, String nationality, String countryOfResidence, String partyGenderFromID, String profession, long monthlyIncome, String dateOfLastIncome, String SAIDNumber, String nationality2, String nationality3, String passport, String passportCountry, String taxRegistrationNumber, String primaryTaxResidence, String foreignTin, String foreignTinIssuingCountry, String reasonForTransaction, String productType, String riskClass, String businessRelationship, String sourceOfFunds, String accountNumber, int transactionAmount, String transactionDate, String inceptionDate, String authorisedBy, String terminationDate, String registeredName, String registrationNumber, String dateOfRegistration, String countryOfRegistration, String industryType, String additionalTaxResidence, String vatRegistrationNumber, String npResidentialAddress, String npPostalAddress, String npPoboxAddress, String lePostalAddress, String lePoboxAddress, String leRegisteredAddress, String leGcoheadofficeAddress, String leOperationalAddress){
-        System.out.println("INSERTING INTO DB");
         Connection con = DBConnection.connection();
         PreparedStatement preparedStatement = null;
         try {
@@ -99,7 +97,6 @@ public class DBConnection {
             preparedStatement.setString(50,leOperationalAddress);
             preparedStatement.execute();
             logger.info("Party has been inserted successfully");
-            System.out.println("Party has been inserted successfully");
         } catch (Exception e) {
             logger.error("'" + e.getMessage() + "' in method '" + new Object() {
             }.getClass().getEnclosingMethod().getName() + "'");
@@ -167,7 +164,6 @@ public class DBConnection {
         
         try {
             for (int i = 0; i < csvFiles.size(); i++) {
-                System.out.println("FILE NAME: " + csvFiles.get(i).toString());
                 java.nio.file.Path csvPath = java.nio.file.Paths.get("src/main/resources/"+csvFiles.get(i).toString());
                 if (!java.nio.file.Files.exists(csvPath)) {
                     logger.error("CSV file not found: " + csvPath.toString());
