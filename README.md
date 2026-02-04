@@ -2,6 +2,8 @@
 
 This is a small Java application that creates and generates a correctly formatted batch file with test data. I created this because I'm simply lazy to manually create these batch files.
 
+![Batch File Creator image](./src/main/java/icons/BatchFileCreator.png)
+
 ## Project design
 
 This project is split into three main parts.
