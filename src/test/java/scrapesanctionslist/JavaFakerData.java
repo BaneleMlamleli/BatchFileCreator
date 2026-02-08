@@ -132,7 +132,7 @@ public class JavaFakerData {
 	        // --LE details
 	        String registeredName = faker.company().name();
 	        String registrationNumber = faker.number().digits(10);
-	        String partyType = "H";
+	        String partyType = "L";
 	        String dateOfRegistration = LocalDate.now().minusYears((int) (Math.random() * 10) + 1).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 	        String countryOfRegistration = "ZA";
 	        String industryType = "ACCOUNTING SERVICES";
