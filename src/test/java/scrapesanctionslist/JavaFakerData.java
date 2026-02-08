@@ -2,7 +2,6 @@ package scrapesanctionslist;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 import org.testng.annotations.Test;
 import com.github.javafaker.Faker;
@@ -16,10 +15,11 @@ public class JavaFakerData {
     @Test
     public void individualTestData(){
 
-        Faker faker = new Faker(new Locale("en-ZA"));
+        Faker faker = new Faker();
 
-        for (int i = 0; i <= 512; i++) {
+        for (int i = 0; i <= 4056; i++) {
             boolean partyAlert = false;
+			boolean partyIsUsed = false;
             String firstname = faker.name().firstName();
             String surname = faker.name().lastName();
             String middleName = faker.name().firstName();
@@ -41,8 +41,8 @@ public class JavaFakerData {
 	        String foreignTinIssuingCountry = "ZA";
 	        // -- relationship
 	        String reasonForTransaction = "ADDITIONAL PREMIUM"; // Default value will be used when generating the batch file
-	        String productType = "ADS"; // not using this column as values are in the dropdown
-	        String riskClass = "L"; // not using this column as values are in the dropdown
+	        String productType = "ALT"; // not using this column as values are in the dropdown
+	        String riskClass = "H"; // not using this column as values are in the dropdown
 	        String businessRelationship = "BO"; // Default value will be used when generating the batch file
 	        String sourceOfFunds = "ALLOWANCE";
 	        String accountNumber = faker.number().digits(10);
@@ -86,17 +86,18 @@ public class JavaFakerData {
 
             String partyGenderFromID = Integer.parseInt(SAIDNumber.substring(6, 10)) < 5000 ? "F": "M";
 
-			DBConnection.insertPartyIntoDB(partyType, partyAlert, firstname, surname, middleName, previousSurname, dateOfBirth, countryOBirth, nationality, countryOfResidence, partyGenderFromID, profession, monthlyIncome, dateOfLastIncome, SAIDNumber, nationality2, nationality3, passport, passportCountry, taxRegistrationNumber, primaryTaxResidence, foreignTin, foreignTinIssuingCountry, reasonForTransaction, productType, riskClass, businessRelationship, sourceOfFunds, accountNumber, transactionAmount, transactionDate, inceptionDate, authorisedBy, terminationDate, registeredName, registrationNumber, dateOfRegistration, countryOfRegistration, industryType, additionalTaxResidence, vatRegistrationNumber, npResidentialAddress, npPostalAddress, npPoboxAddress, lePostalAddress, lePoboxAddress, leRegisteredAddress, leGcoheadofficeAddress, leOperationalAddress);
+			DBConnection.insertPartyIntoDB(partyType, partyAlert, partyIsUsed, firstname, surname, middleName, previousSurname, dateOfBirth, countryOBirth, nationality, countryOfResidence, partyGenderFromID, profession, monthlyIncome, dateOfLastIncome, SAIDNumber, nationality2, nationality3, passport, passportCountry, taxRegistrationNumber, primaryTaxResidence, foreignTin, foreignTinIssuingCountry, reasonForTransaction, productType, riskClass, businessRelationship, sourceOfFunds, accountNumber, transactionAmount, transactionDate, inceptionDate, authorisedBy, terminationDate, registeredName, registrationNumber, dateOfRegistration, countryOfRegistration, industryType, additionalTaxResidence, vatRegistrationNumber, npResidentialAddress, npPostalAddress, npPoboxAddress, lePostalAddress, lePoboxAddress, leRegisteredAddress, leGcoheadofficeAddress, leOperationalAddress);
         }
     }
 
     @Test
     public void entityTestData(){
 
-        Faker faker = new Faker(new Locale("en-ZA"));
+        Faker faker = new Faker();
 
-        for (int i = 0; i <= 512; i++) {
+        for (int i = 0; i <= 4056; i++) {
             boolean partyAlert = false;
+			boolean partyIsUsed = false;
             String firstname = null;
             String surname = null;
             String middleName = null;
@@ -118,8 +119,8 @@ public class JavaFakerData {
 	        String foreignTinIssuingCountry = "ZA";
 	        // -- relationship
 	        String reasonForTransaction = "AD HOC PAYMENT CLAIM"; // Default value will be used when generating the batch file
-	        String productType = "ADS"; // not using this column as values are in the dropdown
-	        String riskClass = "L"; // not using this column as values are in the dropdown
+	        String productType = "ALT"; // not using this column as values are in the dropdown
+	        String riskClass = "H"; // not using this column as values are in the dropdown
 	        String businessRelationship = "BO"; // Default value will be used when generating the batch file
 	        String sourceOfFunds = "BUSINESS OPERATING INCOME";
 	        String accountNumber = faker.number().digits(10);
@@ -131,7 +132,7 @@ public class JavaFakerData {
 	        // --LE details
 	        String registeredName = faker.company().name();
 	        String registrationNumber = faker.number().digits(10);
-	        String partyType = "L";
+	        String partyType = "H";
 	        String dateOfRegistration = LocalDate.now().minusYears((int) (Math.random() * 10) + 1).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 	        String countryOfRegistration = "ZA";
 	        String industryType = "ACCOUNTING SERVICES";
@@ -146,24 +147,13 @@ public class JavaFakerData {
 	        String leRegisteredAddress =faker.address().fullAddress();
 	        String leGcoheadofficeAddress = faker.address().fullAddress();
 	        String leOperationalAddress  = faker.address().fullAddress();
-            
-            boolean gender[] = {true, false};
-            long startEpoch = LocalDate.now().minusYears(100).toEpochDay();
-            long endEpoch = LocalDate.now().minusYears(18).toEpochDay();
-            long randomEpochDay = java.util.concurrent.ThreadLocalRandom.current().nextLong(startEpoch, endEpoch + 1);
-            LocalDate randomDob = LocalDate.ofEpochDay(randomEpochDay);
-            int yearOfBirth = randomDob.getYear();
-            int monthOfBirth = randomDob.getMonthValue();
-            int dayOfBirth = randomDob.getDayOfMonth();
 
             String SAIDNumber = null;
-            
-            LocalDate dob = LocalDate.of(yearOfBirth, monthOfBirth, dayOfBirth);
             String dateOfBirth = null;
 
             String partyGenderFromID = null;
 
-			DBConnection.insertPartyIntoDB(partyType, partyAlert, firstname, surname, middleName, previousSurname, dateOfBirth, countryOBirth, nationality, countryOfResidence, partyGenderFromID, profession, monthlyIncome, dateOfLastIncome, SAIDNumber, nationality2, nationality3, passport, passportCountry, taxRegistrationNumber, primaryTaxResidence, foreignTin, foreignTinIssuingCountry, reasonForTransaction, productType, riskClass, businessRelationship, sourceOfFunds, accountNumber, transactionAmount, transactionDate, inceptionDate, authorisedBy, terminationDate, registeredName, registrationNumber, dateOfRegistration, countryOfRegistration, industryType, additionalTaxResidence, vatRegistrationNumber, npResidentialAddress, npPostalAddress, npPoboxAddress, lePostalAddress, lePoboxAddress, leRegisteredAddress, leGcoheadofficeAddress, leOperationalAddress);
+			DBConnection.insertPartyIntoDB(partyType, partyAlert, partyIsUsed, firstname, surname, middleName, previousSurname, dateOfBirth, countryOBirth, nationality, countryOfResidence, partyGenderFromID, profession, monthlyIncome, dateOfLastIncome, SAIDNumber, nationality2, nationality3, passport, passportCountry, taxRegistrationNumber, primaryTaxResidence, foreignTin, foreignTinIssuingCountry, reasonForTransaction, productType, riskClass, businessRelationship, sourceOfFunds, accountNumber, transactionAmount, transactionDate, inceptionDate, authorisedBy, terminationDate, registeredName, registrationNumber, dateOfRegistration, countryOfRegistration, industryType, additionalTaxResidence, vatRegistrationNumber, npResidentialAddress, npPostalAddress, npPoboxAddress, lePostalAddress, lePoboxAddress, leRegisteredAddress, leGcoheadofficeAddress, leOperationalAddress);
         }
 	}
 

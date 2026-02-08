@@ -4,6 +4,7 @@
  */
 package com.banelemlamleli.batchfilecreator;
 
+import util.DBConnection;
 
 /**
  *
@@ -18,6 +19,9 @@ public class BatchFileCreator extends javax.swing.JFrame {
      */
     public BatchFileCreator() {
         initComponents();
+        System.out.println("CONSTRUCTOR EXECUTED");
+        System.out.println("AMOUNT OF RECORDS IN THE DB:" + DBConnection.returnAmountOfRecordsInTheDb());
+        System.out.println("=============================================");
     }
 
     /**
