@@ -4,6 +4,7 @@
  */
 package com.banelemlamleli.batchfilecreator;
 
+import javax.swing.JOptionPane;
 import util.DBConnection;
 
 /**
@@ -280,6 +281,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
         btnDownloadCsvFile.setMaximumSize(new java.awt.Dimension(158, 29));
         btnDownloadCsvFile.setMinimumSize(new java.awt.Dimension(158, 29));
         btnDownloadCsvFile.setPreferredSize(new java.awt.Dimension(158, 29));
+        btnDownloadCsvFile.addActionListener(this::btnDownloadCsvFileActionPerformed);
 
         btnDownloadExcelFile.setBackground(new java.awt.Color(204, 255, 204));
         btnDownloadExcelFile.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
@@ -288,6 +290,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
         btnDownloadExcelFile.setMaximumSize(new java.awt.Dimension(158, 29));
         btnDownloadExcelFile.setMinimumSize(new java.awt.Dimension(158, 29));
         btnDownloadExcelFile.setPreferredSize(new java.awt.Dimension(158, 29));
+        btnDownloadExcelFile.addActionListener(this::btnDownloadExcelFileActionPerformed);
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/batch_file.png"))); // NOI18N
 
@@ -296,6 +299,11 @@ public class BatchFileCreator extends javax.swing.JFrame {
         jLabel17.setText("B A T C H   F I L E   C R E A T O R  ( B F C )");
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/batch_file.png"))); // NOI18N
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Noto Sans", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 117, 201));
@@ -401,6 +409,71 @@ public class BatchFileCreator extends javax.swing.JFrame {
 
     private void btnDownloadTxtFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadTxtFileActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "TXT File created. Open Downloads");
+
+        // Legal Entity
+        int cmbLe_LECombination = Integer.parseInt(cmbLE_LECombination.getSelectedItem().toString());
+        int cmbLe_LegalEntityMasterParty = Integer.parseInt(cmbLE_LegalEntityMasterParty.getSelectedItem().toString());
+        int cmbLe_LELinkedParty = Integer.parseInt(cmbLE_LELinkedParty.getSelectedItem().toString());
+        int cmbLe_NPLinkedParty = Integer.parseInt(cmbLE_NPLinkedParty.getSelectedItem().toString());
+        String cmbLe_LEWhichPartyMustAlert = cmbLE_LEWhichPartyMustAlert.getSelectedItem().toString();
+        int cmbLe_LEMasterParty = Integer.parseInt(cmbLE_LEMasterParty.getSelectedItem().toString());
+        int cmbLe_NPMasterParty = Integer.parseInt(cmbLE_NPMasterParty.getSelectedItem().toString());
+        // Natural Person
+        int cmbNp_NPCombination = Integer.parseInt(cmbNP_NPCombination.getSelectedItem().toString());
+        int cmbNp_NaturalPersonMasterParty = Integer.parseInt(cmbNP_NaturalPersonMasterParty.getSelectedItem().toString());
+        int cmbNp_LELinkedParty = Integer.parseInt(cmbNP_LELinkedParty.getSelectedItem().toString());
+        int cmbNp_NPLinkedParty = Integer.parseInt(cmbNP_NPLinkedParty.getSelectedItem().toString());
+        String cmbNp_NPWhichPartyMustAlert = cmbNP_NPWhichPartyMustAlert.getSelectedItem().toString();
+        int cmbNp_LEMasterParty = Integer.parseInt(cmbNP_LEMasterParty.getSelectedItem().toString());
+        int cmbNp_NPMasterParty = Integer.parseInt(cmbNP_NPMasterParty.getSelectedItem().toString());
+
+        // first loop is for the combinations
+        for (int c = 0; c < cmbLe_LECombination; c++) {
+            switch(cmbLe_LEWhichPartyMustAlert){
+                case "None": ;break;
+                case "All parties": ;break;
+                case "Master party": ;break;
+                case "Linked parties": ;break;
+                case "One LE linked party": ;break;
+                case "One NP linked party": ;break;
+            }
+            
+            // loop through the Legal entity master party
+            for (int l = 0; l < cmbLe_LegalEntityMasterParty; l++) {
+                
+            }
+
+            // Loop through the legal entity linked party for the Legal Entity master party
+            if (cmbLe_LELinkedParty != 0) {
+                for (int e = 0; e < cmbLe_LELinkedParty; e++) {
+                    
+                }
+            }
+
+            // Loop through the natural person linked party for the natural person master party
+            if (cmbLe_NPLinkedParty != 0) {
+                for (int e = 0; e < cmbLe_NPLinkedParty; e++) {
+                    
+                }
+            }
+
+            // Loop through the individual Legal Entity master party
+            if (cmbLe_LEMasterParty != 0) {
+                for (int e = 0; e < cmbLe_LEMasterParty; e++) {
+                    
+                }
+            }
+
+            // Loop through the individual natural person master party
+            if (cmbLe_NPMasterParty != 0) {
+                for (int e = 0; e < cmbLe_NPMasterParty; e++) {
+                    
+                }
+            }
+        }
+
+
     }//GEN-LAST:event_btnDownloadTxtFileActionPerformed
 
     private void cmbProductTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProductTypeActionPerformed
@@ -410,6 +483,27 @@ public class BatchFileCreator extends javax.swing.JFrame {
         cmbRiskClass.setSelectedIndex(riskValue-1);
         
     }//GEN-LAST:event_cmbProductTypeActionPerformed
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Batch File Creator (BFC)\n"
+                + "-------------------------------------\n\n"
+                + "This is a small utility program that does exactly what the name describes.\n"
+                + "This was born purely out of my laziness and not wanting to do the same thing over and over\n"
+                + "\nVersion: 1.0.0\n"
+                + "Creator: Banele Mlamleli");
+    }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void btnDownloadCsvFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadCsvFileActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "CSV File created. Open Downloads");
+
+    }//GEN-LAST:event_btnDownloadCsvFileActionPerformed
+
+    private void btnDownloadExcelFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadExcelFileActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Excel File created. Open Downloads");
+    }//GEN-LAST:event_btnDownloadExcelFileActionPerformed
 
     private void txtNPLinkedPartyActionPerformed(java.awt.event.ActionEvent evt) {
     }
