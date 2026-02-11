@@ -411,6 +411,35 @@ public class BatchFileCreator extends javax.swing.JFrame {
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "TXT File created. Open Downloads");
 
+    }//GEN-LAST:event_btnDownloadTxtFileActionPerformed
+
+    private void cmbProductTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProductTypeActionPerformed
+        // TODO add your handling code here:
+        int lengthOfProductType = cmbProductType.getSelectedItem().toString().length();
+        int riskValue = Integer.parseInt(cmbProductType.getSelectedItem().toString().substring(lengthOfProductType-1));
+        cmbRiskClass.setSelectedIndex(riskValue-1);
+        
+    }//GEN-LAST:event_cmbProductTypeActionPerformed
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Batch File Creator (BFC)\n"
+                + "-------------------------------------\n\n"
+                + "This is a small utility program that does exactly what the name describes.\n"
+                + "This was born purely out of my laziness and not wanting to do the same thing over and over\n"
+                + "\nVersion: 1.0.0\n"
+                + "Creator: Banele Mlamleli");
+    }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void btnDownloadCsvFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadCsvFileActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "CSV File created. Open Downloads");
+
+                // Getting the business unit, product, and risk
+        String businessUnit = cmbBusinessUnit.getSelectedItem().toString().substring(0, 3);
+        String productType = cmbProductType.getSelectedItem().toString().substring(0, 3);
+        char riskClass = cmbRiskClass.getSelectedItem().toString().charAt(0);
+
         // Legal Entity
         int cmbLe_LECombination = Integer.parseInt(cmbLE_LECombination.getSelectedItem().toString());
         int cmbLe_LegalEntityMasterParty = Integer.parseInt(cmbLE_LegalEntityMasterParty.getSelectedItem().toString());
@@ -419,6 +448,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
         String cmbLe_LEWhichPartyMustAlert = cmbLE_LEWhichPartyMustAlert.getSelectedItem().toString();
         int cmbLe_LEMasterParty = Integer.parseInt(cmbLE_LEMasterParty.getSelectedItem().toString());
         int cmbLe_NPMasterParty = Integer.parseInt(cmbLE_NPMasterParty.getSelectedItem().toString());
+        
         // Natural Person
         int cmbNp_NPCombination = Integer.parseInt(cmbNP_NPCombination.getSelectedItem().toString());
         int cmbNp_NaturalPersonMasterParty = Integer.parseInt(cmbNP_NaturalPersonMasterParty.getSelectedItem().toString());
@@ -472,31 +502,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                 }
             }
         }
-
-
-    }//GEN-LAST:event_btnDownloadTxtFileActionPerformed
-
-    private void cmbProductTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProductTypeActionPerformed
-        // TODO add your handling code here:
-        int lengthOfProductType = cmbProductType.getSelectedItem().toString().length();
-        int riskValue = Integer.parseInt(cmbProductType.getSelectedItem().toString().substring(lengthOfProductType-1));
-        cmbRiskClass.setSelectedIndex(riskValue-1);
-        
-    }//GEN-LAST:event_cmbProductTypeActionPerformed
-
-    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Batch File Creator (BFC)\n"
-                + "-------------------------------------\n\n"
-                + "This is a small utility program that does exactly what the name describes.\n"
-                + "This was born purely out of my laziness and not wanting to do the same thing over and over\n"
-                + "\nVersion: 1.0.0\n"
-                + "Creator: Banele Mlamleli");
-    }//GEN-LAST:event_jLabel18MouseClicked
-
-    private void btnDownloadCsvFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadCsvFileActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "CSV File created. Open Downloads");
 
     }//GEN-LAST:event_btnDownloadCsvFileActionPerformed
 
