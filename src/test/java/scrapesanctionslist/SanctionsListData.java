@@ -78,7 +78,7 @@ public class SanctionsListData {
         int allCountries = selectCountry.getOptions().size();
 
         // This will loop 2 times, It will start at index 2 for 'Entity' and index 3 for 'Individual'
-        for (int p = 3; p <= 3; p++) {
+        for (int p = 2; p <= 3; p++) {
             String partyType = "";
             try {
                  // 1 - Select party type
@@ -95,14 +95,13 @@ public class SanctionsListData {
             }
 
             // starting at 1 because index 0 will select the 'All' option which is not what we need
-            for (int a = 37; a <= allCountries; a++) {
+            for (int a = 1; a <= allCountries; a++) {
                 String partyCountry = "";
                 try {
                     // 2 - Select first country
                     selectCountry.selectByIndex(a);
                     partyCountry = selectCountry.getFirstSelectedOption().getText();
                 } catch (StaleElementReferenceException e) {
-                    // NOTE: I've put this code before going to sleep. I will check it tomorrow
                     WebDriverWait initialWait = new WebDriverWait(driver, Duration.ofSeconds(15));
                     initialWait.until(ExpectedConditions.presenceOfElementLocated(By.id("ctl00_MainContent_ddlCountry")));
 
