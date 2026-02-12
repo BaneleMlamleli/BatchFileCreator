@@ -9,9 +9,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import pojo.Party;
 
 /**
  *
@@ -160,4 +164,83 @@ public class DBConnection {
         return recordAmount;
     }
     
+    public static List<Party> getPartyInformation(boolean alert, String partyType){
+        Connection con = DBConnection.connection();
+        PreparedStatement prepStatemnt = null;
+        ResultSet resultSet = null;
+        List<Party> party = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM parties WHERE party_alert = ? AND party_type = ?";
+            prepStatemnt = con.prepareStatement(sql);
+            prepStatemnt.setBoolean(1, alert);
+            prepStatemnt.setString(2, partyType);
+            resultSet = prepStatemnt.executeQuery();
+            // while (resultSet.next()) {                
+                party.add(new Party(
+                    resultSet.getString("party_type"),
+                    resultSet.getBoolean("party_alert"),
+                    resultSet.getBoolean("party_is_used"),
+                    resultSet.getString("firstname"),
+                    resultSet.getString("surname"),
+                    resultSet.getString("middle_name"),
+                    resultSet.getString("previous_surname"),
+                    resultSet.getString("date_of_birth"),
+                    resultSet.getString("country_of_birth"),
+                    resultSet.getString("nationality"),
+                    resultSet.getString("country_of_residence"),
+                    resultSet.getString("gender"),
+                    resultSet.getString("profession"),
+                    resultSet.getInt("monthly_income"),
+                    resultSet.getString("date_of_last_income"),
+                    resultSet.getString("id_number"),
+                    resultSet.getString("nationality2"),
+                    resultSet.getString("nationality3"),
+                    resultSet.getString("passport"),
+                    resultSet.getString("passport_country"),
+                    resultSet.getString("tax_registration_number"),
+                    resultSet.getString("primary_tax_residence"),
+                    resultSet.getString("foreign_tin"),
+                    resultSet.getString("foreign_tin_issuing_country"),
+                    resultSet.getString("reason_for_transaction"),
+                    resultSet.getString("product_type"),
+                    resultSet.getString("risk_class"),
+                    resultSet.getString("business_relationship"),
+                    resultSet.getString("source_of_funds"),
+                    resultSet.getString("account_number"),
+                    resultSet.getInt("transaction_amount"),
+                    resultSet.getString("transaction_date"),
+                    resultSet.getString("inception_date"),
+                    resultSet.getString("authorised_by"),
+                    resultSet.getString("termination_date"),
+                    resultSet.getString("registered_name"),
+                    resultSet.getString("registration_number"),
+                    resultSet.getString("date_of_registration"),
+                    resultSet.getString("country_of_registration"),
+                    resultSet.getString("industry_type"),
+                    resultSet.getString("additional_tax_residence"),
+                    resultSet.getString("vat_registration_number"),
+                    resultSet.getString("np_residential_address"),
+                    resultSet.getString("np_postal_address"),
+                    resultSet.getString("np_pobox_address"),
+                    resultSet.getString("le_postal_address"),
+                    resultSet.getString("le_pobox_address"),
+                    resultSet.getString("le_registered_address"),
+                    resultSet.getString("le_gcoheadoffice_address"),
+                    resultSet.getString("le_operational_address")
+                ));
+            // }
+        } catch (Exception e) {
+            logger.error("'" + e.getMessage() + "' in method '" + new Object() {
+            }.getClass().getEnclosingMethod().getName() + "'");
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                logger.error("'" + e.getMessage() + "' in method '" + new Object() {}.getClass().getEnclosingMethod().getName() + "'");
+            }
+        }
+        return party;
+    }
 }
