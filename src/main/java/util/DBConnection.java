@@ -164,71 +164,242 @@ public class DBConnection {
         return recordAmount;
     }
     
-    public static List<Party> getPartyInformation(boolean alert, String partyType){
+    public static void updatePartyToUsedStatus(int partyId){
+        Connection con = DBConnection.connection();
+        PreparedStatement preparedStatement = null;
+        try {
+            String sql = "UPDATE parties SET party_is_used = true WHERE id = ?";
+            preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setInt(1, partyId);
+            int updatedRow = preparedStatement.executeUpdate();
+
+            if (updatedRow >= 1) {
+                logger.info("'party_is_used' status has been updated to true for Party id " + partyId);
+            }
+            
+        } catch (Exception e) {
+            logger.error("'" + e.getMessage() + "' in method '" + new Object() {
+            }.getClass().getEnclosingMethod().getName() + "'");
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                logger.error("'" + e.getMessage() + "' in method '" + new Object() {}.getClass().getEnclosingMethod().getName() + "'");
+            }
+        }
+    }
+    
+    /* This method will only be used for Legal and Natural person Master parties and the party will either be alert or no alert */
+    public static List<Party> getAlertOrNoAlertMasterPartyOnly(boolean alert, String partyType, String productCode, String riskClass, String businessUnit){
         Connection con = DBConnection.connection();
         PreparedStatement prepStatemnt = null;
         ResultSet resultSet = null;
         List<Party> party = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM parties WHERE party_alert = ? AND party_type = ?";
+            String sql = "SELECT * FROM parties WHERE party_alert = ? AND party_type = ? AND party_is_used = false";
             prepStatemnt = con.prepareStatement(sql);
             prepStatemnt.setBoolean(1, alert);
             prepStatemnt.setString(2, partyType);
             resultSet = prepStatemnt.executeQuery();
-            // while (resultSet.next()) {                
-                party.add(new Party(
-                    resultSet.getString("party_type"),
-                    resultSet.getBoolean("party_alert"),
-                    resultSet.getBoolean("party_is_used"),
-                    resultSet.getString("firstname"),
-                    resultSet.getString("surname"),
-                    resultSet.getString("middle_name"),
-                    resultSet.getString("previous_surname"),
-                    resultSet.getString("date_of_birth"),
-                    resultSet.getString("country_of_birth"),
-                    resultSet.getString("nationality"),
-                    resultSet.getString("country_of_residence"),
-                    resultSet.getString("gender"),
-                    resultSet.getString("profession"),
-                    resultSet.getInt("monthly_income"),
-                    resultSet.getString("date_of_last_income"),
-                    resultSet.getString("id_number"),
-                    resultSet.getString("nationality2"),
-                    resultSet.getString("nationality3"),
-                    resultSet.getString("passport"),
-                    resultSet.getString("passport_country"),
-                    resultSet.getString("tax_registration_number"),
-                    resultSet.getString("primary_tax_residence"),
-                    resultSet.getString("foreign_tin"),
-                    resultSet.getString("foreign_tin_issuing_country"),
-                    resultSet.getString("reason_for_transaction"),
-                    resultSet.getString("product_type"),
-                    resultSet.getString("risk_class"),
-                    resultSet.getString("business_relationship"),
-                    resultSet.getString("source_of_funds"),
-                    resultSet.getString("account_number"),
-                    resultSet.getInt("transaction_amount"),
-                    resultSet.getString("transaction_date"),
-                    resultSet.getString("inception_date"),
-                    resultSet.getString("authorised_by"),
-                    resultSet.getString("termination_date"),
-                    resultSet.getString("registered_name"),
-                    resultSet.getString("registration_number"),
-                    resultSet.getString("date_of_registration"),
-                    resultSet.getString("country_of_registration"),
-                    resultSet.getString("industry_type"),
-                    resultSet.getString("additional_tax_residence"),
-                    resultSet.getString("vat_registration_number"),
-                    resultSet.getString("np_residential_address"),
-                    resultSet.getString("np_postal_address"),
-                    resultSet.getString("np_pobox_address"),
-                    resultSet.getString("le_postal_address"),
-                    resultSet.getString("le_pobox_address"),
-                    resultSet.getString("le_registered_address"),
-                    resultSet.getString("le_gcoheadoffice_address"),
-                    resultSet.getString("le_operational_address")
-                ));
-            // }
+            
+            party.add(new Party(
+                businessUnit,
+                resultSet.getString("party_type"),
+                resultSet.getBoolean("party_alert"),
+                resultSet.getBoolean("party_is_used"),
+                resultSet.getString("firstname"),
+                resultSet.getString("surname"),
+                resultSet.getString("middle_name"),
+                resultSet.getString("previous_surname"),
+                resultSet.getString("date_of_birth"),
+                resultSet.getString("country_of_birth"),
+                resultSet.getString("nationality"),
+                resultSet.getString("country_of_residence"),
+                resultSet.getString("gender"),
+                resultSet.getString("profession"),
+                resultSet.getInt("monthly_income"),
+                resultSet.getString("date_of_last_income"),
+                resultSet.getString("id_number"),
+                resultSet.getString("nationality2"),
+                resultSet.getString("nationality3"),
+                resultSet.getString("passport"),
+                resultSet.getString("passport_country"),
+                resultSet.getString("tax_registration_number"),
+                resultSet.getString("primary_tax_residence"),
+                resultSet.getString("foreign_tin"),
+                resultSet.getString("foreign_tin_issuing_country"),
+                resultSet.getString("reason_for_transaction"),
+                productCode,
+                riskClass,
+                resultSet.getString("business_relationship"),
+                resultSet.getString("source_of_funds"),
+                resultSet.getString("account_number"),
+                resultSet.getInt("transaction_amount"),
+                resultSet.getString("transaction_date"),
+                resultSet.getString("inception_date"),
+                resultSet.getString("authorised_by"),
+                resultSet.getString("termination_date"),
+                resultSet.getString("registered_name"),
+                resultSet.getString("registration_number"),
+                resultSet.getString("date_of_registration"),
+                resultSet.getString("country_of_registration"),
+                resultSet.getString("industry_type"),
+                resultSet.getString("additional_tax_residence"),
+                resultSet.getString("vat_registration_number"),
+                resultSet.getString("np_residential_address"),
+                resultSet.getString("np_postal_address"),
+                resultSet.getString("np_pobox_address"),
+                resultSet.getString("le_postal_address"),
+                resultSet.getString("le_pobox_address"),
+                resultSet.getString("le_registered_address"),
+                resultSet.getString("le_gcoheadoffice_address"),
+                resultSet.getString("le_operational_address")
+            ));
+
+            // Update the party status to reflect as used
+            int partyIdToUpdate = resultSet.getInt("Id");
+            // Close read resources before attempting the write to avoid SQLITE_BUSY
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+            } catch (SQLException ex) {
+                logger.error("'" + ex.getMessage() + "' in method '" + new Object() {}.getClass().getEnclosingMethod().getName() + "'");
+            }
+            try {
+                if (prepStatemnt != null) {
+                    prepStatemnt.close();
+                }
+            } catch (SQLException ex) {
+                logger.error("'" + ex.getMessage() + "' in method '" + new Object() {}.getClass().getEnclosingMethod().getName() + "'");
+            }
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                logger.error("'" + ex.getMessage() + "' in method '" + new Object() {}.getClass().getEnclosingMethod().getName() + "'");
+            }
+            // Prevent finally from closing again
+            resultSet = null;
+            prepStatemnt = null;
+            con = null;
+            updatePartyToUsedStatus(partyIdToUpdate);
+
+        } catch (Exception e) {
+            logger.error("'" + e.getMessage() + "' in method '" + new Object() {
+            }.getClass().getEnclosingMethod().getName() + "'");
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                logger.error("'" + e.getMessage() + "' in method '" + new Object() {}.getClass().getEnclosingMethod().getName() + "'");
+            }
+        }
+        return party;
+    }
+
+    /* This method will only be used for Legal and Natural person Linked parties and the party will either be alert or no alert. N.B., account_number will not be pulled from the DB is linked parties are linked via master party account_number */
+    public static List<Party> getAlertOrNoAlertLinkedPartyOnly(boolean alert, String partyType, String productCode, String riskClass, String businessUnit){
+        Connection con = DBConnection.connection();
+        PreparedStatement prepStatemnt = null;
+        ResultSet resultSet = null;
+        List<Party> party = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM parties WHERE party_alert = ? AND party_type = ? AND party_is_used = false";
+            prepStatemnt = con.prepareStatement(sql);
+            prepStatemnt.setBoolean(1, alert);
+            prepStatemnt.setString(2, partyType);
+            resultSet = prepStatemnt.executeQuery();
+
+            party.add(new Party(
+                businessUnit,
+                resultSet.getString("party_type"),
+                resultSet.getBoolean("party_alert"),
+                resultSet.getBoolean("party_is_used"),
+                resultSet.getString("firstname"),
+                resultSet.getString("surname"),
+                resultSet.getString("middle_name"),
+                resultSet.getString("previous_surname"),
+                resultSet.getString("date_of_birth"),
+                resultSet.getString("country_of_birth"),
+                resultSet.getString("nationality"),
+                resultSet.getString("country_of_residence"),
+                resultSet.getString("gender"),
+                resultSet.getString("profession"),
+                resultSet.getInt("monthly_income"),
+                resultSet.getString("date_of_last_income"),
+                resultSet.getString("id_number"),
+                resultSet.getString("nationality2"),
+                resultSet.getString("nationality3"),
+                resultSet.getString("passport"),
+                resultSet.getString("passport_country"),
+                resultSet.getString("tax_registration_number"),
+                resultSet.getString("primary_tax_residence"),
+                resultSet.getString("foreign_tin"),
+                resultSet.getString("foreign_tin_issuing_country"),
+                resultSet.getString("reason_for_transaction"),
+                productCode,
+                riskClass,
+                resultSet.getString("business_relationship"),
+                resultSet.getString("source_of_funds"),
+                "",
+                resultSet.getInt("transaction_amount"),
+                resultSet.getString("transaction_date"),
+                resultSet.getString("inception_date"),
+                resultSet.getString("authorised_by"),
+                resultSet.getString("termination_date"),
+                resultSet.getString("registered_name"),
+                resultSet.getString("registration_number"),
+                resultSet.getString("date_of_registration"),
+                resultSet.getString("country_of_registration"),
+                resultSet.getString("industry_type"),
+                resultSet.getString("additional_tax_residence"),
+                resultSet.getString("vat_registration_number"),
+                resultSet.getString("np_residential_address"),
+                resultSet.getString("np_postal_address"),
+                resultSet.getString("np_pobox_address"),
+                resultSet.getString("le_postal_address"),
+                resultSet.getString("le_pobox_address"),
+                resultSet.getString("le_registered_address"),
+                resultSet.getString("le_gcoheadoffice_address"),
+                resultSet.getString("le_operational_address")
+            ));
+
+            // Update the party status to reflect as used
+            int partyIdToUpdate = resultSet.getInt("Id");
+            // Close read resources before attempting the write to avoid SQLITE_BUSY
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+            } catch (SQLException ex) {
+                logger.error("'" + ex.getMessage() + "' in method '" + new Object() {}.getClass().getEnclosingMethod().getName() + "'");
+            }
+            try {
+                if (prepStatemnt != null) {
+                    prepStatemnt.close();
+                }
+            } catch (SQLException ex) {
+                logger.error("'" + ex.getMessage() + "' in method '" + new Object() {}.getClass().getEnclosingMethod().getName() + "'");
+            }
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                logger.error("'" + ex.getMessage() + "' in method '" + new Object() {}.getClass().getEnclosingMethod().getName() + "'");
+            }
+            // Prevent finally from closing again
+            resultSet = null;
+            prepStatemnt = null;
+            con = null;
+            updatePartyToUsedStatus(partyIdToUpdate);
+
         } catch (Exception e) {
             logger.error("'" + e.getMessage() + "' in method '" + new Object() {
             }.getClass().getEnclosingMethod().getName() + "'");

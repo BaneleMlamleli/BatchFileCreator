@@ -1,6 +1,7 @@
 package pojo;
 
 public class Party {
+    private String business_unit;
     private String party_type;
 	private boolean party_alert;
 	private boolean party_is_used;
@@ -54,8 +55,8 @@ public class Party {
 
     
 
-    public Party(String party_type, boolean party_alert, boolean party_is_used, String firstname, String surname,
-            String middle_name, String previous_surname, String date_of_birth, String country_of_birth,
+    public Party(String business_unit, String party_type, boolean party_alert, boolean party_is_used, String firstname,
+            String surname,String middle_name, String previous_surname, String date_of_birth, String country_of_birth,
             String nationality, String country_of_residence, String gender, String profession, int monthly_income,
             String date_of_last_income, String id_number, String nationality2, String nationality3, String passport,
             String passport_country, String tax_registration_number, String primary_tax_residence, String foreign_tin,
@@ -67,6 +68,7 @@ public class Party {
             String vat_registration_number, String np_residential_address, String np_postal_address,
             String np_pobox_address, String le_postal_address, String le_pobox_address, String le_registered_address,
             String le_gcoheadoffice_address, String le_operational_address) {
+        this.business_unit = business_unit; 
         this.party_type = party_type;
         this.party_alert = party_alert;
         this.party_is_used = party_is_used;
@@ -420,10 +422,19 @@ public class Party {
         this.le_operational_address = le_operational_address;
     }
 
+    public String getBusiness_unit() {
+        return business_unit;
+    }
+
+    public void setBusiness_unit(String business_unit) {
+        this.business_unit = business_unit;
+    }
+    
     @Override
     public String toString() {
-        return "Party [party_type=" + party_type + ", party_alert=" + party_alert + ", party_is_used=" + party_is_used
-                + ", firstname=" + firstname + ", surname=" + surname + ", middle_name=" + middle_name
+        return "Party [business_unit=" + business_unit + ", party_type=" + party_type + ", party_alert=" + party_alert
+                + ", party_is_used=" + party_is_used + ", firstname=" + firstname + ", surname=" + surname
+                +", middle_name=" + middle_name
                 + ", previous_surname=" + previous_surname + ", date_of_birth=" + date_of_birth + ", country_of_birth="
                 + country_of_birth + ", nationality=" + nationality + ", country_of_residence=" + country_of_residence
                 + ", gender=" + gender + ", profession=" + profession + ", monthly_income=" + monthly_income
