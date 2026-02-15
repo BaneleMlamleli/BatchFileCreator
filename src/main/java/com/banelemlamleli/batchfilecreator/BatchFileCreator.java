@@ -25,9 +25,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
      */
     public BatchFileCreator() {
         initComponents();
-        System.out.println("CONSTRUCTOR EXECUTED");
-        System.out.println("AMOUNT OF RECORDS IN THE DB:" + DBConnection.returnAmountOfRecordsInTheDb());
-        System.out.println("=============================================");
     }
 
     /**
@@ -486,13 +483,11 @@ public class BatchFileCreator extends javax.swing.JFrame {
                 case "None": 
                     // loop through the Legal entity master party
                     for (int l = 0; l < cmbLe_LegalEntityMasterParty; l++) {
-                        System.out.println("LE MASTER PARTY:" + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                         completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
 
                         // Loop through the legal entity linked party for the Legal Entity master party
                         if (cmbLe_LELinkedParty != 0) {
                             for (int e = 0; e < cmbLe_LELinkedParty; e++) {
-                                System.out.println("LE LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "L", productType, riskClass, businessUnit));
                                 completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "L", productType, riskClass, businessUnit));
                             }
                         }
@@ -500,7 +495,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         // Loop through the natural person linked party for the Legal Entity master party
                         if (cmbLe_NPLinkedParty != 0) {
                             for (int e = 0; e < cmbLe_NPLinkedParty; e++) {
-                                System.out.println("NP LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "N", productType, riskClass, businessUnit));
                                 completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "N", productType, riskClass, businessUnit));
                             }
                         }
@@ -510,7 +504,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     // Loop through the individual Legal Entity master party
                     if (cmbLe_LEMasterParty != 0) {
                         for (int e = 0; e < cmbLe_LEMasterParty; e++) {
-                            System.out.println("LE MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                             completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                         }
                     }
@@ -518,7 +511,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     // Loop through the individual natural person master party
                     if (cmbLe_NPMasterParty != 0) {
                         for (int e = 0; e < cmbLe_NPMasterParty; e++) {
-                            System.out.println("NP MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit));
                             completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit));
                         }
                     }
@@ -526,13 +518,11 @@ public class BatchFileCreator extends javax.swing.JFrame {
                 case "All parties":
                     // loop through the Legal entity master party
                     for (int l = 0; l < cmbLe_LegalEntityMasterParty; l++) {
-                        System.out.println("LE MASTER PARTY:" + DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
                         completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
 
                         // Loop through the legal entity linked party for the Legal Entity master party
                         if (cmbLe_LELinkedParty != 0) {
                             for (int e = 0; e < cmbLe_LELinkedParty; e++) {
-                                System.out.println("LE LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "L", productType, riskClass, businessUnit));
                                 completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "L", productType, riskClass, businessUnit));
                             }
                         }
@@ -540,7 +530,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         // Loop through the natural person linked party for the Legal Entity master party
                         if (cmbLe_NPLinkedParty != 0) {
                             for (int e = 0; e < cmbLe_NPLinkedParty; e++) {
-                                System.out.println("NP LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "N", productType, riskClass, businessUnit));
                                 completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "N", productType, riskClass, businessUnit));
                             }
                         }
@@ -550,7 +539,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     // Loop through the individual Legal Entity master party
                     if (cmbLe_LEMasterParty != 0) {
                         for (int e = 0; e < cmbLe_LEMasterParty; e++) {
-                            System.out.println("LE MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
                             completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
                         }
                     }
@@ -558,7 +546,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     // Loop through the individual natural person master party
                     if (cmbLe_NPMasterParty != 0) {
                         for (int e = 0; e < cmbLe_NPMasterParty; e++) {
-                            System.out.println("NP MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "N", productType, riskClass, businessUnit));
                             completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "N", productType, riskClass, businessUnit));
                         }
                     }
@@ -566,13 +553,11 @@ public class BatchFileCreator extends javax.swing.JFrame {
                 case "All Master parties":
                     // loop through the Legal entity master party
                     for (int l = 0; l < cmbLe_LegalEntityMasterParty; l++) {
-                        System.out.println("LE MASTER PARTY:" + DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
                         completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
 
                         // Loop through the legal entity linked party for the Legal Entity master party
                         if (cmbLe_LELinkedParty != 0) {
                             for (int e = 0; e < cmbLe_LELinkedParty; e++) {
-                                System.out.println("LE LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "L", productType, riskClass, businessUnit));
                                 completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "L", productType, riskClass, businessUnit));
                             }
                         }
@@ -580,7 +565,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         // Loop through the natural person linked party for the Legal Entity master party
                         if (cmbLe_NPLinkedParty != 0) {
                             for (int e = 0; e < cmbLe_NPLinkedParty; e++) {
-                                System.out.println("NP LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "N", productType, riskClass, businessUnit));
                                 completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "N", productType, riskClass, businessUnit));
                             }
                         }
@@ -590,7 +574,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     // Loop through the individual Legal Entity master party
                     if (cmbLe_LEMasterParty != 0) {
                         for (int e = 0; e < cmbLe_LEMasterParty; e++) {
-                            System.out.println("LE MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
                             completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
                         }
                     }
@@ -598,7 +581,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     // Loop through the individual natural person master party
                     if (cmbLe_NPMasterParty != 0) {
                         for (int e = 0; e < cmbLe_NPMasterParty; e++) {
-                            System.out.println("NP MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "N", productType, riskClass, businessUnit));
                             completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "N", productType, riskClass, businessUnit));
                         }
                     }
@@ -607,13 +589,11 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     if (cmbLe_LELinkedParty >= 1 && cmbLe_NPLinkedParty >= 1) {
                         // loop through the Legal entity master party
                         for (int l = 0; l < cmbLe_LegalEntityMasterParty; l++) {
-                            System.out.println("LE MASTER PARTY:" + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                             completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
 
                             // Loop through the legal entity linked party for the Legal Entity master party
                             if (cmbLe_LELinkedParty != 0) {
                                 for (int e = 0; e < cmbLe_LELinkedParty; e++) {
-                                    System.out.println("LE LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "L", productType, riskClass, businessUnit));
                                     completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "L", productType, riskClass, businessUnit));
                                 }
                             }
@@ -621,7 +601,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                             // Loop through the natural person linked party for the Legal Entity master party
                             if (cmbLe_NPLinkedParty != 0) {
                                 for (int e = 0; e < cmbLe_NPLinkedParty; e++) {
-                                    System.out.println("NP LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "N", productType, riskClass, businessUnit));
                                     completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "N", productType, riskClass, businessUnit));
                                 }
                             }
@@ -631,7 +610,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         // Loop through the individual Legal Entity master party
                         if (cmbLe_LEMasterParty != 0) {
                             for (int e = 0; e < cmbLe_LEMasterParty; e++) {
-                                System.out.println("LE MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                                 completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                             }
                         }
@@ -639,7 +617,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         // Loop through the individual natural person master party
                         if (cmbLe_NPMasterParty != 0) {
                             for (int e = 0; e < cmbLe_NPMasterParty; e++) {
-                                System.out.println("NP MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit));
                                 completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit));
                             }
                         }
@@ -651,13 +628,11 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     if (cmbLe_LELinkedParty != 0) {
                         // loop through the Legal entity master party
                         for (int l = 0; l < cmbLe_LegalEntityMasterParty; l++) {
-                            System.out.println("LE MASTER PARTY:" + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                             completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
 
                             // Loop through the legal entity linked party for the Legal Entity master party
                             if (cmbLe_LELinkedParty != 0) {
                                 for (int e = 0; e < cmbLe_LELinkedParty; e++) {
-                                    System.out.println("LE LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "L", productType, riskClass, businessUnit));
                                     completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "L", productType, riskClass, businessUnit));
                                 }
                             }
@@ -665,7 +640,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                             // Loop through the natural person linked party for the Legal Entity master party
                             if (cmbLe_NPLinkedParty != 0) {
                                 for (int e = 0; e < cmbLe_NPLinkedParty; e++) {
-                                    System.out.println("NP LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "N", productType, riskClass, businessUnit));
                                     completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "N", productType, riskClass, businessUnit));
                                 }
                             }
@@ -675,7 +649,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         // Loop through the individual Legal Entity master party
                         if (cmbLe_LEMasterParty != 0) {
                             for (int e = 0; e < cmbLe_LEMasterParty; e++) {
-                                System.out.println("LE MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                                 completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                             }
                         }
@@ -683,7 +656,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         // Loop through the individual natural person master party
                         if (cmbLe_NPMasterParty != 0) {
                             for (int e = 0; e < cmbLe_NPMasterParty; e++) {
-                                System.out.println("NP MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit));
                                 completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit));
                             }
                         }
@@ -695,13 +667,11 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     if (cmbLe_NPLinkedParty != 0) {
                         // loop through the Legal entity master party
                         for (int l = 0; l < cmbLe_LegalEntityMasterParty; l++) {
-                            System.out.println("LE MASTER PARTY:" + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                             completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
 
                             // Loop through the legal entity linked party for the Legal Entity master party
                             if (cmbLe_LELinkedParty != 0) {
                                 for (int e = 0; e < cmbLe_LELinkedParty; e++) {
-                                    System.out.println("LE LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "L", productType, riskClass, businessUnit));
                                     completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "L", productType, riskClass, businessUnit));
                                 }
                             }
@@ -709,7 +679,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                             // Loop through the natural person linked party for the Legal Entity master party
                             if (cmbLe_NPLinkedParty != 0) {
                                 for (int e = 0; e < cmbLe_NPLinkedParty; e++) {
-                                    System.out.println("NP LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "N", productType, riskClass, businessUnit));
                                     completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "N", productType, riskClass, businessUnit));
                                 }
                             }
@@ -719,7 +688,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         // Loop through the individual Legal Entity master party
                         if (cmbLe_LEMasterParty != 0) {
                             for (int e = 0; e < cmbLe_LEMasterParty; e++) {
-                                System.out.println("LE MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                                 completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                             }
                         }
@@ -727,7 +695,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         // Loop through the individual natural person master party
                         if (cmbLe_NPMasterParty != 0) {
                             for (int e = 0; e < cmbLe_NPMasterParty; e++) {
-                                System.out.println("NP MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit));
                                 completeBatchFileDataForLegalEntitySide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit));
                             }
                         }
@@ -745,13 +712,11 @@ public class BatchFileCreator extends javax.swing.JFrame {
                 case "None": 
                     // loop through the Natural person master party
                     for (int l = 0; l < cmbNp_NaturalPersonMasterParty; l++) {
-                        System.out.println("LE MASTER PARTY:" + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                         completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
 
                         // Loop through the legal entity linked party for the Legal Entity master party
                         if (cmbNp_LELinkedParty != 0) {
                             for (int e = 0; e < cmbNp_LELinkedParty; e++) {
-                                System.out.println("LE LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "L", productType, riskClass, businessUnit));
                                 completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "L", productType, riskClass, businessUnit));
                             }
                         }
@@ -759,7 +724,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         // Loop through the natural person linked party for the Legal Entity master party
                         if (cmbNp_NPLinkedParty != 0) {
                             for (int e = 0; e < cmbNp_NPLinkedParty; e++) {
-                                System.out.println("NP LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "N", productType, riskClass, businessUnit));
                                 completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "N", productType, riskClass, businessUnit));
                             }
                         }
@@ -769,7 +733,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     // Loop through the individual Legal Entity master party
                     if (cmbNp_LEMasterParty != 0) {
                         for (int e = 0; e < cmbNp_LEMasterParty; e++) {
-                            System.out.println("LE MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                             completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                         }
                     }
@@ -777,7 +740,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     // Loop through the individual natural person master party
                     if (cmbNp_NPMasterParty != 0) {
                         for (int e = 0; e < cmbNp_NPMasterParty; e++) {
-                            System.out.println("NP MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit));
                             completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit));
                         }
                     }
@@ -785,13 +747,11 @@ public class BatchFileCreator extends javax.swing.JFrame {
                 case "All parties":
                     // loop through the Legal entity master party
                     for (int l = 0; l < cmbNp_NaturalPersonMasterParty; l++) {
-                        System.out.println("LE MASTER PARTY:" + DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
                         completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
 
                         // Loop through the legal entity linked party for the Legal Entity master party
                         if (cmbNp_LELinkedParty != 0) {
                             for (int e = 0; e < cmbNp_LELinkedParty; e++) {
-                                System.out.println("LE LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "L", productType, riskClass, businessUnit));
                                 completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "L", productType, riskClass, businessUnit));
                             }
                         }
@@ -799,7 +759,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         // Loop through the natural person linked party for the Legal Entity master party
                         if (cmbNp_NPLinkedParty != 0) {
                             for (int e = 0; e < cmbNp_NPLinkedParty; e++) {
-                                System.out.println("NP LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "N", productType, riskClass, businessUnit));
                                 completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "N", productType, riskClass, businessUnit));
                             }
                         }
@@ -809,7 +768,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     // Loop through the individual Legal Entity master party
                     if (cmbNp_LEMasterParty != 0) {
                         for (int e = 0; e < cmbNp_LEMasterParty; e++) {
-                            System.out.println("LE MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
                             completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
                         }
                     }
@@ -817,7 +775,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     // Loop through the individual natural person master party
                     if (cmbNp_NPMasterParty != 0) {
                         for (int e = 0; e < cmbNp_NPMasterParty; e++) {
-                            System.out.println("NP MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "N", productType, riskClass, businessUnit));
                             completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "N", productType, riskClass, businessUnit));
                         }
                     }
@@ -825,13 +782,11 @@ public class BatchFileCreator extends javax.swing.JFrame {
                 case "All Master parties":
                     // loop through the Legal entity master party
                     for (int l = 0; l < cmbNp_NaturalPersonMasterParty; l++) {
-                        System.out.println("LE MASTER PARTY:" + DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
                         completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
 
                         // Loop through the legal entity linked party for the Legal Entity master party
                         if (cmbNp_LELinkedParty != 0) {
                             for (int e = 0; e < cmbNp_LELinkedParty; e++) {
-                                System.out.println("LE LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "L", productType, riskClass, businessUnit));
                                 completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "L", productType, riskClass, businessUnit));
                             }
                         }
@@ -839,7 +794,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         // Loop through the natural person linked party for the Legal Entity master party
                         if (cmbNp_NPLinkedParty != 0) {
                             for (int e = 0; e < cmbNp_NPLinkedParty; e++) {
-                                System.out.println("NP LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "N", productType, riskClass, businessUnit));
                                 completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "N", productType, riskClass, businessUnit));
                             }
                         }
@@ -849,7 +803,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     // Loop through the individual Legal Entity master party
                     if (cmbNp_LEMasterParty != 0) {
                         for (int e = 0; e < cmbNp_LEMasterParty; e++) {
-                            System.out.println("LE MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
                             completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
                         }
                     }
@@ -857,7 +810,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     // Loop through the individual natural person master party
                     if (cmbNp_NPMasterParty != 0) {
                         for (int e = 0; e < cmbNp_NPMasterParty; e++) {
-                            System.out.println("NP MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "N", productType, riskClass, businessUnit));
                             completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "N", productType, riskClass, businessUnit));
                         }
                     }
@@ -866,13 +818,11 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     if (cmbNp_LELinkedParty >= 1 && cmbNp_NPLinkedParty >= 1) {
                         // loop through the Legal entity master party
                         for (int l = 0; l < cmbNp_NaturalPersonMasterParty; l++) {
-                            System.out.println("LE MASTER PARTY:" + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                             completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
 
                             // Loop through the legal entity linked party for the Legal Entity master party
                             if (cmbNp_LELinkedParty != 0) {
                                 for (int e = 0; e < cmbNp_LELinkedParty; e++) {
-                                    System.out.println("LE LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "L", productType, riskClass, businessUnit));
                                     completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "L", productType, riskClass, businessUnit));
                                 }
                             }
@@ -880,7 +830,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                             // Loop through the natural person linked party for the Legal Entity master party
                             if (cmbNp_NPLinkedParty != 0) {
                                 for (int e = 0; e < cmbNp_NPLinkedParty; e++) {
-                                    System.out.println("NP LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "N", productType, riskClass, businessUnit));
                                     completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "N", productType, riskClass, businessUnit));
                                 }
                             }
@@ -890,7 +839,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         // Loop through the individual Legal Entity master party
                         if (cmbNp_LEMasterParty != 0) {
                             for (int e = 0; e < cmbNp_LEMasterParty; e++) {
-                                System.out.println("LE MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                                 completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                             }
                         }
@@ -898,7 +846,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         // Loop through the individual natural person master party
                         if (cmbNp_NPMasterParty != 0) {
                             for (int e = 0; e < cmbNp_NPMasterParty; e++) {
-                                System.out.println("NP MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit));
                                 completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit));
                             }
                         }
@@ -910,13 +857,11 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     if (cmbNp_LELinkedParty != 0) {
                         // loop through the Legal entity master party
                         for (int l = 0; l < cmbNp_NaturalPersonMasterParty; l++) {
-                            System.out.println("LE MASTER PARTY:" + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                             completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
 
                             // Loop through the legal entity linked party for the Legal Entity master party
                             if (cmbNp_LELinkedParty != 0) {
                                 for (int e = 0; e < cmbNp_LELinkedParty; e++) {
-                                    System.out.println("LE LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "L", productType, riskClass, businessUnit));
                                     completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "L", productType, riskClass, businessUnit));
                                 }
                             }
@@ -924,7 +869,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                             // Loop through the natural person linked party for the Legal Entity master party
                             if (cmbNp_NPLinkedParty != 0) {
                                 for (int e = 0; e < cmbNp_NPLinkedParty; e++) {
-                                    System.out.println("NP LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "N", productType, riskClass, businessUnit));
                                     completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "N", productType, riskClass, businessUnit));
                                 }
                             }
@@ -934,7 +878,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         // Loop through the individual Legal Entity master party
                         if (cmbNp_LEMasterParty != 0) {
                             for (int e = 0; e < cmbNp_LEMasterParty; e++) {
-                                System.out.println("LE MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                                 completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                             }
                         }
@@ -942,7 +885,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         // Loop through the individual natural person master party
                         if (cmbNp_NPMasterParty != 0) {
                             for (int e = 0; e < cmbNp_NPMasterParty; e++) {
-                                System.out.println("NP MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit));
                                 completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit));
                             }
                         }
@@ -954,13 +896,11 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     if (cmbNp_NPLinkedParty != 0) {
                         // loop through the Legal entity master party
                         for (int l = 0; l < cmbNp_NaturalPersonMasterParty; l++) {
-                            System.out.println("LE MASTER PARTY:" + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                             completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
 
                             // Loop through the legal entity linked party for the Legal Entity master party
                             if (cmbNp_LELinkedParty != 0) {
                                 for (int e = 0; e < cmbNp_LELinkedParty; e++) {
-                                    System.out.println("LE LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "L", productType, riskClass, businessUnit));
                                     completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "L", productType, riskClass, businessUnit));
                                 }
                             }
@@ -968,7 +908,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                             // Loop through the natural person linked party for the Legal Entity master party
                             if (cmbNp_NPLinkedParty != 0) {
                                 for (int e = 0; e < cmbNp_NPLinkedParty; e++) {
-                                    System.out.println("NP LINKED PARTY: " + DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "N", productType, riskClass, businessUnit));
                                     completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "N", productType, riskClass, businessUnit));
                                 }
                             }
@@ -978,7 +917,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         // Loop through the individual Legal Entity master party
                         if (cmbNp_LEMasterParty != 0) {
                             for (int e = 0; e < cmbNp_LEMasterParty; e++) {
-                                System.out.println("LE MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                                 completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
                             }
                         }
@@ -986,7 +924,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
                         // Loop through the individual natural person master party
                         if (cmbNp_NPMasterParty != 0) {
                             for (int e = 0; e < cmbNp_NPMasterParty; e++) {
-                                System.out.println("NP MASTER PARTY: " + DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit));
                                 completeBatchFileDataForNaturalPersonSide.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit));
                             }
                         }
