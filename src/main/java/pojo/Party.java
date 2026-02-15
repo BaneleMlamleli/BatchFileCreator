@@ -429,32 +429,4 @@ public class Party {
     public void setBusiness_unit(String business_unit) {
         this.business_unit = business_unit;
     }
-    
-    @Override
-    public String toString() {
-        return "Party [business_unit=" + business_unit + ", party_type=" + party_type + ", party_alert=" + party_alert
-                + ", party_is_used=" + party_is_used + ", firstname=" + firstname + ", surname=" + surname
-                +", middle_name=" + middle_name
-                + ", previous_surname=" + previous_surname + ", date_of_birth=" + date_of_birth + ", country_of_birth="
-                + country_of_birth + ", nationality=" + nationality + ", country_of_residence=" + country_of_residence
-                + ", gender=" + gender + ", profession=" + profession + ", monthly_income=" + monthly_income
-                + ", date_of_last_income=" + date_of_last_income + ", id_number=" + id_number + ", nationality2="
-                + nationality2 + ", nationality3=" + nationality3 + ", passport=" + passport + ", passport_country="
-                + passport_country + ", tax_registration_number=" + tax_registration_number + ", primary_tax_residence="
-                + primary_tax_residence + ", foreign_tin=" + foreign_tin + ", foreign_tin_issuing_country="
-                + foreign_tin_issuing_country + ", reason_for_transaction=" + reason_for_transaction + ", product_type="
-                + product_type + ", risk_class=" + risk_class + ", business_relationship=" + business_relationship
-                + ", source_of_funds=" + source_of_funds + ", account_number=" + account_number
-                + ", transaction_amount=" + transaction_amount + ", transaction_date=" + transaction_date
-                + ", inception_date=" + inception_date + ", authorised_by=" + authorised_by + ", termination_date="
-                + termination_date + ", registered_name=" + registered_name + ", registration_number="
-                + registration_number + ", date_of_registration=" + date_of_registration + ", country_of_registration="
-                + country_of_registration + ", industry_type=" + industry_type + ", additional_tax_residence="
-                + additional_tax_residence + ", vat_registration_number=" + vat_registration_number
-                + ", np_residential_address=" + np_residential_address + ", np_postal_address=" + np_postal_address
-                + ", np_pobox_address=" + np_pobox_address + ", le_postal_address=" + le_postal_address
-                + ", le_pobox_address=" + le_pobox_address + ", le_registered_address=" + le_registered_address
-                + ", le_gcoheadoffice_address=" + le_gcoheadoffice_address + ", le_operational_address="
-                + le_operational_address + "]";
-    }
 }

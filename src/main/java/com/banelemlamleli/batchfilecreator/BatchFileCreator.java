@@ -473,8 +473,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
         // Clear the arraylist at every execution to prevent duplicate data
         completeBatchFileDataForLegalEntitySide.clear();
         completeBatchFileDataForNaturalPersonSide.clear();
-
-        // TODO: I need to the arrayList object into the  above arrayList then write data into the text file
         
         /* Legal Entity side */
         // first loop is for the combinations
@@ -933,6 +931,82 @@ public class BatchFileCreator extends javax.swing.JFrame {
                 ;break;
             }
         }
+
+        // TODO: Fix code to create and write to a csv 
+        
+        // write combined CSV to src/main/resources/completeDataForBatchFile.csv
+        java.nio.file.Path outputPath = java.nio.file.Paths.get("src", "main", "resources", "completeDataForBatchFile.csv");
+        try {
+            java.nio.file.Files.createDirectories(outputPath.getParent());
+
+            // if the file already exists, delete it first
+            if (java.nio.file.Files.exists(outputPath)) {
+                java.nio.file.Files.delete(outputPath);
+            }
+
+            try (java.io.BufferedWriter writer = java.nio.file.Files.newBufferedWriter(
+                    outputPath,
+                    java.nio.charset.StandardCharsets.UTF_8,
+                    java.nio.file.StandardOpenOption.CREATE,
+                    java.nio.file.StandardOpenOption.TRUNCATE_EXISTING)) {
+
+                // header
+                writer.write("Side,Data");
+                writer.newLine();
+
+                // helper inline escape
+                java.util.function.Function<Object, String> esc = o -> {
+                    String s = o == null ? "" : o.toString();
+                    if (s.contains(",") || s.contains("\"") || s.contains("\n") || s.contains("\r")) {
+                        s = s.replace("\"", "\"\"");
+                        s = "\"" + s + "\"";
+                    }
+                    return s;
+                };
+
+                // write Legal Entity side
+                for (Object item : completeBatchFileDataForLegalEntitySide) {
+                    if (item instanceof java.util.Collection) {
+                        for (Object inner : (java.util.Collection<?>) item) {
+                            writer.write("LEGAL_ENTITY," + esc.apply(inner));
+                            writer.newLine();
+                        }
+                    } else if (item instanceof Object[]) {
+                        for (Object inner : (Object[]) item) {
+                            writer.write("LEGAL_ENTITY," + esc.apply(inner));
+                            writer.newLine();
+                        }
+                    } else {
+                        writer.write("LEGAL_ENTITY," + esc.apply(item));
+                        writer.newLine();
+                    }
+                }
+
+                // write Natural Person side
+                for (Object item : completeBatchFileDataForNaturalPersonSide) {
+                    if (item instanceof java.util.Collection) {
+                        for (Object inner : (java.util.Collection<?>) item) {
+                            writer.write("NATURAL_PERSON," + esc.apply(inner));
+                            writer.newLine();
+                        }
+                    } else if (item instanceof Object[]) {
+                        for (Object inner : (Object[]) item) {
+                            writer.write("NATURAL_PERSON," + esc.apply(inner));
+                            writer.newLine();
+                        }
+                    } else {
+                        writer.write("NATURAL_PERSON," + esc.apply(item));
+                        writer.newLine();
+                    }
+                }
+            }
+
+            JOptionPane.showMessageDialog(null, "CSV written to: " + outputPath.toString());
+        } catch (java.io.IOException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error writing CSV: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnDownloadCsvFileActionPerformed
 
     private void btnDownloadExcelFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadExcelFileActionPerformed
