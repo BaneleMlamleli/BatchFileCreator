@@ -65,6 +65,7 @@ CREATE TABLE parties (
 	le_registered_address TEXT,
 	le_gcoheadoffice_address TEXT,
 	le_operational_address TEXT
+	parent_account_number TEXT,
 );
 
 CREATE TABLE industry_types (
