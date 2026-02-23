@@ -255,7 +255,8 @@ public class DBConnection {
                 resultSet.getString("le_pobox_address"),
                 resultSet.getString("le_registered_address"),
                 resultSet.getString("le_gcoheadoffice_address"),
-                resultSet.getString("le_operational_address")
+                resultSet.getString("le_operational_address"),
+                ""
             ));
 
             // Update the party status to reflect as used
@@ -304,7 +305,7 @@ public class DBConnection {
     }
 
     /* This method will only be used for Legal and Natural person Linked parties and the party will either be alert or no alert. N.B., account_number will not be pulled from the DB is linked parties are linked via master party account_number */
-    public static List<Party> getAlertOrNoAlertLinkedPartyOnly(boolean alert, String partyType, String productCode, String riskClass, String businessUnit){
+    public static List<Party> getAlertOrNoAlertLinkedPartyOnly(boolean alert, String partyType, String productCode, String riskClass, String businessUnit, String mpAccNumber){
         Connection con = DBConnection.connection();
         PreparedStatement prepStatemnt = null;
         ResultSet resultSet = null;
@@ -367,7 +368,8 @@ public class DBConnection {
                 resultSet.getString("le_pobox_address"),
                 resultSet.getString("le_registered_address"),
                 resultSet.getString("le_gcoheadoffice_address"),
-                resultSet.getString("le_operational_address")
+                resultSet.getString("le_operational_address"),
+                mpAccNumber
             ));
 
             // Update the party status to reflect as used
