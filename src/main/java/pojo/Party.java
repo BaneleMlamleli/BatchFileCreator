@@ -52,6 +52,7 @@ public class Party {
 	private String le_registered_address;
 	private String le_gcoheadoffice_address;
 	private String le_operational_address;
+    private String parent_account_number;
 
     
 
@@ -67,7 +68,7 @@ public class Party {
             String country_of_registration, String industry_type, String additional_tax_residence,
             String vat_registration_number, String np_residential_address, String np_postal_address,
             String np_pobox_address, String le_postal_address, String le_pobox_address, String le_registered_address,
-            String le_gcoheadoffice_address, String le_operational_address) {
+            String le_gcoheadoffice_address, String le_operational_address, String parent_account_number) {
         this.business_unit = business_unit; 
         this.party_type = party_type;
         this.party_alert = party_alert;
@@ -119,6 +120,15 @@ public class Party {
         this.le_registered_address = le_registered_address;
         this.le_gcoheadoffice_address = le_gcoheadoffice_address;
         this.le_operational_address = le_operational_address;
+        this.parent_account_number = parent_account_number;
+    }
+
+    public String getParent_account_number() {
+        return parent_account_number;
+    }
+
+    public void setParent_account_number(String parent_account_number) {
+        this.parent_account_number = parent_account_number;
     }
 
     public String getParty_type() {
