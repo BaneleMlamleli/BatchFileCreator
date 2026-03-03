@@ -4,6 +4,9 @@
  */
 package com.banelemlamleli.batchfilecreator;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -957,86 +960,27 @@ public class BatchFileCreator extends javax.swing.JFrame {
             }
         }
 
-        System.out.println("SIZE: " + completeBatchFileData.size());
+        for (int i = 0; i < completeBatchFileData.size(); i++) {
+            for (int j = 0; j < completeBatchFileData.get(i).size(); j++) {
+                System.out.println("Index: " + i + ", Party account number: " + completeBatchFileData.get(i).get(j).getAccount_number());
+            }
+        }
 
-        // for (int z = 0; z < completeBatchFileData.size(); z++) {
-        //     System.out.println("Index: " + z +", Value: " + completeBatchFileData.get(z).toString());
-        //     for (int y = 0; y <= completeBatchFileData.get(z).size(); y++){
-        //         Party party = completeBatchFileData.get(z).get(y);
-        //         System.out.println("MAIN ARRAYLIST DATA: " + completeBatchFileData.get(z).get(y).getRegistered_name() + " (" + completeBatchFileData.get(z).get(y).getRegistration_number() + ") Account number: " + completeBatchFileData.get(z).get(y).getParent_account_number());
-        //     }
-        // }
 
-        // TODO: Fix code to create and write to a csv 
+        // TODO: Fix code to create and write to a csv
+        // NOTE: There are 92 columns and I have created 50 columns
         
         // write combined CSV to src/main/resources/completeDataForBatchFile.csv
-        // java.nio.file.Path outputPath = java.nio.file.Paths.get("src", "main", "resources", "completeDataForBatchFile.csv");
+        // Path completeDataFilePath = Paths.get("src", "main", "resources", "completeDataForBatchFile.csv");
         // try {
-        //     java.nio.file.Files.createDirectories(outputPath.getParent());
+        //     Files.createDirectories(completeDataFilePath.getParent());
 
         //     // if the file already exists, delete it first
-        //     if (java.nio.file.Files.exists(outputPath)) {
-        //         java.nio.file.Files.delete(outputPath);
+        //     if (Files.exists(completeDataFilePath)) {
+        //         Files.delete(completeDataFilePath);
         //     }
 
-        //     try (java.io.BufferedWriter writer = java.nio.file.Files.newBufferedWriter(
-        //             outputPath,
-        //             java.nio.charset.StandardCharsets.UTF_8,
-        //             java.nio.file.StandardOpenOption.CREATE,
-        //             java.nio.file.StandardOpenOption.TRUNCATE_EXISTING)) {
-
-        //         // header
-        //         writer.write("Side,Data");
-        //         writer.newLine();
-
-        //         // helper inline escape
-        //         java.util.function.Function<Object, String> esc = o -> {
-        //             String s = o == null ? "" : o.toString();
-        //             if (s.contains(",") || s.contains("\"") || s.contains("\n") || s.contains("\r")) {
-        //                 s = s.replace("\"", "\"\"");
-        //                 s = "\"" + s + "\"";
-        //             }
-        //             return s;
-        //         };
-
-        //         // write Legal Entity side
-        //         for (Object item : completeBatchFileData) {
-        //             if (item instanceof java.util.Collection) {
-        //                 for (Object inner : (java.util.Collection<?>) item) {
-        //                     writer.write("LEGAL_ENTITY," + esc.apply(inner));
-        //                     writer.newLine();
-        //                 }
-        //             } else if (item instanceof Object[]) {
-        //                 for (Object inner : (Object[]) item) {
-        //                     writer.write("LEGAL_ENTITY," + esc.apply(inner));
-        //                     writer.newLine();
-        //                 }
-        //             } else {
-        //                 writer.write("LEGAL_ENTITY," + esc.apply(item));
-        //                 writer.newLine();
-        //             }
-        //         }
-
-        //         // write Natural Person side
-        //         for (Object item : completeBatchFileData) {
-        //             if (item instanceof java.util.Collection) {
-        //                 for (Object inner : (java.util.Collection<?>) item) {
-        //                     writer.write("NATURAL_PERSON," + esc.apply(inner));
-        //                     writer.newLine();
-        //                 }
-        //             } else if (item instanceof Object[]) {
-        //                 for (Object inner : (Object[]) item) {
-        //                     writer.write("NATURAL_PERSON," + esc.apply(inner));
-        //                     writer.newLine();
-        //                 }
-        //             } else {
-        //                 writer.write("NATURAL_PERSON," + esc.apply(item));
-        //                 writer.newLine();
-        //             }
-        //         }
-        //     }
-
-        //     JOptionPane.showMessageDialog(null, "CSV written to: " + outputPath.toString());
+        //     JOptionPane.showMessageDialog(null, "CSV written to: " + completeDataFilePath.toString());
         // } catch (java.io.IOException ex) {
         //     logger.log(java.util.logging.Level.SEVERE, null, ex);
         //     JOptionPane.showMessageDialog(null, "Error writing CSV: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
