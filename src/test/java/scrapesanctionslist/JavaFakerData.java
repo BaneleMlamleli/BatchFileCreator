@@ -17,7 +17,7 @@ public class JavaFakerData {
 
         Faker faker = new Faker();
 
-        for (int i = 0; i <= 4056; i++) {
+        for (int i = 0; i <= 10000; i++) {
             boolean partyAlert = false;
 			boolean partyIsUsed = false;
             String firstname = faker.name().firstName();
@@ -52,23 +52,23 @@ public class JavaFakerData {
 	        String authorisedBy = faker.name().firstName() +" "+ faker.name().lastName();
 	        String terminationDate = LocalDate.now().minusYears((int) (Math.random() * 10) + 1).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 	        // --LE details
-	        String registeredName = null;
-	        String registrationNumber = null;
+	        String registeredName = "";
+	        String registrationNumber = "";
 	        String partyType = "N";
-	        String dateOfRegistration = null;
-	        String countryOfRegistration = null;
-	        String industryType = null;
-	        String vatRegistrationNumber = null;
+	        String dateOfRegistration = "";
+	        String countryOfRegistration = "";
+	        String industryType = "";
+	        String vatRegistrationNumber = "";
 	        // --NP address information
 	        String npResidentialAddress = faker.address().fullAddress();
 	        String npPostalAddress = faker.address().fullAddress(); 
 	        String npPoboxAddress = "P.O Box" + faker.address().fullAddress();
 	        // -- LE address information
-	        String lePostalAddress = null;
-	        String lePoboxAddress = null;
+	        String lePostalAddress = "";
+	        String lePoboxAddress = "";
 	        String leRegisteredAddress =faker.address().fullAddress();
-	        String leGcoheadofficeAddress = null;
-	        String leOperationalAddress  = null;
+	        String leGcoheadofficeAddress = "";
+	        String leOperationalAddress  = "";
             
             boolean gender[] = {true, false};
             long startEpoch = LocalDate.now().minusYears(100).toEpochDay();
@@ -95,23 +95,23 @@ public class JavaFakerData {
 
         Faker faker = new Faker();
 
-        for (int i = 0; i <= 4056; i++) {
+        for (int i = 0; i <= 10000; i++) {
             boolean partyAlert = false;
 			boolean partyIsUsed = false;
-            String firstname = null;
-            String surname = null;
-            String middleName = null;
-            String previousSurname = null;
-	        String countryOBirth = null;
-	        String nationality = null;
-	        String countryOfResidence = null;
-			String profession = null;
+            String firstname = "";
+            String surname = "";
+            String middleName = "";
+            String previousSurname = "";
+	        String countryOBirth = "";
+	        String nationality = "";
+	        String countryOfResidence = "";
+			String profession = "";
 			long monthlyIncome = faker.number().numberBetween(100, 10000);  //.randomNumber();
 			String dateOfLastIncome = LocalDate.now().minusDays(i).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 	        String nationality2 = "ZA";
 	        String nationality3 = "ZA";
-	        String passport = null;
-	        String passportCountry = null;
+	        String passport = "";
+	        String passportCountry = "";
 	        String taxRegistrationNumber = faker.number().digits(10);
 	        String primaryTaxResidence = "ZA";
 	        String additionalTaxResidence = "ZA";
@@ -138,9 +138,9 @@ public class JavaFakerData {
 	        String industryType = "ACCOUNTING SERVICES";
 	        String vatRegistrationNumber = faker.number().digits(10);
 	        // --NP address information
-	        String npResidentialAddress = null;
-	        String npPostalAddress = null;
-	        String npPoboxAddress = null;
+	        String npResidentialAddress = "";
+	        String npPostalAddress = "";
+	        String npPoboxAddress = "";
 	        // -- LE address information
 	        String lePostalAddress = faker.address().fullAddress();
 	        String lePoboxAddress = "P.O Box " + faker.address().fullAddress();
@@ -148,10 +148,10 @@ public class JavaFakerData {
 	        String leGcoheadofficeAddress = faker.address().fullAddress();
 	        String leOperationalAddress  = faker.address().fullAddress();
 
-            String SAIDNumber = null;
-            String dateOfBirth = null;
+            String SAIDNumber = "";
+            String dateOfBirth = "";
 
-            String partyGenderFromID = null;
+            String partyGenderFromID = "";
 
 			DBConnection.insertPartyIntoDB(partyType, partyAlert, partyIsUsed, firstname, surname, middleName, previousSurname, dateOfBirth, countryOBirth, nationality, countryOfResidence, partyGenderFromID, profession, monthlyIncome, dateOfLastIncome, SAIDNumber, nationality2, nationality3, passport, passportCountry, taxRegistrationNumber, primaryTaxResidence, foreignTin, foreignTinIssuingCountry, reasonForTransaction, productType, riskClass, businessRelationship, sourceOfFunds, accountNumber, transactionAmount, transactionDate, inceptionDate, authorisedBy, terminationDate, registeredName, registrationNumber, dateOfRegistration, countryOfRegistration, industryType, additionalTaxResidence, vatRegistrationNumber, npResidentialAddress, npPostalAddress, npPoboxAddress, lePostalAddress, lePoboxAddress, leRegisteredAddress, leGcoheadofficeAddress, leOperationalAddress);
         }

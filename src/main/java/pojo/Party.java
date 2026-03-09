@@ -967,7 +967,99 @@ public class Party {
         this.termination_date = termination_date;
     }
 
+    @Override
+    public String toString() {
+        return "Party [party_alert=" + party_alert + ", party_is_used=" + party_is_used + ", firstname=" + firstname
+                + ", surname=" + surname + ", middle_name=" + middle_name + ", previous_surname=" + previous_surname
+                + ", emptyValue1=" + emptyValue1 + ", emptyValue2=" + emptyValue2 + ", id_number=" + id_number
+                + ", emptyValue3=" + emptyValue3 + ", gender=" + gender + ", passport=" + passport
+                + ", passport_country=" + passport_country + ", date_of_birth=" + date_of_birth
+                + ", np_residential_address=" + np_residential_address + ", country_of_residence="
+                + country_of_residence + ", nationality=" + nationality + ", country_of_birth=" + country_of_birth
+                + ", monthly_income=" + monthly_income + ", date_of_last_income=" + date_of_last_income
+                + ", emptyValue4=" + emptyValue4 + ", emptyValue5=" + emptyValue5 + ", emptyValue6=" + emptyValue6
+                + ", np_postal_address=" + np_postal_address + ", emptyValue7=" + emptyValue7 + ", registered_name="
+                + registered_name + ", le_operational_address=" + le_operational_address + ", emptyValue8="
+                + emptyValue8 + ", emptyValue9=" + emptyValue9 + ", emptyValue10=" + emptyValue10
+                + ", source_of_wealth=" + source_of_wealth + ", source_of_funds=" + source_of_funds + ", profession="
+                + profession + ", emptyValue11=" + emptyValue11 + ", registered_name1=" + registered_name1
+                + ", registration_number=" + registration_number + ", legal_form=" + legal_form
+                + ", registered_address=" + registered_address + ", emptyValue12=" + emptyValue12 + ", emptyValue13="
+                + emptyValue13 + ", emptyValue14=" + emptyValue14 + ", emptyValue15=" + emptyValue15 + ", emptyValue16="
+                + emptyValue16 + ", nationality3=" + nationality3 + ", vat_registration_number="
+                + vat_registration_number + ", emptyValue17=" + emptyValue17 + ", emptyValue18=" + emptyValue18
+                + ", emptyValue19=" + emptyValue19 + ", relationship_to_client=" + relationship_to_client
+                + ", reason_for_transaction=" + reason_for_transaction + ", transaction_date=" + transaction_date
+                + ", transaction_amount=" + transaction_amount + ", authorised_by=" + authorised_by + ", emptyValue20="
+                + emptyValue20 + ", tax_registration_number=" + tax_registration_number + ", foreign_tin=" + foreign_tin
+                + ", emptyValue_20=" + emptyValue_20 + ", nationality2=" + nationality2 + ", le_operational_address1="
+                + le_operational_address1 + ", le_operational_address2=" + le_operational_address2 + ", emptyValue21="
+                + emptyValue21 + ", emptyValue22=" + emptyValue22 + ", emptyValue23=" + emptyValue23 + ", emptyValue24="
+                + emptyValue24 + ", emptyValue25=" + emptyValue25 + ", emptyValue26=" + emptyValue26 + ", emptyValue27="
+                + emptyValue27 + ", emptyValue28=" + emptyValue28 + ", emptyValue29=" + emptyValue29 + ", emptyValue30="
+                + emptyValue30 + ", emptyValue31=" + emptyValue31 + ", nature_of_income=" + nature_of_income
+                + ", business_relationship=" + business_relationship + ", emptyValue32=" + emptyValue32
+                + ", primary_tax_residence=" + primary_tax_residence + ", additional_tax_residence="
+                + additional_tax_residence + ", emptyValue33=" + emptyValue33 + ", emptyValue34=" + emptyValue34
+                + ", le_gcoheadoffice_address=" + le_gcoheadoffice_address + ", emptyValue35=" + emptyValue35
+                + ", emptyValue36=" + emptyValue36 + ", industry_type=" + industry_type + ", emptyValue37="
+                + emptyValue37 + ", account_type=" + account_type + ", account_number=" + account_number
+                + ", product_type=" + product_type + ", business_unit=" + business_unit + ", risk_class=" + risk_class
+                + ", party_type=" + party_type + ", parent_account_number=" + parent_account_number
+                + ", relationship_to_party=" + relationship_to_party + ", party_status=" + party_status
+                + ", inception_date=" + inception_date + ", termination_date=" + termination_date + ", getClass()="
+                + getClass() + ", hashCode()=" + hashCode() + ", getParty_alert()=" + getParty_alert()
+                + ", getParty_is_used()=" + getParty_is_used() + ", getFirstname()=" + getFirstname()
+                + ", getSurname()=" + getSurname() + ", getMiddle_name()=" + getMiddle_name() + ", toString()="
+                + super.toString() + ", getPrevious_surname()=" + getPrevious_surname() + ", getEmptyValue1()="
+                + getEmptyValue1() + ", getEmptyValue2()=" + getEmptyValue2() + ", getId_number()=" + getId_number()
+                + ", getEmptyValue3()=" + getEmptyValue3() + ", getGender()=" + getGender() + ", getPassport()="
+                + getPassport() + ", getPassport_country()=" + getPassport_country() + ", getDate_of_birth()="
+                + getDate_of_birth() + ", getNp_residential_address()=" + getNp_residential_address()
+                + ", getCountry_of_residence()=" + getCountry_of_residence() + ", getNationality()=" + getNationality()
+                + ", getCountry_of_birth()=" + getCountry_of_birth() + ", getMonthly_income()=" + getMonthly_income()
+                + ", getDate_of_last_income()=" + getDate_of_last_income() + ", getEmptyValue4()=" + getEmptyValue4()
+                + ", getEmptyValue5()=" + getEmptyValue5() + ", getEmptyValue6()=" + getEmptyValue6()
+                + ", getNp_postal_address()=" + getNp_postal_address() + ", getEmptyValue7()=" + getEmptyValue7()
+                + ", getRegistered_name()=" + getRegistered_name() + ", getLe_operational_address()="
+                + getLe_operational_address() + ", getEmptyValue8()=" + getEmptyValue8() + ", getEmptyValue9()="
+                + getEmptyValue9() + ", getEmptyValue10()=" + getEmptyValue10() + ", getSource_of_wealth()="
+                + getSource_of_wealth() + ", getSource_of_funds()=" + getSource_of_funds() + ", getProfession()="
+                + getProfession() + ", getEmptyValue11()=" + getEmptyValue11() + ", getRegistered_name1()="
+                + getRegistered_name1() + ", getRegistration_number()=" + getRegistration_number()
+                + ", getLegal_form()=" + getLegal_form() + ", getRegistered_address()=" + getRegistered_address()
+                + ", getEmptyValue12()=" + getEmptyValue12() + ", getEmptyValue13()=" + getEmptyValue13()
+                + ", getEmptyValue14()=" + getEmptyValue14() + ", getEmptyValue15()=" + getEmptyValue15()
+                + ", getEmptyValue16()=" + getEmptyValue16() + ", getNationality3()=" + getNationality3()
+                + ", getVat_registration_number()=" + getVat_registration_number() + ", getEmptyValue17()="
+                + getEmptyValue17() + ", getEmptyValue18()=" + getEmptyValue18() + ", getEmptyValue19()="
+                + getEmptyValue19() + ", getRelationship_to_client()=" + getRelationship_to_client()
+                + ", getReason_for_transaction()=" + getReason_for_transaction() + ", getTransaction_date()="
+                + getTransaction_date() + ", getTransaction_amount()=" + getTransaction_amount()
+                + ", getAuthorised_by()=" + getAuthorised_by() + ", getEmptyValue20()=" + getEmptyValue20()
+                + ", getTax_registration_number()=" + getTax_registration_number() + ", getForeign_tin()="
+                + getForeign_tin() + ", getEmptyValue_20()=" + getEmptyValue_20() + ", getNationality2()="
+                + getNationality2() + ", getLe_operational_address1()=" + getLe_operational_address1()
+                + ", getLe_operational_address2()=" + getLe_operational_address2() + ", getEmptyValue21()="
+                + getEmptyValue21() + ", getEmptyValue22()=" + getEmptyValue22() + ", getEmptyValue23()="
+                + getEmptyValue23() + ", getEmptyValue24()=" + getEmptyValue24() + ", getEmptyValue25()="
+                + getEmptyValue25() + ", getEmptyValue26()=" + getEmptyValue26() + ", getEmptyValue27()="
+                + getEmptyValue27() + ", getEmptyValue28()=" + getEmptyValue28() + ", getEmptyValue29()="
+                + getEmptyValue29() + ", getEmptyValue30()=" + getEmptyValue30() + ", getEmptyValue31()="
+                + getEmptyValue31() + ", getNature_of_income()=" + getNature_of_income()
+                + ", getBusiness_relationship()=" + getBusiness_relationship() + ", getEmptyValue32()="
+                + getEmptyValue32() + ", getPrimary_tax_residence()=" + getPrimary_tax_residence()
+                + ", getAdditional_tax_residence()=" + getAdditional_tax_residence() + ", getEmptyValue33()="
+                + getEmptyValue33() + ", getEmptyValue34()=" + getEmptyValue34() + ", getLe_gcoheadoffice_address()="
+                + getLe_gcoheadoffice_address() + ", getEmptyValue35()=" + getEmptyValue35() + ", getEmptyValue36()="
+                + getEmptyValue36() + ", getIndustry_type()=" + getIndustry_type() + ", getEmptyValue37()="
+                + getEmptyValue37() + ", getAccount_type()=" + getAccount_type() + ", getAccount_number()="
+                + getAccount_number() + ", getProduct_type()=" + getProduct_type() + ", getBusiness_unit()="
+                + getBusiness_unit() + ", getRisk_class()=" + getRisk_class() + ", getParty_type()=" + getParty_type()
+                + ", getParent_account_number()=" + getParent_account_number() + ", getRelationship_to_party()="
+                + getRelationship_to_party() + ", getParty_status()=" + getParty_status() + ", getInception_date()="
+                + getInception_date() + ", getTermination_date()=" + getTermination_date() + "]";
+    }
     
-
     
 }

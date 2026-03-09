@@ -63,15 +63,12 @@ public class SanctionsListData {
         firefoxOptions = new FirefoxOptions();
         firefoxOptions.addArguments("--headless");
         driver = new FirefoxDriver(firefoxOptions);
-        
         // Configure ChromeOptions for headless mode
         // chromeOptions = new ChromeOptions();
         // chromeOptions.addArguments("--headless=new"); // Use the modern headless mode
         // driver = new ChromeDriver(chromeOptions);
         driver.manage().window().maximize();
         driver.get("https://sanctionssearch.ofac.treas.gov/");
-
-        // Utilities.deleteFileAtInitialExecution();
         
         Select selectType = new Select(driver.findElement(By.id("ctl00_MainContent_ddlType")));
         Select selectCountry = new Select(driver.findElement(By.id("ctl00_MainContent_ddlCountry")));
@@ -274,20 +271,20 @@ public class SanctionsListData {
         
         boolean partyAlert = true;
         boolean partyIsUsed = false;
-        String firstname = null;
-        String surname = null;
-        String middleName = null;
-        String previousSurname = null;
-        String countryOBirth = null;
-        String nationality = null;
-        String countryOfResidence = null;
-        String profession = null;
+        String firstname = "";
+        String surname = "";
+        String middleName = "";
+        String previousSurname = "";
+        String countryOBirth = "";
+        String nationality = "";
+        String countryOfResidence = "";
+        String profession = "";
         long monthlyIncome = faker.number().numberBetween(100, 10000);  //.randomNumber();
         String dateOfLastIncome = LocalDate.now().minusDays((int)(Math.random()*10)).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         String nationality2 = (dbEntityCountryCode != null)? dbEntityCountryCode : dbSelectedCountryCode;
         String nationality3 = (dbEntityCountryCode != null)? dbEntityCountryCode : dbSelectedCountryCode;
-        String passport = null;
-        String passportCountry = null;
+        String passport = "";
+        String passportCountry = "";
         String taxRegistrationNumber = faker.number().digits(10);
         String primaryTaxResidence = (dbEntityCountryCode != null)? dbEntityCountryCode : dbSelectedCountryCode;
         String additionalTaxResidence = (dbEntityCountryCode != null)? dbEntityCountryCode : dbSelectedCountryCode;
@@ -314,18 +311,18 @@ public class SanctionsListData {
         String industryType = "ACCOUNTING SERVICES";
         String vatRegistrationNumber = faker.number().digits(10);
         // --NP address information
-        String npResidentialAddress = null;
-        String npPostalAddress = null;
-        String npPoboxAddress = null;
+        String npResidentialAddress = "";
+        String npPostalAddress = "";
+        String npPoboxAddress = "";
         // -- LE address information
         String lePostalAddress = (address.length() != 0)? address +" "+ city +" "+ stateOrProvince +" "+ addressCountry +" "+ postalCode : faker.address().fullAddress();
         String lePoboxAddress = (address.length() != 0)? "P.O Box " + address +" "+ city +" "+ stateOrProvince +" "+ addressCountry +" "+ postalCode : faker.address().fullAddress();
         String leRegisteredAddress = (address.length() != 0)? address +" "+ city +" "+ stateOrProvince +" "+ addressCountry +" "+ postalCode : faker.address().fullAddress();
         String leGcoheadofficeAddress = (address.length() != 0)? address +" "+ city +" "+ stateOrProvince +" "+ addressCountry +" "+ postalCode : faker.address().fullAddress();
         String leOperationalAddress  = (address.length() != 0)? address +" "+ city +" "+ stateOrProvince +" "+ addressCountry +" "+ postalCode : faker.address().fullAddress();
-        String SAIDNumber = null;
-        String dateOfBirth = null;
-        String partyGenderFromID = null;
+        String SAIDNumber = "";
+        String dateOfBirth = "";
+        String partyGenderFromID = "";
 
         DBConnection.insertPartyIntoDB(
             strPartyType, partyAlert, partyIsUsed, firstname, surname, middleName, previousSurname, dateOfBirth, countryOBirth, nationality, countryOfResidence, partyGenderFromID, profession, monthlyIncome, dateOfLastIncome, SAIDNumber, nationality2, nationality3, passport, passportCountry, taxRegistrationNumber, primaryTaxResidence, foreignTin, foreignTinIssuingCountry, reasonForTransaction, productType, riskClass, businessRelationship, sourceOfFunds, accountNumber, transactionAmount, transactionDate, inceptionDate, authorisedBy, terminationDate, registeredName, registrationNumber, dateOfRegistration, countryOfRegistration, industryType, additionalTaxResidence, vatRegistrationNumber, npResidentialAddress, npPostalAddress, npPoboxAddress, lePostalAddress, lePoboxAddress, leRegisteredAddress, leGcoheadofficeAddress, leOperationalAddress
@@ -342,7 +339,7 @@ public class SanctionsListData {
         String nationalty = driver.findElement(By.id("ctl00_MainContent_lblNationality")).getText();
         String citizenshp = driver.findElement(By.id("ctl00_MainContent_lblCitizenship")).getText();
 
-        String entIdType = "", entId = "", entCountry = "", entAddress = "", entCity = "", entStateOrProvince = "", entPostalCode = "", entAddressCountry = null;
+        String entIdType = "", entId = "", entCountry = "", entAddress = "", entCity = "", entStateOrProvince = "", entPostalCode = "", entAddressCountry = "";
 
         try {
             entIdType = driver.findElement(By.xpath("//table[@id='ctl00_MainContent_gvIdentification']//tr[2]//td[1]")).getText();
@@ -373,8 +370,8 @@ public class SanctionsListData {
         boolean np_partyIsUsed = false;
         String np_firstname = name;
         String np_surname = srname;
-        String np_middleName = null;
-        String np_previousSurname = null;
+        String np_middleName = "";
+        String np_previousSurname = "";
         String np_countryOfBirth = (DBConnection.returnCountryCode(citizenshp) != null)? DBConnection.returnCountryCode(citizenshp) : np_dbSelectedCountryCode;
         String np_nationality = (DBConnection.returnCountryCode(nationalty) !=  null)? DBConnection.returnCountryCode(nationalty) : np_dbSelectedCountryCode;
         String np_countryOfResidence = (np_dbEntityCountryCode != null)? np_dbEntityCountryCode : np_dbSelectedCountryCode;
@@ -403,23 +400,23 @@ public class SanctionsListData {
         String np_authorisedBy = faker.name().firstName() +" "+ faker.name().lastName();
         String np_terminationDate = LocalDate.now().minusYears((int) (Math.random() * 10) + 1).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         // --LE details
-        String np_registeredName = null;
-        String np_registrationNumber = null;
+        String np_registeredName = "";
+        String np_registrationNumber = "";
         String np_partyType = "N";
-        String np_dateOfRegistration = null;
-        String np_countryOfRegistration = null;
-        String np_industryType = null;
-        String np_vatRegistrationNumber = null;
+        String np_dateOfRegistration = "";
+        String np_countryOfRegistration = "";
+        String np_industryType = "";
+        String np_vatRegistrationNumber = "";
         // --NP address information
         String np_npResidentialAddress = entAddress +" "+ entCity +" "+ entStateOrProvince +" "+ entAddressCountry +" "+ entPostalCode;
         String np_npPostalAddress = entAddress +" "+ entCity +" "+ entStateOrProvince +" "+ entAddressCountry +" "+ entPostalCode; 
         String np_npPoboxAddress = "P.O Box" + entAddress +" "+ entCity +" "+ entStateOrProvince +" "+ entAddressCountry +" "+ entPostalCode;
         // -- LE address information
-        String np_lePostalAddress = null;
-        String np_lePoboxAddress = null;
-        String np_leRegisteredAddress = null;
-        String np_leGcoheadofficeAddress = null;
-        String np_leOperationalAddress  = null;
+        String np_lePostalAddress = "";
+        String np_lePoboxAddress = "";
+        String np_leRegisteredAddress = "";
+        String np_leGcoheadofficeAddress = "";
+        String np_leOperationalAddress  = "";
         
         boolean np_gender[] = {true, false};
         long np_startEpoch = LocalDate.now().minusYears(100).toEpochDay();
