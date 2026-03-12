@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package util;
 
 import java.sql.Connection;
@@ -18,9 +14,58 @@ import org.apache.logging.log4j.Logger;
 import pojo.Party;
 
 /**
+ * Utility class that encapsulates database access for the application.
  *
- * @author banele
+ * <p>Responsibilities:
+ * <ul>
+ *   <li>Establish a JDBC connection to the application's SQLite database.</li>
+ *   <li>Insert new party records into the parties table.</li>
+ *   <li>Query small helper values (e.g. country code) and summary values (record count).</li>
+ *   <li>Fetch party records (master and linked variants) and map them to {@code pojo.Party}
+ *       instances while marking those parties as used.</li>
+ *   <li>Update the {@code party_is_used} flag for a given party id.</li>
+ * </ul>
+ *
+ * <p>Notes on behavior and design:
+ * <ul>
+ *   <li>All methods are static convenience methods and use a local JDBC {@code Connection}
+ *       obtained from {@link #connection()}.</li>
+ *   <li>The connection points to an embedded SQLite database (jdbc:sqlite:src/main/java/database/parties.db).
+ *       The SQLite JDBC driver class is loaded in {@link #connection()}.</li>
+ *   <li>Errors and exceptions are caught and logged; methods generally swallow exceptions and
+ *       return a safe default (null, zero, or an empty list) rather than propagating SQLExceptions.</li>
+ *   <li>Resource management is handled manually (explicit close in finally blocks). Several methods
+ *       close read resources (ResultSet/PreparedStatement/Connection) before performing a follow-up
+ *       write (to avoid SQLITE_BUSY).</li>
+ *   <li>Query methods that return a List&lt;Party&gt; currently construct a single Party from the
+ *       first result row and return it in a list. They expect at least one matching row; if none
+ *       are present the returned list will be empty (and errors are logged).</li>
+ * </ul>
+ *
+ * <p>Threading / concurrency:
+ * <ul>
+ *   <li>Methods are not synchronized. Multiple concurrent callers may attempt to open connections
+ *       to the same SQLite file; SQLite has limitations for concurrent writes—care should be taken
+ *       if this utility is used concurrently from multiple threads/processes.</li>
+ * </ul>
+ *
+ * <p>Limitations and recommendations:
+ * <ul>
+ *   <li>The {@code insertPartyIntoDB} method accepts a very long list of parameters and uses
+ *       positional placeholders (VALUES (?, ?, ...)). It would be clearer and safer to use a named
+ *       column list in the INSERT and/or a builder/DTO for parameters.</li>
+ *   <li>Prefer try-with-resources for Connection/PreparedStatement/ResultSet to simplify and
+ *       harden resource handling.</li>
+ *   <li>Consider returning Optional&lt;Party&gt; or a more descriptive result object for the
+ *       fetch methods, and consider supporting multiple rows instead of only the first.</li>
+ *   <li>Consider using a connection pool or higher-level data access abstraction if concurrency,
+ *       transaction management, or performance becomes important.</li>
+ * </ul>
+ *
+ * @author banele mlamleli
+ * @see pojo.Party
  */
+
 public class DBConnection {
 
     public static Logger logger = LogManager.getLogger(new Object() {
@@ -38,11 +83,11 @@ public class DBConnection {
         return connect;
     }
 
-    public static void insertPartyIntoDB(String partyType, boolean partyAlert, boolean partyIsUsed, String firstname, String surname, String middleName, String previousSurname, String dateOfBirth, String countryOBirth, String nationality, String countryOfResidence, String partyGenderFromID, String profession, long monthlyIncome, String dateOfLastIncome, String SAIDNumber, String nationality2, String nationality3, String passport, String passportCountry, String taxRegistrationNumber, String primaryTaxResidence, String foreignTin, String foreignTinIssuingCountry, String reasonForTransaction, String productType, String riskClass, String businessRelationship, String sourceOfFunds, String accountNumber, int transactionAmount, String transactionDate, String inceptionDate, String authorisedBy, String terminationDate, String registeredName, String registrationNumber, String dateOfRegistration, String countryOfRegistration, String industryType, String additionalTaxResidence, String vatRegistrationNumber, String npResidentialAddress, String npPostalAddress, String npPoboxAddress, String lePostalAddress, String lePoboxAddress, String leRegisteredAddress, String leGcoheadofficeAddress, String leOperationalAddress){
+    public static void insertPartyIntoDB(String partyType, boolean partyAlert, boolean partyIsUsed, String firstname, String surname, String middleName, String previousSurname, String dateOfBirth, String countryOBirth, String nationality, String countryOfResidence, String partyGenderFromID, String profession, long monthlyIncome, String dateOfLastIncome, String SAIDNumber, String nationality2, String nationality3, String passport, String passportCountry, String taxRegistrationNumber, String primaryTaxResidence, String foreignTin, String foreignTinIssuingCountry, String reasonForTransaction, String productType, String riskClass, String businessRelationship, String sourceOfFunds, String accountNumber, int transactionAmount, String transactionDate, String inceptionDate, String authorisedBy, String terminationDate, String registeredName, String registrationNumber, String dateOfRegistration, String countryOfRegistration, String industryType, String additionalTaxResidence, String vatRegistrationNumber, String npResidentialAddress, String npPostalAddress, String npPoboxAddress, String lePostalAddress, String lePoboxAddress, String leRegisteredAddress, String leGcoheadofficeAddress, String leOperationalAddress, String parentAccount){
         Connection con = DBConnection.connection();
         PreparedStatement preparedStatement = null;
         try {
-            String sql = "INSERT INTO parties VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO parties VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(2,partyType);
             preparedStatement.setBoolean(3,partyAlert);
@@ -94,6 +139,7 @@ public class DBConnection {
             preparedStatement.setString(49,leRegisteredAddress);
             preparedStatement.setString(50,leGcoheadofficeAddress);
             preparedStatement.setString(51,leOperationalAddress);
+            preparedStatement.setString(52,parentAccount);
             preparedStatement.execute();
             logger.info("Party has been inserted successfully");
         } catch (Exception e) {
