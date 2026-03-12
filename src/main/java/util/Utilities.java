@@ -12,6 +12,59 @@ import java.util.regex.Pattern;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+
+/**
+ * Utility helper methods used across the application.
+ *
+ * <p>Provides:
+ * <ul>
+ *   <li>startup file cleanup for scraped CSVs</li>
+ *   <li>date parsing/formatting utilities</li>
+ *   <li>simple regex-based character checks</li>
+ * </ul>
+ *
+ * <p>Note: All methods are static for convenience and global access.
+ *
+ * <p>Fields:
+ * <ul>
+ *   <li>{@code public static Logger logger} - a Log4j2 logger used to record errors and informational
+ *       messages produced by the utility methods.</li>
+ * </ul>
+ *
+ * Methods:
+ *
+ * <ul>
+ *   <li>{@link #deleteFileAtInitialExecution()}
+ *     <p>Deletes two resource files (if present) to prevent duplicate data on initial execution:
+ *     {@code src/main/resources/scraped_entities.csv} and {@code src/main/resources/scraped_individuals.csv}.
+ *     Any IOException encountered during deletion is caught and logged via {@code logger}.</p>
+ *   </li>
+ *
+ *   <li>{@link #invertAndFormatDate(String)}
+ *     <p>Parses an input date string using the pattern {@code M/d/yyyy} (for example, {@code 1/2/2023})
+ *     and returns the same date formatted as {@code dd/MM/yyyy} (for example, {@code 02/01/2023}).</p>
+ *     @param dateString the date string to parse; must match pattern {@code M/d/yyyy}
+ *     @return the date formatted as {@code dd/MM/yyyy}
+ *     @throws java.time.format.DateTimeParseException if the input cannot be parsed with the expected pattern
+ *   </li>
+ *
+ *   <li>{@link #regexForSpecialChar(String)}
+ *     <p>Checks the provided string for the presence of any character in the class used by the
+ *     internal regular expression. The character class includes word characters (letters, digits,
+ *     underscore), whitespace, and a range of punctuation characters such as:</p>
+ *     <pre>
+ *     $ + ; : ! @ # % & * ( ) _ = | &lt; &gt; ? { } [ ] ~ -
+ *     </pre>
+ *     <p>Returns {@code true} if any such character is found; returns {@code false} otherwise.</p>
+ *     @param value the string to test (note: passing {@code null} will result in {@link NullPointerException})
+ *     @return {@code true} if the input contains any matched character, {@code false} otherwise
+ *   </li>
+ * </ul>
+ * 
+ * @author banele mlamleli
+ * @since 1.0
+ */
+
 public class Utilities {
 
     public static Logger logger = LogManager.getLogger(new Object() {

@@ -4,6 +4,55 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
+/**
+ * Utility class for generating South African ID numbers (SA ID).
+ *
+ * <p>The generated ID follows the structure: YYMMDD SSSS C A Z
+ * <ul>
+ *   <li>YYMMDD - date of birth formatted as two-digit year, month and day</li>
+ *   <li>SSSS   - four-digit gender sequence (0000–4999 for female, 5000–9999 for male)</li>
+ *   <li>C      - citizenship indicator (0 = citizen, 1 = non-citizen)</li>
+ *   <li>A      - fixed race digit (set to 8 in this implementation)</li>
+ *   <li>Z      - single Luhn check digit computed over the preceding 12 digits</li>
+ * </ul>
+ *
+ * <p>The class is stateless and can be used concurrently. Randomness is used to
+ * generate the gender sequence portion of the ID.
+ *
+ * @author banele mlamleli
+ * @since 1.0
+ */
+ 
+/**
+ * Generates a 13-digit South African ID number string composed of:
+ * YYMMDD + SSSS + C + A + Z.
+ *
+ * - dateOfBirth: formatted as "yyMMdd".
+ * - isMale: when true, SSSS is in the range 5000–9999; when false, 0000–4999.
+ * - isCitizen: true maps to C = 0, false maps to C = 1.
+ * - A is fixed to 8 in this implementation.
+ * - Z is the Luhn check digit computed from the preceding 12 digits.
+ *
+ * @param dateOfBirth the person's date of birth (must not be null)
+ * @param isMale true to generate a male sequence, false for female
+ * @param isCitizen true for South African citizen (C = 0), false otherwise (C = 1)
+ * @return a 13-character numeric SA ID string
+ * @throws NullPointerException if dateOfBirth is null
+ */
+ 
+/**
+ * Calculates the Luhn check digit for a given numeric partial ID string.
+ *
+ * <p>Expected input is the first 12 numeric digits of the ID (YYMMDDSSSSC A).
+ * The method applies the Luhn algorithm (doubling every second digit from the
+ * right and subtracting 9 when the doubled value exceeds 9) and returns the
+ * single check digit (0–9) needed to make the total sum a multiple of 10.
+ *
+ * @param partialId a numeric string containing the first 12 digits of the ID
+ * @return the Luhn check digit (0–9)
+ * @throws NumberFormatException if partialId contains non-digit characters
+ */
+
 public class SAIDNumberGenerator {
 
     public static String generateSAID(LocalDate dateOfBirth, boolean isMale, boolean isCitizen) {

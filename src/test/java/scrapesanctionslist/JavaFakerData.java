@@ -9,6 +9,80 @@ import com.github.javafaker.Faker;
 import util.DBConnection;
 import util.SAIDNumberGenerator;
 
+/**
+ * JavaFakerData
+ *
+ * <p>Test utility class that generates synthetic test records for two kinds of parties and inserts
+ * them into the database via util.DBConnection.insertPartyIntoDB(). The class is intended to be run
+ * as TestNG tests (each public method is annotated with {@code @Test}) and is designed to populate
+ * a test environment with large volumes of realistic-looking data produced by the Faker library.</p>
+ *
+ * <p>General behaviour:</p>
+ * <ul>
+ *   <li>Each test method loops from 0 to 10,000 (inclusive), producing 10,001 records per run.</li>
+ *   <li>Values are generated using com.github.javafaker.Faker together with java.time for date
+ *       manipulation and util.SAIDNumberGenerator for South African ID generation (individuals).</li>
+ *   <li>Dates are formatted as {@code dd/MM/yyyy}.</li>
+ *   <li>The methods call DBConnection.insertPartyIntoDB(...) for every generated record, causing
+ *       lasting side effects in the target database. Run only against non-production/test DBs.</li>
+ * </ul>
+ *
+ * <p>Thread-safety and performance:</p>
+ * <ul>
+ *   <li>The methods are not designed for concurrent invocation; they perform many blocking DB
+ *       operations and may take a long time to complete.</li>
+ *   <li>Because of the large number of inserts, consider batching, throttling or disabling these
+ *       tests when not required.</li>
+ * </ul>
+ *
+ * Methods:
+ * <ul>
+ *   <li>{@link #individualTestData()}:
+ *       <ul>
+ *         <li>Generates personal (natural person) test data including first/middle/last names,
+ *             country/nationality fields (defaulting to "ZA"), job title, income, passport and tax
+ *             values, various addresses, and relationship/transaction metadata.</li>
+ *         <li>Generates a random date of birth for individuals between 18 and 100 years old and
+ *             uses {@code SAIDNumberGenerator.generateSAID(...)} to produce a South African ID
+ *             number based on the DOB and a randomly chosen gender.</li>
+ *         <li>Derives {@code partyGenderFromID} from the generated SA ID and populates other
+ *             related fields before inserting into the DB.</li>
+ *         <li>Side effects: inserts each generated party into the database via
+ *             {@code DBConnection.insertPartyIntoDB(...)}.</li>
+ *       </ul>
+ *   </li>
+ *
+ *   <li>{@link #entityTestData()}:
+ *       <ul>
+ *         <li>Generates legal-entity (company) test data: company name, registration number,
+ *             registration date, industry type, VAT and tax identifiers, and multiple addresses.</li>
+ *         <li>Entity records do not include a SA ID or personal date of birth; many personal fields
+ *             are left empty and {@code partyType} is set to "L".</li>
+ *         <li>Side effects: inserts each generated entity into the database via
+ *             {@code DBConnection.insertPartyIntoDB(...)}.</li>
+ *       </ul>
+ *   </li>
+ * </ul>
+ *
+ * Warnings and recommendations:
+ * <ul>
+ *   <li>Because this class writes many records, run it only against test or dedicated development
+ *       databases to avoid polluting production data.</li>
+ *   <li>DBConnection.insertPartyIntoDB(...) may throw unchecked runtime exceptions for DB errors;
+ *       callers/test runners should be prepared to handle failures.</li>
+ *   <li>Values such as country, nationality and many defaults are hard-coded (commonly "ZA");
+ *       change these constants if you require different locales.</li>
+ * </ul>
+ *
+ * @author
+ *     Test data generator (uses Faker and SAIDNumberGenerator)
+ * @see util.DBConnection
+ * @see util.SAIDNumberGenerator
+ * 
+ * @author banele mlamleli
+ * @since 1.0
+ */
+
 
 public class JavaFakerData {
 
@@ -86,7 +160,7 @@ public class JavaFakerData {
 
             String partyGenderFromID = Integer.parseInt(SAIDNumber.substring(6, 10)) < 5000 ? "F": "M";
 
-			DBConnection.insertPartyIntoDB(partyType, partyAlert, partyIsUsed, firstname, surname, middleName, previousSurname, dateOfBirth, countryOBirth, nationality, countryOfResidence, partyGenderFromID, profession, monthlyIncome, dateOfLastIncome, SAIDNumber, nationality2, nationality3, passport, passportCountry, taxRegistrationNumber, primaryTaxResidence, foreignTin, foreignTinIssuingCountry, reasonForTransaction, productType, riskClass, businessRelationship, sourceOfFunds, accountNumber, transactionAmount, transactionDate, inceptionDate, authorisedBy, terminationDate, registeredName, registrationNumber, dateOfRegistration, countryOfRegistration, industryType, additionalTaxResidence, vatRegistrationNumber, npResidentialAddress, npPostalAddress, npPoboxAddress, lePostalAddress, lePoboxAddress, leRegisteredAddress, leGcoheadofficeAddress, leOperationalAddress);
+			DBConnection.insertPartyIntoDB(partyType, partyAlert, partyIsUsed, firstname, surname, middleName, previousSurname, dateOfBirth, countryOBirth, nationality, countryOfResidence, partyGenderFromID, profession, monthlyIncome, dateOfLastIncome, SAIDNumber, nationality2, nationality3, passport, passportCountry, taxRegistrationNumber, primaryTaxResidence, foreignTin, foreignTinIssuingCountry, reasonForTransaction, productType, riskClass, businessRelationship, sourceOfFunds, accountNumber, transactionAmount, transactionDate, inceptionDate, authorisedBy, terminationDate, registeredName, registrationNumber, dateOfRegistration, countryOfRegistration, industryType, additionalTaxResidence, vatRegistrationNumber, npResidentialAddress, npPostalAddress, npPoboxAddress, lePostalAddress, lePoboxAddress, leRegisteredAddress, leGcoheadofficeAddress, leOperationalAddress, "");
         }
     }
 
@@ -153,7 +227,7 @@ public class JavaFakerData {
 
             String partyGenderFromID = "";
 
-			DBConnection.insertPartyIntoDB(partyType, partyAlert, partyIsUsed, firstname, surname, middleName, previousSurname, dateOfBirth, countryOBirth, nationality, countryOfResidence, partyGenderFromID, profession, monthlyIncome, dateOfLastIncome, SAIDNumber, nationality2, nationality3, passport, passportCountry, taxRegistrationNumber, primaryTaxResidence, foreignTin, foreignTinIssuingCountry, reasonForTransaction, productType, riskClass, businessRelationship, sourceOfFunds, accountNumber, transactionAmount, transactionDate, inceptionDate, authorisedBy, terminationDate, registeredName, registrationNumber, dateOfRegistration, countryOfRegistration, industryType, additionalTaxResidence, vatRegistrationNumber, npResidentialAddress, npPostalAddress, npPoboxAddress, lePostalAddress, lePoboxAddress, leRegisteredAddress, leGcoheadofficeAddress, leOperationalAddress);
+			DBConnection.insertPartyIntoDB(partyType, partyAlert, partyIsUsed, firstname, surname, middleName, previousSurname, dateOfBirth, countryOBirth, nationality, countryOfResidence, partyGenderFromID, profession, monthlyIncome, dateOfLastIncome, SAIDNumber, nationality2, nationality3, passport, passportCountry, taxRegistrationNumber, primaryTaxResidence, foreignTin, foreignTinIssuingCountry, reasonForTransaction, productType, riskClass, businessRelationship, sourceOfFunds, accountNumber, transactionAmount, transactionDate, inceptionDate, authorisedBy, terminationDate, registeredName, registrationNumber, dateOfRegistration, countryOfRegistration, industryType, additionalTaxResidence, vatRegistrationNumber, npResidentialAddress, npPostalAddress, npPoboxAddress, lePostalAddress, lePoboxAddress, leRegisteredAddress, leGcoheadofficeAddress, leOperationalAddress, "");
         }
 	}
 
