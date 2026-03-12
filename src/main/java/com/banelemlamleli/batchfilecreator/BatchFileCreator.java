@@ -726,7 +726,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
                 case "None": 
                     // loop through the Natural person master party
                     for (int l = 0; l < cmbNp_NaturalPersonMasterParty; l++) {
-                        List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit);
+                        List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit);
                         completeBatchFileData.add(tempList);
                         String masterPartyAccountNumber = tempList.get(0).getAccount_number();
 
@@ -763,7 +763,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
                 case "All parties":
                     // loop through the Legal entity master party
                     for (int l = 0; l < cmbNp_NaturalPersonMasterParty; l++) {
-                        List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit);
+                        List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "N", productType, riskClass, businessUnit);
                         completeBatchFileData.add(tempList);
                         String masterPartyAccountNumber = tempList.get(0).getAccount_number();
 
@@ -800,7 +800,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
                 case "All Master parties":
                     // loop through the Legal entity master party
                     for (int l = 0; l < cmbNp_NaturalPersonMasterParty; l++) {
-                        List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit);
+                        List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "N", productType, riskClass, businessUnit);
                         completeBatchFileData.add(tempList);
                         String masterPartyAccountNumber = tempList.get(0).getAccount_number();
 
@@ -838,7 +838,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     if (cmbNp_LELinkedParty >= 1 && cmbNp_NPLinkedParty >= 1) {
                         // loop through the Legal entity master party
                         for (int l = 0; l < cmbNp_NaturalPersonMasterParty; l++) {
-                            List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit);
+                            List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit);
                             completeBatchFileData.add(tempList);
                             String masterPartyAccountNumber = tempList.get(0).getAccount_number();
 
@@ -879,7 +879,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     if (cmbNp_LELinkedParty != 0) {
                         // loop through the Legal entity master party
                         for (int l = 0; l < cmbNp_NaturalPersonMasterParty; l++) {
-                            List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit);
+                            List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit);
                             completeBatchFileData.add(tempList);
                             String masterPartyAccountNumber = tempList.get(0).getAccount_number();
 
@@ -920,7 +920,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     if (cmbNp_NPLinkedParty != 0) {
                         // loop through the Legal entity master party
                         for (int l = 0; l < cmbNp_NaturalPersonMasterParty; l++) {
-                            List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit);
+                            List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "N", productType, riskClass, businessUnit);
                             completeBatchFileData.add(tempList);
                             String masterPartyAccountNumber = tempList.get(0).getAccount_number();
 
@@ -958,6 +958,16 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     }
                 ;break;
             }
+        }
+
+        try {
+            Path completeDataFilePath = Paths.get("src", "main", "resources", "completeDataForBatchFile.csv");
+            if (Files.exists(completeDataFilePath)) {
+                Files.delete(completeDataFilePath);
+            }
+        } catch (java.io.IOException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error deleting existing CSV: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
 
         for (int i = 0; i < completeBatchFileData.size(); i++) {
@@ -1060,28 +1070,19 @@ public class BatchFileCreator extends javax.swing.JFrame {
                 String removeComma = removeNullValue.replace(",", "");
                 String finalStringValue = removeComma.replace("XXX ", ", ");
                 System.out.println(finalStringValue);
+
+                try {
+                    Path completeDataFilePath = Paths.get("src", "main", "resources", "completeDataForBatchFile.csv");
+                    Files.createDirectories(completeDataFilePath.getParent());
+                    String line = finalStringValue + System.lineSeparator();
+                    Files.write(completeDataFilePath, line.getBytes(java.nio.charset.StandardCharsets.UTF_8),
+                                java.nio.file.StandardOpenOption.CREATE, java.nio.file.StandardOpenOption.APPEND);
+                } catch (java.io.IOException ex) {
+                    logger.log(java.util.logging.Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, "Error writing CSV: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
-
-
-        // TODO: Fix code to create and write to a csv
-        // NOTE: There are 92 columns and I have created 50 columns
-        
-        // write combined CSV to src/main/resources/completeDataForBatchFile.csv
-        // Path completeDataFilePath = Paths.get("src", "main", "resources", "completeDataForBatchFile.csv");
-        // try {
-        //     Files.createDirectories(completeDataFilePath.getParent());
-
-        //     // if the file already exists, delete it first
-        //     if (Files.exists(completeDataFilePath)) {
-        //         Files.delete(completeDataFilePath);
-        //     }
-
-        //     JOptionPane.showMessageDialog(null, "CSV written to: " + completeDataFilePath.toString());
-        // } catch (java.io.IOException ex) {
-        //     logger.log(java.util.logging.Level.SEVERE, null, ex);
-        //     JOptionPane.showMessageDialog(null, "Error writing CSV: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        // }
 
     }//GEN-LAST:event_btnDownloadCsvFileActionPerformed
 
