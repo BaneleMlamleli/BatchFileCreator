@@ -1,4 +1,58 @@
+
 package pojo;
+
+/**
+ * Represents a Party record used by the batch file creator. 
+ * 
+ * <p>This class aggregates a large number of fields describing a party (natural person or legal
+ * entity) including personal details, identification, addresses, tax and registration data,
+ * account metadata, transaction information and various KYC/compliance attributes.
+ * The class is a mutable POJO providing a full-arguments constructor, getters and setters for
+ * every field, and a verbose {@code toString()} implementation.</p>
+ * 
+ * <p>Field groups and notes:
+ * <ul>
+ *   <li>Control flags: {@code party_alert}, {@code party_is_used}.</li>
+ *   <li>Personal details: {@code firstname}, {@code surname}, {@code middle_name},
+ *       {@code previous_surname}, {@code gender}, {@code date_of_birth}.</li>
+ *   <li>Identification: {@code id_number}, {@code passport}, {@code passport_country}.</li>
+ *   <li>Addresses: {@code np_residential_address}, {@code np_postal_address},
+ *       {@code le_operational_address}, {@code le_operational_address1/2}, {@code le_gcoheadoffice_address},
+ *       {@code registered_address}.</li>
+ *   <li>Tax/registration: {@code registration_number}, {@code vat_registration_number},
+ *       {@code tax_registration_number}, {@code foreign_tin}, {@code nationality*} fields.</li>
+ *   <li>Financial/transaction: {@code monthly_income}, {@code date_of_last_income},
+ *       {@code transaction_date}, {@code transaction_amount}, {@code authorised_by}, {@code nature_of_income}.</li>
+ *   <li>Account and product metadata: {@code account_type}, {@code account_number},
+ *       {@code product_type} (pulled from front-end), {@code business_unit} (pulled from front-end),
+ *       {@code risk_class} (pulled from front-end), {@code parent_account_number}.</li>
+ *   <li>Party classification and relationships: {@code party_type} (use 'N' or 'L'),
+ *       {@code relationship_to_client} (use 'ANNUITANT' when applicable),
+ *       {@code relationship_to_party} (use 'BO'), {@code party_status} (default 'A').</li>
+ *   <li>Compliance/KYC: {@code source_of_wealth} (use 'COMMISSION' if not available),
+ *       {@code source_of_funds}, {@code profession}, {@code business_relationship}.</li>
+ *   <li>Lifecycle: {@code inception_date}, {@code termination_date}.</li>
+ *   <li>Placeholders: many {@code emptyValueX} fields are reserved placeholders for positional
+ *       output in the batch format and may remain empty depending on upstream data.</li>
+ * </ul>
+ * </p>
+ * 
+ * <p>Usage notes:
+ * <ul>
+ *   <li>The constructor accepts all fields; callers may prefer to construct an instance and
+ *       set only the relevant fields via setters.</li>
+ *   <li>Several fields have recommended defaults or expected sources:
+ *       {@code source_of_wealth} -> "COMMISSION", {@code legal_form} -> "TRS",
+ *       {@code relationship_to_client} -> "ANNUITANT", {@code nature_of_income} -> "OTHER",
+ *       {@code relationship_to_party} -> "BO", {@code party_status} -> "A".</li>
+ *   <li>{@code product_type}, {@code business_unit} and {@code risk_class} are typically supplied
+ *       by the front-end or calling system.</li>
+ * </ul>
+ * </p>
+ *
+ * @author banele mlamleli
+ * @since 1.0
+ */
 
 public class Party {
     private boolean party_alert;
