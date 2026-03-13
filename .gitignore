@@ -6,6 +6,7 @@ scraped_individuals.csv
 logs/
 
 # VSCode
+.vscode
 .VSCode
 .VSCode/
 
