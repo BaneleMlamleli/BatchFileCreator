@@ -489,6 +489,688 @@ public class BatchFileCreator extends javax.swing.JFrame {
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "TXT File created. Open Downloads");
 
+        // Getting the business unit, product, and risk
+        String businessUnit = cmbBusinessUnit.getSelectedItem().toString().substring(0, 3);
+        String productType = cmbProductType.getSelectedItem().toString().substring(0, 3);
+        String riskClass = cmbRiskClass.getSelectedItem().toString().charAt(0)+"";
+
+        // Legal Entity
+        int cmbLe_LECombination = Integer.parseInt(cmbLE_LECombination.getSelectedItem().toString());
+        int cmbLe_LegalEntityMasterParty = Integer.parseInt(cmbLE_LegalEntityMasterParty.getSelectedItem().toString());
+        int cmbLe_LELinkedParty = Integer.parseInt(cmbLE_LELinkedParty.getSelectedItem().toString());
+        int cmbLe_NPLinkedParty = Integer.parseInt(cmbLE_NPLinkedParty.getSelectedItem().toString());
+        String cmbLe_LEWhichPartyMustAlert = cmbLE_LEWhichPartyMustAlert.getSelectedItem().toString();
+        int cmbLe_LEMasterParty = Integer.parseInt(cmbLE_LEMasterParty.getSelectedItem().toString());
+        int cmbLe_NPMasterParty = Integer.parseInt(cmbLE_NPMasterParty.getSelectedItem().toString());
+        
+        // Natural Person
+        int cmbNp_NPCombination = Integer.parseInt(cmbNP_NPCombination.getSelectedItem().toString());
+        int cmbNp_NaturalPersonMasterParty = Integer.parseInt(cmbNP_NaturalPersonMasterParty.getSelectedItem().toString());
+        int cmbNp_LELinkedParty = Integer.parseInt(cmbNP_LELinkedParty.getSelectedItem().toString());
+        int cmbNp_NPLinkedParty = Integer.parseInt(cmbNP_NPLinkedParty.getSelectedItem().toString());
+        String cmbNp_NPWhichPartyMustAlert = cmbNP_NPWhichPartyMustAlert.getSelectedItem().toString();
+        int cmbNp_LEMasterParty = Integer.parseInt(cmbNP_LEMasterParty.getSelectedItem().toString());
+        int cmbNp_NPMasterParty = Integer.parseInt(cmbNP_NPMasterParty.getSelectedItem().toString());
+
+        // ArrayList that will store the complete information that will be written into a batch file  
+        @NonNull List<List<Party>> completeBatchFileData = new ArrayList<>();
+
+        // Clear the arraylist at every execution to prevent duplicate data
+        completeBatchFileData.clear();
+        
+        /* Legal Entity side */
+        // first loop is for the combinations
+        for (int c = 0; c < cmbLe_LECombination; c++) {
+            switch(cmbLe_LEWhichPartyMustAlert){
+                case "None": 
+                    // loop through the Legal entity master party
+                    for (int l = 0; l < cmbLe_LegalEntityMasterParty; l++) {
+                        List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit);
+                        completeBatchFileData.add(tempList);
+                        String masterPartyAccountNumber = tempList.get(0).getAccount_number();
+
+                        // Loop through the legal entity linked party for the Legal Entity master party
+                        if (cmbLe_LELinkedParty != 0) {
+                            for (int e = 0; e < cmbLe_LELinkedParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "L", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                            }
+                        }
+
+                        // Loop through the natural person linked party for the Legal Entity master party
+                        if (cmbLe_NPLinkedParty != 0) {
+                            for (int e = 0; e < cmbLe_NPLinkedParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "P", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                            }
+                        }
+                        
+                    }
+
+                    // Loop through the individual Legal Entity master party
+                    if (cmbLe_LEMasterParty != 0) {
+                        for (int e = 0; e < cmbLe_LEMasterParty; e++) {
+                            completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
+                        }
+                    }
+
+                    // Loop through the individual natural person master party
+                    if (cmbLe_NPMasterParty != 0) {
+                        for (int e = 0; e < cmbLe_NPMasterParty; e++) {
+                            completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "P", productType, riskClass, businessUnit));
+                        }
+                    }
+                ;break;
+                case "All parties":
+                    // loop through the Legal entity master party
+                    for (int l = 0; l < cmbLe_LegalEntityMasterParty; l++) {
+                        List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit);
+                        completeBatchFileData.add(tempList);
+                        String masterPartyAccountNumber = tempList.get(0).getAccount_number();
+
+                        // Loop through the legal entity linked party for the Legal Entity master party
+                        if (cmbLe_LELinkedParty != 0) {
+                            for (int e = 0; e < cmbLe_LELinkedParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "L", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                            }
+                        }
+
+                        // Loop through the natural person linked party for the Legal Entity master party
+                        if (cmbLe_NPLinkedParty != 0) {
+                            for (int e = 0; e < cmbLe_NPLinkedParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "P", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                            }
+                        }
+                        
+                    }
+
+                    // Loop through the individual Legal Entity master party
+                    if (cmbLe_LEMasterParty != 0) {
+                        for (int e = 0; e < cmbLe_LEMasterParty; e++) {
+                            completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
+                        }
+                    }
+
+                    // Loop through the individual natural person master party
+                    if (cmbLe_NPMasterParty != 0) {
+                        for (int e = 0; e < cmbLe_NPMasterParty; e++) {
+                            completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "P", productType, riskClass, businessUnit));
+                        }
+                    }
+                ;break;
+                case "All Master parties":
+                    // loop through the Legal entity master party
+                    for (int l = 0; l < cmbLe_LegalEntityMasterParty; l++) {
+                        List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit);
+                        completeBatchFileData.add(tempList);
+                        String masterPartyAccountNumber = tempList.get(0).getAccount_number();
+                        
+
+                        // Loop through the legal entity linked party for the Legal Entity master party
+                        if (cmbLe_LELinkedParty != 0) {
+                            for (int e = 0; e < cmbLe_LELinkedParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "L", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                            }
+                        }
+
+                        // Loop through the natural person linked party for the Legal Entity master party
+                        if (cmbLe_NPLinkedParty != 0) {
+                            for (int e = 0; e < cmbLe_NPLinkedParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "P", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                            }
+                        }
+                        
+                    }
+
+                    // Loop through the individual Legal Entity master party
+                    if (cmbLe_LEMasterParty != 0) {
+                        for (int e = 0; e < cmbLe_LEMasterParty; e++) {
+                            completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
+                        }
+                    }
+
+                    // Loop through the individual natural person master party
+                    if (cmbLe_NPMasterParty != 0) {
+                        for (int e = 0; e < cmbLe_NPMasterParty; e++) {
+                            completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "P", productType, riskClass, businessUnit));
+                        }
+                    }
+                ;break;
+                case "Linked parties":
+                    if (cmbLe_LELinkedParty >= 1 && cmbLe_NPLinkedParty >= 1) {
+                        // loop through the Legal entity master party
+                        for (int l = 0; l < cmbLe_LegalEntityMasterParty; l++) {
+                            List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit);
+                            completeBatchFileData.add(tempList);
+                            String masterPartyAccountNumber = tempList.get(0).getAccount_number();
+
+                            // Loop through the legal entity linked party for the Legal Entity master party
+                            if (cmbLe_LELinkedParty != 0) {
+                                for (int e = 0; e < cmbLe_LELinkedParty; e++) {
+                                    completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "L", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                                }
+                            }
+
+                            // Loop through the natural person linked party for the Legal Entity master party
+                            if (cmbLe_NPLinkedParty != 0) {
+                                for (int e = 0; e < cmbLe_NPLinkedParty; e++) {
+                                    completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "P", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                                }
+                            }
+                            
+                        }
+
+                        // Loop through the individual Legal Entity master party
+                        if (cmbLe_LEMasterParty != 0) {
+                            for (int e = 0; e < cmbLe_LEMasterParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
+                            }
+                        }
+
+                        // Loop through the individual natural person master party
+                        if (cmbLe_NPMasterParty != 0) {
+                            for (int e = 0; e < cmbLe_NPMasterParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "P", productType, riskClass, businessUnit));
+                            }
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Both linked parties must have a value more than zero", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                ;break;
+                case "One LE linked party":
+                    if (cmbLe_LELinkedParty != 0) {
+                        // loop through the Legal entity master party
+                        for (int l = 0; l < cmbLe_LegalEntityMasterParty; l++) {
+                            List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit);
+                            completeBatchFileData.add(tempList);
+                            String masterPartyAccountNumber = tempList.get(0).getAccount_number();
+
+                            // Loop through the legal entity linked party for the Legal Entity master party
+                            if (cmbLe_LELinkedParty != 0) {
+                                for (int e = 0; e < cmbLe_LELinkedParty; e++) {
+                                    completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "L", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                                }
+                            }
+
+                            // Loop through the natural person linked party for the Legal Entity master party
+                            if (cmbLe_NPLinkedParty != 0) {
+                                for (int e = 0; e < cmbLe_NPLinkedParty; e++) {
+                                    completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "P", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                                }
+                            }
+                            
+                        }
+
+                        // Loop through the individual Legal Entity master party
+                        if (cmbLe_LEMasterParty != 0) {
+                            for (int e = 0; e < cmbLe_LEMasterParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
+                            }
+                        }
+
+                        // Loop through the individual natural person master party
+                        if (cmbLe_NPMasterParty != 0) {
+                            for (int e = 0; e < cmbLe_NPMasterParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "P", productType, riskClass, businessUnit));
+                            }
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Legal Entity linked party must have a value more than zero", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                ;break;
+                case "One NP linked party":
+                    if (cmbLe_NPLinkedParty != 0) {
+                        // loop through the Legal entity master party
+                        for (int l = 0; l < cmbLe_LegalEntityMasterParty; l++) {
+                            List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit);
+                            completeBatchFileData.add(tempList);
+                            String masterPartyAccountNumber = tempList.get(0).getAccount_number();
+
+                            // Loop through the legal entity linked party for the Legal Entity master party
+                            if (cmbLe_LELinkedParty != 0) {
+                                for (int e = 0; e < cmbLe_LELinkedParty; e++) {
+                                    completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "L", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                                }
+                            }
+
+                            // Loop through the natural person linked party for the Legal Entity master party
+                            if (cmbLe_NPLinkedParty != 0) {
+                                for (int e = 0; e < cmbLe_NPLinkedParty; e++) {
+                                    completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "P", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                                }
+                            }
+                            
+                        }
+
+                        // Loop through the individual Legal Entity master party
+                        if (cmbLe_LEMasterParty != 0) {
+                            for (int e = 0; e < cmbLe_LEMasterParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
+                            }
+                        }
+
+                        // Loop through the individual natural person master party
+                        if (cmbLe_NPMasterParty != 0) {
+                            for (int e = 0; e < cmbLe_NPMasterParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "P", productType, riskClass, businessUnit));
+                            }
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Natural person linked party must have a value more than zero", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                ;break;
+            }
+        }
+
+        /* Natural Person side */
+        // first loop is for the combinations
+        for (int c = 0; c < cmbNp_NPCombination; c++) {
+            switch(cmbNp_NPWhichPartyMustAlert){
+                case "None": 
+                    // loop through the Natural person master party
+                    for (int l = 0; l < cmbNp_NaturalPersonMasterParty; l++) {
+                        List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "P", productType, riskClass, businessUnit);
+                        completeBatchFileData.add(tempList);
+                        String masterPartyAccountNumber = tempList.get(0).getAccount_number();
+
+                        // Loop through the legal entity linked party for the Legal Entity master party
+                        if (cmbNp_LELinkedParty != 0) {
+                            for (int e = 0; e < cmbNp_LELinkedParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "L", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                            }
+                        }
+
+                        // Loop through the natural person linked party for the Legal Entity master party
+                        if (cmbNp_NPLinkedParty != 0) {
+                            for (int e = 0; e < cmbNp_NPLinkedParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "P", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                            }
+                        }
+                        
+                    }
+
+                    // Loop through the individual Legal Entity master party
+                    if (cmbNp_LEMasterParty != 0) {
+                        for (int e = 0; e < cmbNp_LEMasterParty; e++) {
+                            completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
+                        }
+                    }
+
+                    // Loop through the individual natural person master party
+                    if (cmbNp_NPMasterParty != 0) {
+                        for (int e = 0; e < cmbNp_NPMasterParty; e++) {
+                            completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "P", productType, riskClass, businessUnit));
+                        }
+                    }
+                ;break;
+                case "All parties":
+                    // loop through the Legal entity master party
+                    for (int l = 0; l < cmbNp_NaturalPersonMasterParty; l++) {
+                        List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "P", productType, riskClass, businessUnit);
+                        completeBatchFileData.add(tempList);
+                        String masterPartyAccountNumber = tempList.get(0).getAccount_number();
+
+                        // Loop through the legal entity linked party for the Legal Entity master party
+                        if (cmbNp_LELinkedParty != 0) {
+                            for (int e = 0; e < cmbNp_LELinkedParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "L", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                            }
+                        }
+
+                        // Loop through the natural person linked party for the Legal Entity master party
+                        if (cmbNp_NPLinkedParty != 0) {
+                            for (int e = 0; e < cmbNp_NPLinkedParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "P", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                            }
+                        }
+                        
+                    }
+
+                    // Loop through the individual Legal Entity master party
+                    if (cmbNp_LEMasterParty != 0) {
+                        for (int e = 0; e < cmbNp_LEMasterParty; e++) {
+                            completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
+                        }
+                    }
+
+                    // Loop through the individual natural person master party
+                    if (cmbNp_NPMasterParty != 0) {
+                        for (int e = 0; e < cmbNp_NPMasterParty; e++) {
+                            completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "P", productType, riskClass, businessUnit));
+                        }
+                    }
+                ;break;
+                case "All Master parties":
+                    // loop through the Legal entity master party
+                    for (int l = 0; l < cmbNp_NaturalPersonMasterParty; l++) {
+                        List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "P", productType, riskClass, businessUnit);
+                        completeBatchFileData.add(tempList);
+                        String masterPartyAccountNumber = tempList.get(0).getAccount_number();
+
+                        // Loop through the legal entity linked party for the Legal Entity master party
+                        if (cmbNp_LELinkedParty != 0) {
+                            for (int e = 0; e < cmbNp_LELinkedParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "L", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                            }
+                        }
+
+                        // Loop through the natural person linked party for the Legal Entity master party
+                        if (cmbNp_NPLinkedParty != 0) {
+                            for (int e = 0; e < cmbNp_NPLinkedParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "P", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                            }
+                        }
+                        
+                    }
+
+                    // Loop through the individual Legal Entity master party
+                    if (cmbNp_LEMasterParty != 0) {
+                        for (int e = 0; e < cmbNp_LEMasterParty; e++) {
+                            completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "L", productType, riskClass, businessUnit));
+                        }
+                    }
+
+                    // Loop through the individual natural person master party
+                    if (cmbNp_NPMasterParty != 0) {
+                        for (int e = 0; e < cmbNp_NPMasterParty; e++) {
+                            completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(true, "P", productType, riskClass, businessUnit));
+                        }
+                    }
+                ;break;
+                case "Linked parties":
+                    if (cmbNp_LELinkedParty >= 1 && cmbNp_NPLinkedParty >= 1) {
+                        // loop through the Legal entity master party
+                        for (int l = 0; l < cmbNp_NaturalPersonMasterParty; l++) {
+                            List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "P", productType, riskClass, businessUnit);
+                            completeBatchFileData.add(tempList);
+                            String masterPartyAccountNumber = tempList.get(0).getAccount_number();
+
+                            // Loop through the legal entity linked party for the Legal Entity master party
+                            if (cmbNp_LELinkedParty != 0) {
+                                for (int e = 0; e < cmbNp_LELinkedParty; e++) {
+                                    completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "L", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                                }
+                            }
+
+                            // Loop through the natural person linked party for the Legal Entity master party
+                            if (cmbNp_NPLinkedParty != 0) {
+                                for (int e = 0; e < cmbNp_NPLinkedParty; e++) {
+                                    completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "P", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                                }
+                            }
+                            
+                        }
+
+                        // Loop through the individual Legal Entity master party
+                        if (cmbNp_LEMasterParty != 0) {
+                            for (int e = 0; e < cmbNp_LEMasterParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
+                            }
+                        }
+
+                        // Loop through the individual natural person master party
+                        if (cmbNp_NPMasterParty != 0) {
+                            for (int e = 0; e < cmbNp_NPMasterParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "P", productType, riskClass, businessUnit));
+                            }
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Both linked parties must have a value more than zero", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                ;break;
+                case "One LE linked party":
+                    if (cmbNp_LELinkedParty != 0) {
+                        // loop through the Legal entity master party
+                        for (int l = 0; l < cmbNp_NaturalPersonMasterParty; l++) {
+                            List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "P", productType, riskClass, businessUnit);
+                            completeBatchFileData.add(tempList);
+                            String masterPartyAccountNumber = tempList.get(0).getAccount_number();
+
+                            // Loop through the legal entity linked party for the Legal Entity master party
+                            if (cmbNp_LELinkedParty != 0) {
+                                for (int e = 0; e < cmbNp_LELinkedParty; e++) {
+                                    completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "L", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                                }
+                            }
+
+                            // Loop through the natural person linked party for the Legal Entity master party
+                            if (cmbNp_NPLinkedParty != 0) {
+                                for (int e = 0; e < cmbNp_NPLinkedParty; e++) {
+                                    completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "P", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                                }
+                            }
+                            
+                        }
+
+                        // Loop through the individual Legal Entity master party
+                        if (cmbNp_LEMasterParty != 0) {
+                            for (int e = 0; e < cmbNp_LEMasterParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
+                            }
+                        }
+
+                        // Loop through the individual natural person master party
+                        if (cmbNp_NPMasterParty != 0) {
+                            for (int e = 0; e < cmbNp_NPMasterParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "P", productType, riskClass, businessUnit));
+                            }
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Legal Entity linked party must have a value more than zero", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                ;break;
+                case "One NP linked party":
+                    if (cmbNp_NPLinkedParty != 0) {
+                        // loop through the Legal entity master party
+                        for (int l = 0; l < cmbNp_NaturalPersonMasterParty; l++) {
+                            List<Party> tempList = DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "P", productType, riskClass, businessUnit);
+                            completeBatchFileData.add(tempList);
+                            String masterPartyAccountNumber = tempList.get(0).getAccount_number();
+
+                            // Loop through the legal entity linked party for the Legal Entity master party
+                            if (cmbNp_LELinkedParty != 0) {
+                                for (int e = 0; e < cmbNp_LELinkedParty; e++) {
+                                    completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(false, "L", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                                }
+                            }
+
+                            // Loop through the natural person linked party for the Legal Entity master party
+                            if (cmbNp_NPLinkedParty != 0) {
+                                for (int e = 0; e < cmbNp_NPLinkedParty; e++) {
+                                    completeBatchFileData.add(DBConnection.getAlertOrNoAlertLinkedPartyOnly(true, "P", productType, riskClass, businessUnit, masterPartyAccountNumber));
+                                }
+                            }
+                            
+                        }
+
+                        // Loop through the individual Legal Entity master party
+                        if (cmbNp_LEMasterParty != 0) {
+                            for (int e = 0; e < cmbNp_LEMasterParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "L", productType, riskClass, businessUnit));
+                            }
+                        }
+
+                        // Loop through the individual natural person master party
+                        if (cmbNp_NPMasterParty != 0) {
+                            for (int e = 0; e < cmbNp_NPMasterParty; e++) {
+                                completeBatchFileData.add(DBConnection.getAlertOrNoAlertMasterPartyOnly(false, "P", productType, riskClass, businessUnit));
+                            }
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Natural person linked party must have a value more than zero", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                ;break;
+            }
+        }
+
+        try {
+            Path completeDataFilePath;
+            String userHome = System.getProperty("user.home");
+            Path downloadsDir = Paths.get(userHome, "Downloads");
+
+            // Prefer standard ~/Downloads (or %USERPROFILE%\Downloads). Fallback to src/main/resources.
+            if (Files.exists(downloadsDir) && Files.isDirectory(downloadsDir)) {
+                completeDataFilePath = downloadsDir.resolve("completeDataForBatchFile.txt");
+            } else {
+                String userProfile = System.getenv("USERPROFILE");
+                if (userProfile != null) {
+                    Path winDownloads = Paths.get(userProfile, "Downloads");
+                    if (Files.exists(winDownloads) && Files.isDirectory(winDownloads)) {
+                        completeDataFilePath = winDownloads.resolve("completeDataForBatchFile.txt");
+                    } else {
+                        completeDataFilePath = Paths.get("src", "main", "resources", "completeDataForBatchFile.txt");
+                    }
+                } else {
+                    completeDataFilePath = Paths.get("src", "main", "resources", "completeDataForBatchFile.txt");
+                }
+            }
+
+            // Delete the file in the chosen Downloads (or fallback) location if it exists.
+            // Also, if we fell back to using Downloads but the project resource file exists, delete it too.
+            if (Files.exists(completeDataFilePath)) {
+                Files.delete(completeDataFilePath);
+            } else {
+                Path resourcePath = Paths.get("src", "main", "resources", "completeDataForBatchFile.txt");
+                if (!completeDataFilePath.equals(resourcePath) && Files.exists(resourcePath)) {
+                    Files.delete(resourcePath);
+                }
+            }
+        } catch (java.io.IOException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error deleting existing txt: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        for (int i = 0; i < completeBatchFileData.size(); i++) {
+            for (int j = 0; j < completeBatchFileData.get(i).size(); j++) {
+                // System.out.println("Index: " + i + ", Party account number: " + completeBatchFileData.get(i).get(j).getAccount_number());
+                String withNullAndCommas = completeBatchFileData.get(i).get(j).getFirstname() + "XXX" +
+                completeBatchFileData.get(i).get(j).getSurname() + "XXX" +
+                completeBatchFileData.get(i).get(j).getMiddle_name() + "XXX" +
+                completeBatchFileData.get(i).get(j).getPrevious_surname() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue1() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue2() + "XXX" +
+                completeBatchFileData.get(i).get(j).getId_number() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue3() + "XXX" +
+                completeBatchFileData.get(i).get(j).getGender() + "XXX" +
+                completeBatchFileData.get(i).get(j).getPassport() + "XXX" +
+                completeBatchFileData.get(i).get(j).getPassport_country() + "XXX" +
+                completeBatchFileData.get(i).get(j).getDate_of_birth() + "XXX" +
+                completeBatchFileData.get(i).get(j).getNp_residential_address() + "XXX" +
+                completeBatchFileData.get(i).get(j).getCountry_of_residence() + "XXX" +
+                completeBatchFileData.get(i).get(j).getNationality() + "XXX" +
+                completeBatchFileData.get(i).get(j).getCountry_of_birth() + "XXX" +
+                completeBatchFileData.get(i).get(j).getMonthly_income() + "XXX" +
+                completeBatchFileData.get(i).get(j).getDate_of_last_income() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue4() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue5() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue6() + "XXX" +
+                completeBatchFileData.get(i).get(j).getNp_postal_address() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue7() + "XXX" +
+                completeBatchFileData.get(i).get(j).getRegistered_name() + "XXX" +
+                completeBatchFileData.get(i).get(j).getLe_operational_address() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue8() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue9() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue10() + "XXX" +
+                completeBatchFileData.get(i).get(j).getSource_of_wealth   () + "XXX" +
+                completeBatchFileData.get(i).get(j).getSource_of_funds() + "XXX" +
+                completeBatchFileData.get(i).get(j).getProfession() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue11() + "XXX" +
+                completeBatchFileData.get(i).get(j).getRegistered_name1() + "XXX" +
+                completeBatchFileData.get(i).get(j).getRegistration_number() + "XXX" +
+                completeBatchFileData.get(i).get(j).getLegal_form () + "XXX" +
+                completeBatchFileData.get(i).get(j).getRegistered_address() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue12() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue13() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue14() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue15() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue16() + "XXX" +
+                completeBatchFileData.get(i).get(j).getNationality3() + "XXX" +
+                completeBatchFileData.get(i).get(j).getVat_registration_number() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue17() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue18() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue19() + "XXX" +
+                completeBatchFileData.get(i).get(j).getRelationship_to_client() + "XXX" +
+                completeBatchFileData.get(i).get(j).getReason_for_transaction() + "XXX" +
+                completeBatchFileData.get(i).get(j).getTransaction_date() + "XXX" +
+                completeBatchFileData.get(i).get(j).getTransaction_amount() + "XXX" +
+                completeBatchFileData.get(i).get(j).getAuthorised_by() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue20() + "XXX" +
+                completeBatchFileData.get(i).get(j).getTax_registration_number() + "XXX" +
+                completeBatchFileData.get(i).get(j).getForeign_tin() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue_20() + "XXX" +
+                completeBatchFileData.get(i).get(j).getNationality2() + "XXX" +
+                completeBatchFileData.get(i).get(j).getLe_operational_address1() + "XXX" +
+                completeBatchFileData.get(i).get(j).getLe_operational_address2() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue21() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue22() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue23() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue24() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue25() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue26() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue27() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue28() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue29() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue30() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue31() + "XXX" +
+                completeBatchFileData.get(i).get(j).getNature_of_income() + "XXX" +
+                completeBatchFileData.get(i).get(j).getBusiness_relationship() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue32() + "XXX" +
+                completeBatchFileData.get(i).get(j).getPrimary_tax_residence() + "XXX" +
+                completeBatchFileData.get(i).get(j).getAdditional_tax_residence() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue33() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue34() + "XXX" +
+                completeBatchFileData.get(i).get(j).getLe_gcoheadoffice_address() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue35() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue36() + "XXX" +
+                completeBatchFileData.get(i).get(j).getIndustry_type() + "XXX" +
+                completeBatchFileData.get(i).get(j).getEmptyValue37() + "XXX" +
+                completeBatchFileData.get(i).get(j).getAccount_type() + "XXX" +
+                completeBatchFileData.get(i).get(j).getAccount_number() + "XXX" +
+                completeBatchFileData.get(i).get(j).getProduct_type() + "XXX" +
+                completeBatchFileData.get(i).get(j).getBusiness_unit() + "XXX" +
+                completeBatchFileData.get(i).get(j).getRisk_class() + "XXX" +
+                completeBatchFileData.get(i).get(j).getParty_type() + "XXX" +
+                completeBatchFileData.get(i).get(j).getParent_account_number() + "XXX" +
+                completeBatchFileData.get(i).get(j).getRelationship_to_party() + "XXX" +
+                completeBatchFileData.get(i).get(j).getParty_status() + "XXX" +
+                completeBatchFileData.get(i).get(j).getInception_date() + "XXX" +
+                completeBatchFileData.get(i).get(j).getTermination_date();
+
+                String removeNullValue = withNullAndCommas.replace("null", "");
+                String removeComma = removeNullValue.replace(",", "");
+                String finalStringValue = removeComma.replace("XXX", "~");
+                System.out.println(finalStringValue);
+
+                try {
+                    Path completeDataFilePath;
+                    String userHome = System.getProperty("user.home");
+                    Path downloadsDir = Paths.get(userHome, "Downloads");
+
+                    // Prefer standard ~/Downloads (or %USERPROFILE%\Downloads). Fallback to user home.
+                    if (Files.exists(downloadsDir) && Files.isDirectory(downloadsDir)) {
+                        completeDataFilePath = downloadsDir.resolve("completeDataForBatchFile.txt");
+                    } else {
+                        String userProfile = System.getenv("USERPROFILE");
+                        if (userProfile != null) {
+                            Path winDownloads = Paths.get(userProfile, "Downloads");
+                            if (Files.exists(winDownloads) && Files.isDirectory(winDownloads)) {
+                                completeDataFilePath = winDownloads.resolve("completeDataForBatchFile.txt");
+                            } else {
+                                completeDataFilePath = Paths.get(userHome, "completeDataForBatchFile.txt");
+                            }
+                        } else {
+                            completeDataFilePath = Paths.get(userHome, "completeDataForBatchFile.txt");
+                        }
+                    }
+                    Files.createDirectories(completeDataFilePath.getParent());
+                    String line = finalStringValue + System.lineSeparator();
+                    Files.write(completeDataFilePath, line.getBytes(java.nio.charset.StandardCharsets.UTF_8),
+                                java.nio.file.StandardOpenOption.CREATE, java.nio.file.StandardOpenOption.APPEND);
+                } catch (java.io.IOException ex) {
+                    logger.log(java.util.logging.Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, "Error writing txt: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+
     }//GEN-LAST:event_btnDownloadTxtFileActionPerformed
 
     private void cmbProductTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProductTypeActionPerformed
