@@ -117,7 +117,7 @@ public class JavaFakerData {
 	        String reasonForTransaction = "ADDITIONAL PREMIUM"; // Default value will be used when generating the batch file
 	        String productType = "ALT"; // not using this column as values are in the dropdown
 	        String riskClass = "H"; // not using this column as values are in the dropdown
-	        String businessRelationship = "BO"; // Default value will be used when generating the batch file
+	        String businessRelationship = "Policy Owner"; // Default value will be used when generating the batch file
 	        String sourceOfFunds = "ALLOWANCE";
 	        String accountNumber = faker.number().digits(10);
 	        int transactionAmount = Integer.parseInt(faker.number().digits(3));
@@ -128,10 +128,10 @@ public class JavaFakerData {
 	        // --LE details
 	        String registeredName = "";
 	        String registrationNumber = "";
-	        String partyType = "N";
+	        String partyType = "P";
 	        String dateOfRegistration = "";
 	        String countryOfRegistration = "";
-	        String industryType = "";
+	        String industryType = "ACCOUNTING SERVICES";
 	        String vatRegistrationNumber = "";
 	        // --NP address information
 	        String npResidentialAddress = faker.address().fullAddress();
@@ -195,7 +195,7 @@ public class JavaFakerData {
 	        String reasonForTransaction = "AD HOC PAYMENT CLAIM"; // Default value will be used when generating the batch file
 	        String productType = "ALT"; // not using this column as values are in the dropdown
 	        String riskClass = "H"; // not using this column as values are in the dropdown
-	        String businessRelationship = "BO"; // Default value will be used when generating the batch file
+	        String businessRelationship = "Policy Owner"; // Default value will be used when generating the batch file
 	        String sourceOfFunds = "BUSINESS OPERATING INCOME";
 	        String accountNumber = faker.number().digits(10);
 	        int transactionAmount = Integer.parseInt(faker.number().digits(3));

@@ -386,7 +386,7 @@ public class SanctionsListData {
         String reasonForTransaction = "AD HOC PAYMENT CLAIM"; // Default value will be used when generating the batch file
         String productType = "ALT"; // not using this column as values are in the dropdown
         String riskClass = "H"; // not using this column as values are in the dropdown
-        String businessRelationship = "BO"; // Default value will be used when generating the batch file
+        String businessRelationship = "Policy Owner"; // Default value will be used when generating the batch file
         String sourceOfFunds = "BUSINESS OPERATING INCOME";
         String accountNumber = faker.number().digits(10);
         int transactionAmount = Integer.parseInt(faker.number().digits(3));
@@ -483,7 +483,7 @@ public class SanctionsListData {
         String np_reasonForTransaction = "ADDITIONAL PREMIUM"; // Default value will be used when generating the batch file
         String np_productType = "ALT"; // not using this column as values are in the dropdown
         String np_riskClass = "H"; // not using this column as values are in the dropdown
-        String np_businessRelationship = "BO"; // Default value will be used when generating the batch file
+        String np_businessRelationship = "Policy Owner"; // Default value will be used when generating the batch file
         String np_sourceOfFunds = "ALLOWANCE";
         String np_accountNumber = faker.number().digits(10);
         int np_transactionAmount = Integer.parseInt(faker.number().digits(3));
@@ -494,10 +494,10 @@ public class SanctionsListData {
         // --LE details
         String np_registeredName = "";
         String np_registrationNumber = "";
-        String np_partyType = "N";
+        String np_partyType = "P";
         String np_dateOfRegistration = "";
         String np_countryOfRegistration = "";
-        String np_industryType = "";
+        String np_industryType = "ACCOUNTING SERVICES";
         String np_vatRegistrationNumber = "";
         // --NP address information
         String np_npResidentialAddress = entAddress +" "+ entCity +" "+ entStateOrProvince +" "+ entAddressCountry +" "+ entPostalCode;
