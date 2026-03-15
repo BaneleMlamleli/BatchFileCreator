@@ -1026,9 +1026,36 @@ public class BatchFileCreator extends javax.swing.JFrame {
         }
 
         try {
-            Path completeDataFilePath = Paths.get("src", "main", "resources", "completeDataForBatchFile.csv");
+            Path completeDataFilePath;
+            String userHome = System.getProperty("user.home");
+            Path downloadsDir = Paths.get(userHome, "Downloads");
+
+            // Prefer standard ~/Downloads (or %USERPROFILE%\Downloads). Fallback to src/main/resources.
+            if (Files.exists(downloadsDir) && Files.isDirectory(downloadsDir)) {
+                completeDataFilePath = downloadsDir.resolve("completeDataForBatchFile.csv");
+            } else {
+                String userProfile = System.getenv("USERPROFILE");
+                if (userProfile != null) {
+                    Path winDownloads = Paths.get(userProfile, "Downloads");
+                    if (Files.exists(winDownloads) && Files.isDirectory(winDownloads)) {
+                        completeDataFilePath = winDownloads.resolve("completeDataForBatchFile.csv");
+                    } else {
+                        completeDataFilePath = Paths.get("src", "main", "resources", "completeDataForBatchFile.csv");
+                    }
+                } else {
+                    completeDataFilePath = Paths.get("src", "main", "resources", "completeDataForBatchFile.csv");
+                }
+            }
+
+            // Delete the file in the chosen Downloads (or fallback) location if it exists.
+            // Also, if we fell back to using Downloads but the project resource file exists, delete it too.
             if (Files.exists(completeDataFilePath)) {
                 Files.delete(completeDataFilePath);
+            } else {
+                Path resourcePath = Paths.get("src", "main", "resources", "completeDataForBatchFile.csv");
+                if (!completeDataFilePath.equals(resourcePath) && Files.exists(resourcePath)) {
+                    Files.delete(resourcePath);
+                }
             }
         } catch (java.io.IOException ex) {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
@@ -1137,7 +1164,26 @@ public class BatchFileCreator extends javax.swing.JFrame {
                 System.out.println(finalStringValue);
 
                 try {
-                    Path completeDataFilePath = Paths.get("src", "main", "resources", "completeDataForBatchFile.csv");
+                    Path completeDataFilePath;
+                    String userHome = System.getProperty("user.home");
+                    Path downloadsDir = Paths.get(userHome, "Downloads");
+
+                    // Prefer standard ~/Downloads (or %USERPROFILE%\Downloads). Fallback to user home.
+                    if (Files.exists(downloadsDir) && Files.isDirectory(downloadsDir)) {
+                        completeDataFilePath = downloadsDir.resolve("completeDataForBatchFile.csv");
+                    } else {
+                        String userProfile = System.getenv("USERPROFILE");
+                        if (userProfile != null) {
+                            Path winDownloads = Paths.get(userProfile, "Downloads");
+                            if (Files.exists(winDownloads) && Files.isDirectory(winDownloads)) {
+                                completeDataFilePath = winDownloads.resolve("completeDataForBatchFile.csv");
+                            } else {
+                                completeDataFilePath = Paths.get(userHome, "completeDataForBatchFile.csv");
+                            }
+                        } else {
+                            completeDataFilePath = Paths.get(userHome, "completeDataForBatchFile.csv");
+                        }
+                    }
                     Files.createDirectories(completeDataFilePath.getParent());
                     String line = finalStringValue + System.lineSeparator();
                     Files.write(completeDataFilePath, line.getBytes(java.nio.charset.StandardCharsets.UTF_8),
