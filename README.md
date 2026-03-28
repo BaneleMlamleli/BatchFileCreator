@@ -2,7 +2,7 @@
 
 This is a small Java application that creates and generates a correctly formatted batch file with test data. I created this because I'm simply lazy to manually create these batch files.
 
-![Batch File Creator image](./src/main/java/icons/BatchFileCreator.png)
+![Batch File Creator image](./src/main/resources/icons/BatchFileCreator.png)
 
 ## Project design
 
@@ -14,14 +14,14 @@ This project is split into three main parts.
 
 ## Tech-stack for the project
 
-- ![Apache NetBeans IDE](./src/main/java/icons/netbeans.png) NetBeans IDE 28
-- ![Java 25](./src/main/java/icons/java.png) Java 25
-- ![SQLite](./src/main/java/icons/sqlite.png) SQLite3
-- ![Maven](./src/main/java/icons/Maven.png) Maven
-- ![Selenium 4](./src/main/java/icons/selenium.png) Selenium 4
-- ![Git-flow](./src/main/java/icons/git.png) Git
-- ![Log4J](./src/main/java/icons/log4j.png) Log4J
-- ![VSCode](./src/main/java/icons/vscode.png) VSCode
+- ![Apache NetBeans IDE](./src/main/resources/icons/netbeans.png) NetBeans IDE 28
+- ![Java 25](./src/main/resources/icons/java.png) Java 25
+- ![SQLite](./src/main/resources/icons/sqlite.png) SQLite3
+- ![Maven](./src/main/resources/icons/Maven.png) Maven
+- ![Selenium 4](./src/main/resources/icons/selenium.png) Selenium 4
+- ![Git-flow](./src/main/resources/icons/git.png) Git
+- ![Log4J](./src/main/resources/icons/log4j.png) Log4J
+- ![VSCode](./src/main/resources/icons/vscode.png) VSCode
 
 ## Execution
 
