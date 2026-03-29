@@ -1,5 +1,7 @@
 package util;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -72,10 +74,11 @@ public class DBConnection {
     }.getClass().getName());
     
     public static Connection connection(){
+        Path targetDir = Paths.get(System.getProperty("user.home"), "BatchFileCreator", "data"); // Target directory (cross-platform safe)
         Connection connect = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            connect = DriverManager.getConnection("jdbc:sqlite:src/main/java/database/parties.db");
+            connect = DriverManager.getConnection("jdbc:sqlite: //" + targetDir.toString()+"/parties.db"); // targeting the external directory that contains the copied database
         } catch (ClassNotFoundException | SQLException e) {
             logger.error("'" + e.getMessage() + "' in method '" + new Object() {
             }.getClass().getEnclosingMethod().getName() + "'");
