@@ -70,6 +70,27 @@ public class Utilities {
     public static Logger logger = LogManager.getLogger(new Object() {
     }.getClass().getName());
 
+    public static void copyDatabaseToExternalDirectory(){
+
+        Path sourceFile = Paths.get("src/main/java/database/", "parties.db"); // relative path example
+        Path targetDir = Paths.get(System.getProperty("user.home"), "BatchFileCreator", "data"); // Target directory (cross-platform safe)
+        Path targetFile = targetDir.resolve("parties.db"); // Target file
+
+        try {
+            // 1. Create directory if it doesn't exist
+            Files.createDirectories(targetDir);
+
+            // 2. Copy file if it doesn't exist
+            if (Files.notExists(targetFile)) {
+                Files.copy(sourceFile, targetFile);
+            }
+
+        } catch (IOException e) {
+            logger.info("'" + e.getMessage() + "' in method '" + new Object() {
+            }.getClass().getEnclosingMethod().getName() + "'");
+        }
+	}
+
     public static void deleteFileAtInitialExecution(){
         // Always delete file at initial execution to prevent duplication
         try {
