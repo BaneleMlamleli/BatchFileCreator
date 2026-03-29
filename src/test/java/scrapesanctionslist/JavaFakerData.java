@@ -1,6 +1,11 @@
 package scrapesanctionslist;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -87,26 +92,12 @@ import util.SAIDNumberGenerator;
 
 public class JavaFakerData {
 
-	@Test
-	public void testPath(){
-		String userHome = System.getProperty("user.home");
-		System.out.println("User HOME: " + userHome);
-		String dbPath = userHome + File.separator + "Documents" + File.separator + "Programming" + File.separator + "JavaFakerData" + File.separator + "BatchFileCreator" + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "database" + File.separator + "parties.db";
-		System.out.println("DB Path: " + dbPath);
-
-		// Create directory if it doesn't exist
-		// File dbDir = new File(userHome + File.separator + "MyApp");
-		// if (!dbDir.exists()) {
-		// 	dbDir.mkdirs();
-		// }
-	}
-
     @Test
     public void individualTestData(){
 
         Faker faker = new Faker();
 
-        for (int i = 0; i <= 10000; i++) {
+        for (int i = 0; i <= 40000; i++) {
             boolean partyAlert = false;
 			boolean partyIsUsed = false;
             String firstname = faker.name().firstName();
@@ -184,7 +175,7 @@ public class JavaFakerData {
 
         Faker faker = new Faker();
 
-        for (int i = 0; i <= 10000; i++) {
+        for (int i = 0; i <= 40000; i++) {
             boolean partyAlert = false;
 			boolean partyIsUsed = false;
             String firstname = "";
