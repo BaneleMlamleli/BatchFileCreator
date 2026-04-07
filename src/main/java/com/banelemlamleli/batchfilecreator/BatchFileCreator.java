@@ -121,9 +121,9 @@ public class BatchFileCreator extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         cmbNP_NPWhichPartyMustAlert = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        cmbNP_NPLinkedParty = new javax.swing.JComboBox<>();
-        cmbNP_NaturalPersonMasterParty = new javax.swing.JComboBox<>();
         cmbNP_LELinkedParty = new javax.swing.JComboBox<>();
+        cmbNP_NaturalPersonMasterParty = new javax.swing.JComboBox<>();
+        cmbNP_NPLinkedParty = new javax.swing.JComboBox<>();
         jLabel20 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         cmbNP_NPMasterParty = new javax.swing.JComboBox<>();
@@ -201,17 +201,17 @@ public class BatchFileCreator extends javax.swing.JFrame {
         jLabel12.setText("Which party must alert:");
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 163, -1, -1));
 
-        cmbNP_NPLinkedParty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
-        cmbNP_NPLinkedParty.setEnabled(false);
-        jPanel2.add(cmbNP_NPLinkedParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 95, 201, -1));
+        cmbNP_LELinkedParty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
+        cmbNP_LELinkedParty.setEnabled(false);
+        jPanel2.add(cmbNP_LELinkedParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 95, 201, -1));
 
         cmbNP_NaturalPersonMasterParty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
         cmbNP_NaturalPersonMasterParty.addActionListener(this::cmbNP_NaturalPersonMasterPartyActionPerformed);
         jPanel2.add(cmbNP_NaturalPersonMasterParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 64, 201, -1));
 
-        cmbNP_LELinkedParty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
-        cmbNP_LELinkedParty.setEnabled(false);
-        jPanel2.add(cmbNP_LELinkedParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 126, 201, -1));
+        cmbNP_NPLinkedParty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
+        cmbNP_NPLinkedParty.setEnabled(false);
+        jPanel2.add(cmbNP_NPLinkedParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 126, 201, -1));
 
         jLabel20.setFont(new java.awt.Font("Noto Sans", 1, 11)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 117, 201));
@@ -2545,13 +2545,13 @@ public class BatchFileCreator extends javax.swing.JFrame {
     private void cmbNP_NaturalPersonMasterPartyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNP_NaturalPersonMasterPartyActionPerformed
         // TODO add your handling code here:
         if(Integer.parseInt(cmbNP_NaturalPersonMasterParty.getSelectedItem().toString()) > 0){
-            cmbNP_NPLinkedParty.setEnabled(true);
             cmbNP_LELinkedParty.setEnabled(true);
+            cmbNP_NPLinkedParty.setEnabled(true);
         } else {
-            cmbNP_NPLinkedParty.setSelectedIndex(0);
             cmbNP_LELinkedParty.setSelectedIndex(0);
-            cmbNP_NPLinkedParty.setEnabled(false);
+            cmbNP_NPLinkedParty.setSelectedIndex(0);
             cmbNP_LELinkedParty.setEnabled(false);
+            cmbNP_NPLinkedParty.setEnabled(false);
         }
     }//GEN-LAST:event_cmbNP_NaturalPersonMasterPartyActionPerformed
 
