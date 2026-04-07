@@ -78,7 +78,7 @@ public class DBConnection {
         Connection connect = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            connect = DriverManager.getConnection("jdbc:sqlite: //" + targetDir.toString()+"/parties.db"); // targeting the external directory that contains the copied database
+            connect = DriverManager.getConnection("jdbc:sqlite:" + targetDir.toString()+"/parties.db"); // targeting the external directory that contains the copied database
         } catch (ClassNotFoundException | SQLException e) {
             logger.error("'" + e.getMessage() + "' in method '" + new Object() {
             }.getClass().getEnclosingMethod().getName() + "'");
