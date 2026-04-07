@@ -377,6 +377,11 @@ public class BatchFileCreator extends javax.swing.JFrame {
         btnDownloadExcelFile.addActionListener(this::btnDownloadExcelFileActionPerformed);
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/batch_file.png"))); // NOI18N
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel16MouseClicked(evt);
+            }
+        });
 
         jLabel17.setFont(new java.awt.Font("Noto Sans", 1, 24)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 117, 201));
@@ -2554,6 +2559,11 @@ public class BatchFileCreator extends javax.swing.JFrame {
             cmbNP_NPLinkedParty.setEnabled(false);
         }
     }//GEN-LAST:event_cmbNP_NaturalPersonMasterPartyActionPerformed
+
+    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Here's your hidden Easter egg you flippen awesome legend! ()");
+    }//GEN-LAST:event_jLabel16MouseClicked
 
     private void txtNPLinkedPartyActionPerformed(java.awt.event.ActionEvent evt) {
     }
