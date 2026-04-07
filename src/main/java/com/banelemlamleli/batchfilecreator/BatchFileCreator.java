@@ -172,62 +172,64 @@ public class BatchFileCreator extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Noto Sans", 2, 10)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 117, 201));
         jLabel2.setText("Legal Entity Linked Party:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 101, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 90, 120, -1));
 
         jLabel3.setFont(new java.awt.Font("Noto Sans", 2, 10)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 117, 201));
         jLabel3.setText("Natural Person Linked Party:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 132, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 120, 140, -1));
 
         jLabel5.setFont(new java.awt.Font("Noto Sans", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 117, 201));
         jLabel5.setText("Natural Person Master Party:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 69, -1, -1));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 380, 10));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 390, 10));
 
         cmbNP_NPCombination.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
-        jPanel2.add(cmbNP_NPCombination, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 33, 201, -1));
+        cmbNP_NPCombination.addActionListener(this::cmbNP_NPCombinationActionPerformed);
+        jPanel2.add(cmbNP_NPCombination, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 210, -1));
 
         jLabel15.setFont(new java.awt.Font("Noto Sans", 1, 11)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 117, 201));
         jLabel15.setText("Combinations:");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 38, -1, -1));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
         cmbNP_NPWhichPartyMustAlert.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "All parties", "Master party", "Linked parties", "One LE linked party", "One NP linked party" }));
-        jPanel2.add(cmbNP_NPWhichPartyMustAlert, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 158, 201, -1));
+        jPanel2.add(cmbNP_NPWhichPartyMustAlert, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 210, -1));
 
         jLabel12.setFont(new java.awt.Font("Noto Sans", 1, 11)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 117, 201));
         jLabel12.setText("Which party must alert:");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 163, -1, -1));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 150, 140, -1));
 
         cmbNP_LELinkedParty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
         cmbNP_LELinkedParty.setEnabled(false);
-        jPanel2.add(cmbNP_LELinkedParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 95, 201, -1));
+        jPanel2.add(cmbNP_LELinkedParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 210, -1));
 
         cmbNP_NaturalPersonMasterParty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
         cmbNP_NaturalPersonMasterParty.addActionListener(this::cmbNP_NaturalPersonMasterPartyActionPerformed);
-        jPanel2.add(cmbNP_NaturalPersonMasterParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 64, 201, -1));
+        jPanel2.add(cmbNP_NaturalPersonMasterParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 210, -1));
 
         cmbNP_NPLinkedParty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
         cmbNP_NPLinkedParty.setEnabled(false);
-        jPanel2.add(cmbNP_NPLinkedParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 126, 201, -1));
+        jPanel2.add(cmbNP_NPLinkedParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 210, -1));
 
         jLabel20.setFont(new java.awt.Font("Noto Sans", 1, 11)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 117, 201));
         jLabel20.setText("Legal Entity Master Party");
-        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 200, -1, -1));
+        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
         jLabel22.setFont(new java.awt.Font("Noto Sans", 1, 11)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 117, 201));
         jLabel22.setText("Natural Person Master Party");
-        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 233, -1, -1));
+        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
         cmbNP_NPMasterParty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
-        jPanel2.add(cmbNP_NPMasterParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 228, 210, -1));
+        cmbNP_NPMasterParty.addActionListener(this::cmbNP_NPMasterPartyActionPerformed);
+        jPanel2.add(cmbNP_NPMasterParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 220, -1));
 
         cmbNP_LEMasterParty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
-        jPanel2.add(cmbNP_LEMasterParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 195, 210, -1));
+        jPanel2.add(cmbNP_LEMasterParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 220, -1));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "LEGAL ENTITY", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 13), new java.awt.Color(0, 117, 201))); // NOI18N
 
@@ -286,43 +288,44 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel8)
-                                        .addComponent(jLabel10)
-                                        .addComponent(jLabel7))
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(cmbLE_LEWhichPartyMustAlert, javax.swing.GroupLayout.Alignment.LEADING, 0, 203, Short.MAX_VALUE)
-                                    .addComponent(cmbLE_LegalEntityMasterParty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbLE_LELinkedParty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbLE_NPLinkedParty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbLE_LECombination, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel14)
                                     .addComponent(jLabel9))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbLE_LEMasterParty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbLE_NPMasterParty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(cmbLE_LEMasterParty, 0, 226, Short.MAX_VALUE)
+                                    .addComponent(cmbLE_NPMasterParty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel10)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(31, 31, 31)
+                                        .addComponent(jLabel11))
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbLE_LegalEntityMasterParty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmbLE_LELinkedParty, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmbLE_NPLinkedParty, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmbLE_LECombination, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmbLE_LEWhichPartyMustAlert, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbLE_LECombination, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(cmbLE_LegalEntityMasterParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbLE_LegalEntityMasterParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(12, 12, 12)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(cmbLE_LELinkedParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -336,17 +339,15 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbLE_NPMasterParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(cmbLE_LEMasterParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(2, 2, 2)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(cmbLE_LEMasterParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbLE_NPMasterParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnDownloadTxtFile.setBackground(new java.awt.Color(153, 204, 255));
@@ -488,7 +489,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     .addComponent(btnDownloadTxtFile, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDownloadCsvFile, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDownloadExcelFile, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("Batch File Creator (BFC)");
@@ -2564,6 +2565,14 @@ public class BatchFileCreator extends javax.swing.JFrame {
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Here's your hidden Easter egg you flippen awesome legend! ()");
     }//GEN-LAST:event_jLabel16MouseClicked
+
+    private void cmbNP_NPMasterPartyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNP_NPMasterPartyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbNP_NPMasterPartyActionPerformed
+
+    private void cmbNP_NPCombinationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNP_NPCombinationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbNP_NPCombinationActionPerformed
 
     private void txtNPLinkedPartyActionPerformed(java.awt.event.ActionEvent evt) {
     }
