@@ -18,6 +18,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import pojo.Party;
 import util.DBConnection;
+import util.Utilities;
 
 /**
  * BatchFileCreator
@@ -491,8 +492,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDownloadTxtFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadTxtFileActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "TXT File created. Open Downloads");
 
         // Getting the business unit, product, and risk
         String businessUnit = cmbBusinessUnit.getSelectedItem().toString().substring(0, 3);
@@ -1197,8 +1196,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel18MouseClicked
 
     private void btnDownloadCsvFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadCsvFileActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "CSV File created. Open Downloads");
 
         // Getting the business unit, product, and risk
         String businessUnit = cmbBusinessUnit.getSelectedItem().toString().substring(0, 3);
@@ -1886,7 +1883,6 @@ public class BatchFileCreator extends javax.swing.JFrame {
 
     private void btnDownloadExcelFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadExcelFileActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Excel File created. Open Downloads");
 
         // Getting the business unit, product, and risk
         String businessUnit = cmbBusinessUnit.getSelectedItem().toString().substring(0, 3);
@@ -2639,6 +2635,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        Utilities.copyDatabaseToExternalDirectory();
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
