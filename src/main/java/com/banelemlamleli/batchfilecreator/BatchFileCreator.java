@@ -167,69 +167,143 @@ public class BatchFileCreator extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "NATURAL PERSON", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 13), new java.awt.Color(0, 117, 201))); // NOI18N
         jPanel2.setPreferredSize(new java.awt.Dimension(417, 348));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Noto Sans", 2, 10)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 117, 201));
         jLabel2.setText("Legal Entity Linked Party:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 90, 120, -1));
 
         jLabel3.setFont(new java.awt.Font("Noto Sans", 2, 10)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 117, 201));
         jLabel3.setText("Natural Person Linked Party:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 120, 140, -1));
 
         jLabel5.setFont(new java.awt.Font("Noto Sans", 1, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 117, 201));
         jLabel5.setText("Natural Person Master Party:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 390, 10));
 
         cmbNP_NPCombination.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
         cmbNP_NPCombination.addActionListener(this::cmbNP_NPCombinationActionPerformed);
-        jPanel2.add(cmbNP_NPCombination, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 210, -1));
 
         jLabel15.setFont(new java.awt.Font("Noto Sans", 1, 11)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 117, 201));
         jLabel15.setText("Combinations:");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
         cmbNP_NPWhichPartyMustAlert.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "All parties", "Master party", "Linked parties", "One LE linked party", "One NP linked party" }));
-        jPanel2.add(cmbNP_NPWhichPartyMustAlert, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 210, -1));
 
         jLabel12.setFont(new java.awt.Font("Noto Sans", 1, 11)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 117, 201));
         jLabel12.setText("Which party must alert:");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 150, 140, -1));
 
         cmbNP_LELinkedParty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
         cmbNP_LELinkedParty.setEnabled(false);
-        jPanel2.add(cmbNP_LELinkedParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 210, -1));
 
         cmbNP_NaturalPersonMasterParty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
         cmbNP_NaturalPersonMasterParty.addActionListener(this::cmbNP_NaturalPersonMasterPartyActionPerformed);
-        jPanel2.add(cmbNP_NaturalPersonMasterParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 210, -1));
 
         cmbNP_NPLinkedParty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
         cmbNP_NPLinkedParty.setEnabled(false);
-        jPanel2.add(cmbNP_NPLinkedParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 210, -1));
 
         jLabel20.setFont(new java.awt.Font("Noto Sans", 1, 11)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 117, 201));
         jLabel20.setText("Legal Entity Master Party");
-        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
         jLabel22.setFont(new java.awt.Font("Noto Sans", 1, 11)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 117, 201));
         jLabel22.setText("Natural Person Master Party");
-        jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
         cmbNP_NPMasterParty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
         cmbNP_NPMasterParty.addActionListener(this::cmbNP_NPMasterPartyActionPerformed);
-        jPanel2.add(cmbNP_NPMasterParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 220, -1));
 
         cmbNP_LEMasterParty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
-        jPanel2.add(cmbNP_LEMasterParty, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 220, -1));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel15)
+                        .addGap(100, 100, 100)
+                        .addComponent(cmbNP_NPCombination, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel5)
+                        .addGap(16, 16, 16)
+                        .addComponent(cmbNP_NaturalPersonMasterParty, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(cmbNP_LELinkedParty, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbNP_NPLinkedParty, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbNP_NPWhichPartyMustAlert, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel20)
+                                .addGap(29, 29, 29)
+                                .addComponent(cmbNP_LEMasterParty, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel22)
+                                .addGap(9, 9, 9)
+                                .addComponent(cmbNP_NPMasterParty, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(9, 9, 9))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel15))
+                    .addComponent(cmbNP_NPCombination, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel5))
+                    .addComponent(cmbNP_NaturalPersonMasterParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2))
+                    .addComponent(cmbNP_LELinkedParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel3))
+                    .addComponent(cmbNP_NPLinkedParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(cmbNP_NPWhichPartyMustAlert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel20)
+                    .addComponent(cmbNP_LEMasterParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel22)
+                    .addComponent(cmbNP_NPMasterParty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "LEGAL ENTITY", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 13), new java.awt.Color(0, 117, 201))); // NOI18N
 
@@ -483,7 +557,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDownloadTxtFile, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
