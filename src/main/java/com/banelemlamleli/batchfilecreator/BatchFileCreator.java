@@ -10,7 +10,6 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import org.apache.logging.log4j.lang.NonNull;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -597,7 +596,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
         int cmbNp_NPMasterParty = Integer.parseInt(cmbNP_NPMasterParty.getSelectedItem().toString());
 
         // ArrayList that will store the complete information that will be written into a batch file  
-        @NonNull List<List<Party>> completeBatchFileData = new ArrayList<>();
+        List<List<Party>> completeBatchFileData = new ArrayList<>();
 
         // Clear the arraylist at every execution to prevent duplicate data
         completeBatchFileData.clear();
@@ -1301,7 +1300,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
         int cmbNp_NPMasterParty = Integer.parseInt(cmbNP_NPMasterParty.getSelectedItem().toString());
 
         // ArrayList that will store the complete information that will be written into a batch file  
-        @NonNull List<List<Party>> completeBatchFileData = new ArrayList<>();
+        List<List<Party>> completeBatchFileData = new ArrayList<>();
 
         // Clear the arraylist at every execution to prevent duplicate data
         completeBatchFileData.clear();
@@ -1988,7 +1987,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
         int cmbNp_NPMasterParty = Integer.parseInt(cmbNP_NPMasterParty.getSelectedItem().toString());
 
         // ArrayList that will store the complete information that will be written into a batch file  
-        @NonNull List<List<Party>> completeBatchFileData = new ArrayList<>();
+        List<List<Party>> completeBatchFileData = new ArrayList<>();
 
         // Clear the arraylist at every execution to prevent duplicate data
         completeBatchFileData.clear();
