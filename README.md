@@ -36,14 +36,30 @@ There are two ways one can run this project
         - **N.B.,** Depending on which party type you need, change the parameter in the testng.xml file. Expected parameter '*Entity*' or '*Individual*' 
     - Run using maven command **mvn test**
 
+## Creating a build
+
+I have created two self-executable files for two types of operating systems. One for Linux based distros and two, for MS Windows
+
+- Linux build cator for all linux distros and the script will create a build for '*deb*', '*rpm*', '*dmg*' files.
+    - Linux deb, rpm, dmg build package
+        - For Red Hat Linux, the rpm-build package is required.
+            - ```sudo dnf install rpm-build rpmdevtools```
+        - For Ubuntu Linux, the fakeroot package is required.
+    - Run the ```build-linux-installer.sh```
+
+- MS Windows build script will build a '*exe*' file for both x86 and x64.
+    - Install [wixtoolset](https://github.com/wixtoolset/wix/releases/). WiX is a set of build tools that build Windows Installer package
+    - Run the ```build-windows-installer.bat```
+    
 ## Icons
 
-Icons used are from [flaticon](https://www.flaticon.com/)
+Icons used are from [flaticon](https://www.flaticon.com/) and [icon-icons](https://icon-icons.com/search?q=paper+stack&price=free&page=2&sort=popular)
 
 - [excel](https://www.flaticon.com/free-icons/excel) icon
 - [file type](https://www.flaticon.com/free-icons/file-type) icon
 - [csv file](https://www.flaticon.com/free-icons/csv-file) icon
 - [batch processing](https://www.flaticon.com/free-icons/batch-processing) icon
+- [paper_stack](https://icon-icons.com/icon/base-data-document-office-page-paper/107782) icon
 
 ## Operating System used when developing application
 
@@ -54,3 +70,4 @@ This project is developed on a linux operating system. At the time of adding thi
 - KDE Frameworks Version: 6.22.0
 - Kernel Version: 6.18.5-200.fc43.x86_64 (64-bit)
 - Graphics Platform: Wayland
+
