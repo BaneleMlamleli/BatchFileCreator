@@ -1121,6 +1121,8 @@ public class BatchFileCreator extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error deleting existing txt: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
 
+        Path completeDataFilePath = null;
+
         for (int i = 0; i < completeBatchFileData.size(); i++) {
             for (int j = 0; j < completeBatchFileData.get(i).size(); j++) {
                 // System.out.println("Index: " + i + ", Party account number: " + completeBatchFileData.get(i).get(j).getAccount_number());
@@ -1223,7 +1225,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
                 System.out.println(finalStringValue);
 
                 try {
-                    Path completeDataFilePath;
+                    // Path completeDataFilePath;
                     String userHome = System.getProperty("user.home");
                     Path downloadsDir = Paths.get(userHome, "Downloads");
 
@@ -1254,6 +1256,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
             }
         }
 
+        JOptionPane.showMessageDialog(null, "YOUR FILE IS DOWNLOADED IN THE BELOW DIRECTORY:\n" + completeDataFilePath.toString());
     }//GEN-LAST:event_btnDownloadTxtFileActionPerformed
 
     private void cmbProductTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProductTypeActionPerformed
@@ -1825,6 +1828,8 @@ public class BatchFileCreator extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error deleting existing CSV: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
 
+        Path completeDataFilePath = null;
+
         for (int i = 0; i < completeBatchFileData.size(); i++) {
             for (int j = 0; j < completeBatchFileData.get(i).size(); j++) {
                 // System.out.println("Index: " + i + ", Party account number: " + completeBatchFileData.get(i).get(j).getAccount_number());
@@ -1927,7 +1932,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
                 System.out.println(finalStringValue);
 
                 try {
-                    Path completeDataFilePath;
+                    // Path completeDataFilePath;
                     String userHome = System.getProperty("user.home");
                     Path downloadsDir = Paths.get(userHome, "Downloads");
 
@@ -1951,6 +1956,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
                     String line = finalStringValue + System.lineSeparator();
                     Files.write(completeDataFilePath, line.getBytes(java.nio.charset.StandardCharsets.UTF_8),
                                 java.nio.file.StandardOpenOption.CREATE, java.nio.file.StandardOpenOption.APPEND);
+                    // locationOfSavedFile = completeDataFilePath;
                 } catch (java.io.IOException ex) {
                     logger.log(java.util.logging.Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, "Error writing CSV: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -1958,6 +1964,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
             }
         }
 
+        JOptionPane.showMessageDialog(null, "YOUR FILE IS DOWNLOADED IN THE BELOW DIRECTORY:\n" + completeDataFilePath.toString());
     }//GEN-LAST:event_btnDownloadCsvFileActionPerformed
 
     private void btnDownloadExcelFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadExcelFileActionPerformed
@@ -2601,6 +2608,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
             FileOutputStream fileOutputStream = new FileOutputStream(excelFilePath.toFile());
             workbook.write(fileOutputStream);
             workbook.close();
+            JOptionPane.showMessageDialog(null, "YOUR FILE IS DOWNLOADED IN THE BELOW DIRECTORY:\n" + excelFilePath.toString());
         } catch (Exception e) {
             // TODO: handle exception
         }
