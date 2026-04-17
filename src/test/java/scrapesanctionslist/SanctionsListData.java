@@ -147,6 +147,7 @@ public class SanctionsListData {
     String partyType = "Entity"; // Individual
     public static Logger logger = LogManager.getLogger(new Object() {
     }.getClass().getName());
+    
     Faker faker = new Faker();
 
     @SuppressWarnings("null")

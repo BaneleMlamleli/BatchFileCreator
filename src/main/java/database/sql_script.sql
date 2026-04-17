@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS parties;
 
 CREATE TABLE parties (
 	id INTEGER PRIMARY KEY,
-	party_type TEXT, -- N or L
+	party_type TEXT, -- P or L
 	party_alert BOOLEAN, -- true or false
 	party_is_used BOOLEAN, -- true or false
 	firstname TEXT,
