@@ -1256,7 +1256,10 @@ public class BatchFileCreator extends javax.swing.JFrame {
             }
         }
 
-        JOptionPane.showMessageDialog(null, "YOUR FILE IS DOWNLOADED IN THE BELOW DIRECTORY:\n" + completeDataFilePath.toString());
+        if (completeBatchFileData.size() != 0) {
+            JOptionPane.showMessageDialog(null, "YOUR FILE IS DOWNLOADED IN THE BELOW DIRECTORY:\n" + completeDataFilePath.toString());
+        }
+
     }//GEN-LAST:event_btnDownloadTxtFileActionPerformed
 
     private void cmbProductTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProductTypeActionPerformed
@@ -1964,7 +1967,10 @@ public class BatchFileCreator extends javax.swing.JFrame {
             }
         }
 
-        JOptionPane.showMessageDialog(null, "YOUR FILE IS DOWNLOADED IN THE BELOW DIRECTORY:\n" + completeDataFilePath.toString());
+        if (completeBatchFileData.size() != 0) {
+            JOptionPane.showMessageDialog(null, "YOUR FILE IS DOWNLOADED IN THE BELOW DIRECTORY:\n" + completeDataFilePath.toString());
+        }
+
     }//GEN-LAST:event_btnDownloadCsvFileActionPerformed
 
     private void btnDownloadExcelFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownloadExcelFileActionPerformed
@@ -1998,7 +2004,7 @@ public class BatchFileCreator extends javax.swing.JFrame {
 
         // Clear the arraylist at every execution to prevent duplicate data
         completeBatchFileData.clear();
-        
+
         /* Legal Entity side */
         // first loop is for the combinations
         for (int c = 0; c < cmbLe_LECombination; c++) {
@@ -2584,31 +2590,33 @@ public class BatchFileCreator extends javax.swing.JFrame {
         }
 
         try {
-            Path excelFilePath;
-            String userHome = System.getProperty("user.home");
-            Path downloadsDir = Paths.get(userHome, "Downloads");
+            if (completeBatchFileData.size() != 0) {
+                Path excelFilePath;
+                String userHome = System.getProperty("user.home");
+                Path downloadsDir = Paths.get(userHome, "Downloads");
 
-            if (Files.exists(downloadsDir) && Files.isDirectory(downloadsDir)) {
-                excelFilePath = downloadsDir.resolve("completeDataForBatchFile.xlsx");
-            } else {
-                String userProfile = System.getenv("USERPROFILE");
-                if (userProfile != null) {
-                    Path winDownloads = Paths.get(userProfile, "Downloads");
-                    if (Files.exists(winDownloads) && Files.isDirectory(winDownloads)) {
-                        excelFilePath = winDownloads.resolve("completeDataForBatchFile.xlsx");
+                if (Files.exists(downloadsDir) && Files.isDirectory(downloadsDir)) {
+                    excelFilePath = downloadsDir.resolve("completeDataForBatchFile.xlsx");
+                } else {
+                    String userProfile = System.getenv("USERPROFILE");
+                    if (userProfile != null) {
+                        Path winDownloads = Paths.get(userProfile, "Downloads");
+                        if (Files.exists(winDownloads) && Files.isDirectory(winDownloads)) {
+                            excelFilePath = winDownloads.resolve("completeDataForBatchFile.xlsx");
+                        } else {
+                            excelFilePath = Paths.get(userHome, "completeDataForBatchFile.xlsx");
+                        }
                     } else {
                         excelFilePath = Paths.get(userHome, "completeDataForBatchFile.xlsx");
                     }
-                } else {
-                    excelFilePath = Paths.get(userHome, "completeDataForBatchFile.xlsx");
                 }
-            }
 
-            Files.createDirectories(excelFilePath.getParent());
-            FileOutputStream fileOutputStream = new FileOutputStream(excelFilePath.toFile());
-            workbook.write(fileOutputStream);
-            workbook.close();
-            JOptionPane.showMessageDialog(null, "YOUR FILE IS DOWNLOADED IN THE BELOW DIRECTORY:\n" + excelFilePath.toString());
+                Files.createDirectories(excelFilePath.getParent());
+                FileOutputStream fileOutputStream = new FileOutputStream(excelFilePath.toFile());
+                workbook.write(fileOutputStream);
+                workbook.close();
+                JOptionPane.showMessageDialog(null, "YOUR FILE IS DOWNLOADED IN THE BELOW DIRECTORY:\n" + excelFilePath.toString());
+            }
         } catch (Exception e) {
             // TODO: handle exception
         }
