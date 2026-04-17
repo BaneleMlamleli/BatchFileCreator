@@ -252,6 +252,9 @@ public class DBConnection {
             prepStatemnt.setBoolean(1, alert);
             prepStatemnt.setString(2, partyType);
             resultSet = prepStatemnt.executeQuery();
+
+            // ID Number should be blank for an alerting party
+            String idNumber = (alert) ? "" : resultSet.getString("id_number");
             
             party.add(new Party(
                 alert,
@@ -262,7 +265,7 @@ public class DBConnection {
                 resultSet.getString("previous_surname"),
                 "",
                 "",
-                resultSet.getString("id_number"),
+                idNumber,
                 "",
                 resultSet.getString("gender"),
                 resultSet.getString("passport"),
@@ -408,6 +411,9 @@ public class DBConnection {
             prepStatemnt.setString(2, partyType);
             resultSet = prepStatemnt.executeQuery();
 
+            // ID Number should be blank for an alerting party
+            String idNumber = (alert) ? "" : resultSet.getString("id_number");
+
             party.add(new Party(
                 alert,
                 resultSet.getBoolean("party_is_used"),
@@ -417,7 +423,7 @@ public class DBConnection {
                 resultSet.getString("previous_surname"),
                 "",
                 "",
-                resultSet.getString("id_number"),
+                idNumber,
                 "",
                 resultSet.getString("gender"),
                 resultSet.getString("passport"),
