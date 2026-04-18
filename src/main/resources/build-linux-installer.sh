@@ -29,7 +29,7 @@ echo "Building installer..."
 jpackage \
   --type $PKG_TYPE \
   --name "BatchFileCreator" \
-  --app-version "1.0.0" \
+  --app-version "1.0.1" \
   --vendor "banelemlamleli" \
   --input ~/BatchFileCreator/input \
   --main-jar BatchFileCreator.jar \
