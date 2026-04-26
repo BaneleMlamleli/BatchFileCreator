@@ -1261,131 +1261,133 @@
     <Component class="javax.swing.JComboBox" name="cmbBusinessUnit">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="124">
-            <StringItem index="0" value="GLA | Glacier | 0001"/>
-            <StringItem index="1" value="GAO | Glacier International (GLA/GAO) | 0001"/>
-            <StringItem index="2" value="GAF | Glacier Partners Alexander Forbes | 0001"/>
-            <StringItem index="3" value="CRS | Glacier Test | 0001"/>
-            <StringItem index="4" value="TMR | Turnberry Management Risk Solutions (Sky Group Risk) | 0002"/>
-            <StringItem index="5" value="SKY | Sanlam SKY | 0002"/>
-            <StringItem index="6" value="PTL | Platinum Life (SKY Administrator) | 0002"/>
-            <StringItem index="7" value="POP | Personal Operations Partner | 0002"/>
-            <StringItem index="8" value="PKA | Phakama Administration Services (Sky Group Risk) | 0002"/>
-            <StringItem index="9" value="NCL | Ness Consulting (Sky Group Risk Administrator) | 0002"/>
-            <StringItem index="10" value="KIA | Kganya Insurance Administrators (Sky Group Risk) | 0002"/>
-            <StringItem index="11" value="GAP | Group Application Platform | 0002"/>
-            <StringItem index="12" value="FSA | Futura SA Administrators (Sky Group Risk ) | 0002"/>
-            <StringItem index="13" value="CPS | Capitec (Sanlam Sky) | 0002"/>
-            <StringItem index="14" value="CGB | Channel Group Benefits | 0002"/>
-            <StringItem index="15" value="CFL | Channel (Sky) | 0002"/>
-            <StringItem index="16" value="ARL | African Rainbow Life | 0002"/>
-            <StringItem index="17" value="SPW | Sanlam Private Wealth | 0003"/>
-            <StringItem index="18" value="SPM | SPW - Mauritius | 0003"/>
-            <StringItem index="19" value="SPG | SPW Guernsey | 0003"/>
-            <StringItem index="20" value="SDD | SPW - Derivatives | 0003"/>
-            <StringItem index="21" value="PSB | SPW - Stellenbosch Branch | 0003"/>
-            <StringItem index="22" value="PPT | SPW - Pretoria Branch | 0003"/>
-            <StringItem index="23" value="PJB | SPW- Johannesburg Branch | 0003"/>
-            <StringItem index="24" value="PIT | SPW - I- Trade Branch | 0003"/>
-            <StringItem index="25" value="PIN | SPW - Johannesburg SCM | 0003"/>
-            <StringItem index="26" value="PGE | SPW - George Branch | 0003"/>
-            <StringItem index="27" value="PFX | SPW - Offshore Branch | 0003"/>
-            <StringItem index="28" value="PFT | SPW Fiduciary &amp; Tax | 0003"/>
-            <StringItem index="29" value="PDB | SPW - Durban Branch | 0003"/>
-            <StringItem index="30" value="PCT | SPW - Tygervalley | 0003"/>
-            <StringItem index="31" value="PCL | SPW - Claremont Branch | 0003"/>
-            <StringItem index="32" value="PCF | SPW - Knysna Branch | 0003"/>
-            <StringItem index="33" value="SUS | Sanlam Umbrella Solutions (SEB) | 0004"/>
-            <StringItem index="34" value="SIH | SIMEKA Health (SEB) | 0004"/>
-            <StringItem index="35" value="SHC | Sanlam Healthcare Consultants (SEB) | 0004"/>
-            <StringItem index="36" value="SGR | Sanlam Group Risk (SEB) | 0004"/>
-            <StringItem index="37" value="SEB | Sanlam Employee Benefits (SEB) | 0004"/>
-            <StringItem index="38" value="RFA | Retirement Fund Administration (SEB) | 0004"/>
-            <StringItem index="39" value="EBI | Sanlam Employee Benefits Investments (SEB) | 0004"/>
-            <StringItem index="40" value="EBC | SEB Core (SEB) | 0004"/>
-            <StringItem index="41" value="ACA | ACA | 0004"/>
-            <StringItem index="42" value="SIK | SIMEKA | 0005"/>
-            <StringItem index="43" value="DIG | Digisure | 0006"/>
-            <StringItem index="44" value="SIN | Sanlam Investments Namibia (NAM) | 0007"/>
-            <StringItem index="45" value="NAM | Sanlam Namibia (NAM) | 0007"/>
-            <StringItem index="46" value="NAL | Affluent Namibia (NAM) | 0007"/>
-            <StringItem index="47" value="LBN | Legacy Business Namibia (NAM) | 0007"/>
-            <StringItem index="48" value="ELM | Entry Level Market Namibia (NAM) | 0007"/>
-            <StringItem index="49" value="EBN | Sanlam Employee Benefits Namibia (NAM) | 0007"/>
-            <StringItem index="50" value="CLN | Credit Life Namibia (NAM) | 0007"/>
-            <StringItem index="51" value="SWA | SIM Swaziland UT (SCI) | 0009"/>
-            <StringItem index="52" value="SCI | Sanlam Collective Investments (SCI) | 0009"/>
-            <StringItem index="53" value="SAT | SATRIX | 0009"/>
-            <StringItem index="54" value="GLM | Glacier Manco (SCI) | 0009"/>
-            <StringItem index="55" value="BIF | Botswana Insurance Fund Management Limited (SCI) | 0009"/>
-            <StringItem index="56" value="AFM | Absa Fund Managers (SCI Manco) | 0009"/>
-            <StringItem index="57" value="SLS | SILS Savings (SIL) | 0010"/>
-            <StringItem index="58" value="SLR | SILS Risk (SIL) | 0010"/>
-            <StringItem index="59" value="SLL | SILS Legacy (SIL) | 0010"/>
-            <StringItem index="60" value="SLC | SILS Closed Book (SIL) | 0010"/>
-            <StringItem index="61" value="SIL | Sanlam Individual Life (SIL) | 0010"/>
-            <StringItem index="62" value="SFP | SFP | 0010"/>
-            <StringItem index="63" value="PAC | SILS Policy Administration (SIL) | 0010"/>
-            <StringItem index="64" value="GIL | Glacier Life Investments (SIL) | 0010"/>
-            <StringItem index="65" value="CCC | SILS Call Centre (SIL) | 0010"/>
-            <StringItem index="66" value="GCO | Sanlam Group Compliance Office | 0011"/>
-            <StringItem index="67" value="GAN | Glacier Namibia (GAN) | 0012"/>
-            <StringItem index="68" value="IND | INDIEFIN | 0013"/>
-            <StringItem index="69" value="EQT | Easy Equities (IND) | 0013"/>
-            <StringItem index="70" value="MWL | MiWay Life | 0014"/>
-            <StringItem index="71" value="SWE | Sanlam Trust Estates | 0015"/>
-            <StringItem index="72" value="SVT | Inter Vivos &amp; Testamentary Trust | 0015"/>
-            <StringItem index="73" value="STT | Sanlam Trust WILLS | 0015"/>
-            <StringItem index="74" value="STA | Sanlam Umbrella Trust Admin | 0015"/>
-            <StringItem index="75" value="SRY | Reality | 0015"/>
-            <StringItem index="76" value="SPL | Sanlam Personal Loans | 0015"/>
-            <StringItem index="77" value="SBE | Sanlam Trust Beneficiary Funds | 0015"/>
-            <StringItem index="78" value="MUL | Multidata | 0015"/>
-            <StringItem index="79" value="BRI | Brightrock | 0016"/>
-            <StringItem index="80" value="STN | Satrix Now (SIG Easy Equities - Satrix) | 0017"/>
-            <StringItem index="81" value="SSI | Sanlam Sustainable Infrastructure Fund (SIG) | 0017"/>
-            <StringItem index="82" value="SPE | Sanlam Private Equity | 0017"/>
-            <StringItem index="83" value="SMM | Sanlam Multi Manager (SIG) | 0017"/>
-            <StringItem index="84" value="SMG | Sanlam Investment Management (SIG) General Partner | 0017"/>
-            <StringItem index="85" value="SIS | Smaller Institution (SIG) | 0017"/>
-            <StringItem index="86" value="SIM | Sanlam Investment Manager (SIG) | 0017"/>
-            <StringItem index="87" value="SGP | Sanlam Investment General Partners | 0017"/>
-            <StringItem index="88" value="SGI | Sanlam Global Investment Solutions | 0017"/>
-            <StringItem index="89" value="SED | South African Small Medium Enterprise Debt Fund eCP (SIG) | 0017"/>
-            <StringItem index="90" value="SCM | Sanfin (Sanlam Capital Markets) | 0017"/>
-            <StringItem index="91" value="SAR | Sanlam Africa Real Estate Advisors | 0017"/>
-            <StringItem index="92" value="REF | Resilient Investment Fund (SIG) | 0017"/>
-            <StringItem index="93" value="MMF | SPE Mid-Market Fund 1 General Partner | 0017"/>
-            <StringItem index="94" value="LDF | Sanlam Investors Legacy SME Debt Fund (SIG) | 0017"/>
-            <StringItem index="95" value="GXF | Gen-X Credit Opportunities (SIG) | 0017"/>
-            <StringItem index="96" value="GSI | Sanlam Investment Management GP (SIG) | 0017"/>
-            <StringItem index="97" value="GRA | Graviton Wealth (SIG) | 0017"/>
-            <StringItem index="98" value="GFP | Graviton Financial Partners (SIG) | 0017"/>
-            <StringItem index="99" value="ESF | EPPF SME DEBT FUND PARTNERSHIP (SIG) | 0017"/>
-            <StringItem index="100" value="DEN | DENKER | 0017"/>
-            <StringItem index="101" value="CRF | Consolidated Retirement Fund (SIG) | 0017"/>
-            <StringItem index="102" value="CAT | Catalyst | 0017"/>
-            <StringItem index="103" value="BLU | Amplify | 0017"/>
-            <StringItem index="104" value="ABA | ABSA Bank Asset Management (SIG) | 0017"/>
-            <StringItem index="105" value="AAM | ABSA Bank Alternatives Investments (SIG) | 0017"/>
-            <StringItem index="106" value="TSA | Transafrica (safrican administrator) | 0018"/>
-            <StringItem index="107" value="SMB | Salt Employee Benefits (safrican administrator) | 0018"/>
-            <StringItem index="108" value="SAF | SAFRICAN | 0018"/>
-            <StringItem index="109" value="RSF | Riskfin (safrican administrator) | 0018"/>
-            <StringItem index="110" value="PKM | Pharkarma (Safrican Administrator) | 0018"/>
-            <StringItem index="111" value="NES | Ness (Safrican Administrator) | 0018"/>
-            <StringItem index="112" value="MWM | Moriting Wealth Managers (safrican administrator) | 0018"/>
-            <StringItem index="113" value="IEA | Insurance Enterprise (Safrican administrator) | 0018"/>
-            <StringItem index="114" value="ENG | Econo Group (safrican administrator) | 0018"/>
-            <StringItem index="115" value="WAS | Worldwide Advisory Services (WWAS) | 0019"/>
-            <StringItem index="116" value="SRM | Sanlam Retail Mass Data Pulse | 0019"/>
-            <StringItem index="117" value="SAS | Structured Administrator Solutions (Sanlam Sky) | 0019"/>
-            <StringItem index="118" value="IFS | Icebolethu Funerals (SKY) | 0019"/>
-            <StringItem index="119" value="GRU | Groups R US (Sanlam SKY) | 0019"/>
-            <StringItem index="120" value="AYO | MTN AYO (Sanlam Sky) | 0019"/>
-            <StringItem index="121" value="SNP | Santam Namibia Personal | 0020"/>
-            <StringItem index="122" value="SNN | Santam Namibia Niche | 0020"/>
-            <StringItem index="123" value="SNC | Santam Namibia Commercial | 0020"/>
+          <StringArray count="126">
+            <StringItem index="0" value="TST | Testing BU One | 0006"/>
+            <StringItem index="1" value="TTT | Testing BU Two | 0006"/>
+            <StringItem index="2" value="GLA | Glacier | 0001"/>
+            <StringItem index="3" value="GAO | Glacier International (GLA/GAO) | 0001"/>
+            <StringItem index="4" value="GAF | Glacier Partners Alexander Forbes | 0001"/>
+            <StringItem index="5" value="CRS | Glacier Test | 0001"/>
+            <StringItem index="6" value="TMR | Turnberry Management Risk Solutions (Sky Group Risk) | 0002"/>
+            <StringItem index="7" value="SKY | Sanlam SKY | 0019"/>
+            <StringItem index="8" value="PTL | Platinum Life (SKY Administrator) | 0002"/>
+            <StringItem index="9" value="POP | Personal Operations Partner | 0002"/>
+            <StringItem index="10" value="PKA | Phakama Administration Services (Sky Group Risk) | 0002"/>
+            <StringItem index="11" value="NCL | Ness Consulting (Sky Group Risk Administrator) | 0002"/>
+            <StringItem index="12" value="KIA | Kganya Insurance Administrators (Sky Group Risk) | 0002"/>
+            <StringItem index="13" value="GAP | Group Application Platform | 0002"/>
+            <StringItem index="14" value="FSA | Futura SA Administrators (Sky Group Risk ) | 0002"/>
+            <StringItem index="15" value="CPS | Capitec (Sanlam Sky) | 0002"/>
+            <StringItem index="16" value="CGB | Channel Group Benefits | 0002"/>
+            <StringItem index="17" value="CFL | Channel (Sky) | 0002"/>
+            <StringItem index="18" value="ARL | African Rainbow Life | 0002"/>
+            <StringItem index="19" value="SPW | Sanlam Private Wealth | 0003"/>
+            <StringItem index="20" value="SPM | SPW - Mauritius | 0003"/>
+            <StringItem index="21" value="SPG | SPW Guernsey | 0003"/>
+            <StringItem index="22" value="SDD | SPW - Derivatives | 0003"/>
+            <StringItem index="23" value="PSB | SPW - Stellenbosch Branch | 0003"/>
+            <StringItem index="24" value="PPT | SPW - Pretoria Branch | 0003"/>
+            <StringItem index="25" value="PJB | SPW- Johannesburg Branch | 0003"/>
+            <StringItem index="26" value="PIT | SPW - I- Trade Branch | 0003"/>
+            <StringItem index="27" value="PIN | SPW - Johannesburg SCM | 0003"/>
+            <StringItem index="28" value="PGE | SPW - George Branch | 0003"/>
+            <StringItem index="29" value="PFX | SPW - Offshore Branch | 0003"/>
+            <StringItem index="30" value="PFT | SPW Fiduciary &amp; Tax | 0003"/>
+            <StringItem index="31" value="PDB | SPW - Durban Branch | 0003"/>
+            <StringItem index="32" value="PCT | SPW - Tygervalley | 0003"/>
+            <StringItem index="33" value="PCL | SPW - Claremont Branch | 0003"/>
+            <StringItem index="34" value="PCF | SPW - Knysna Branch | 0003"/>
+            <StringItem index="35" value="SUS | Sanlam Umbrella Solutions (SEB) | 0004"/>
+            <StringItem index="36" value="SIH | SIMEKA Health (SEB) | 0004"/>
+            <StringItem index="37" value="SHC | Sanlam Healthcare Consultants (SEB) | 0004"/>
+            <StringItem index="38" value="SGR | Sanlam Group Risk (SEB) | 0004"/>
+            <StringItem index="39" value="SEB | Sanlam Employee Benefits (SEB) | 0004"/>
+            <StringItem index="40" value="RFA | Retirement Fund Administration (SEB) | 0004"/>
+            <StringItem index="41" value="EBI | Sanlam Employee Benefits Investments (SEB) | 0004"/>
+            <StringItem index="42" value="EBC | SEB Core (SEB) | 0004"/>
+            <StringItem index="43" value="ACA | ACA | 0004"/>
+            <StringItem index="44" value="SIK | SIMEKA | 0005"/>
+            <StringItem index="45" value="DIG | Digisure | 0006"/>
+            <StringItem index="46" value="SIN | Sanlam Investments Namibia (NAM) | 0007"/>
+            <StringItem index="47" value="NAM | Sanlam Namibia (NAM) | 0007"/>
+            <StringItem index="48" value="NAL | Affluent Namibia (NAM) | 0007"/>
+            <StringItem index="49" value="LBN | Legacy Business Namibia (NAM) | 0007"/>
+            <StringItem index="50" value="ELM | Entry Level Market Namibia (NAM) | 0007"/>
+            <StringItem index="51" value="EBN | Sanlam Employee Benefits Namibia (NAM) | 0007"/>
+            <StringItem index="52" value="CLN | Credit Life Namibia (NAM) | 0007"/>
+            <StringItem index="53" value="SWA | SIM Swaziland UT (SCI) | 0009"/>
+            <StringItem index="54" value="SCI | Sanlam Collective Investments (SCI) | 0009"/>
+            <StringItem index="55" value="SAT | SATRIX | 0009"/>
+            <StringItem index="56" value="GLM | Glacier Manco (SCI) | 0009"/>
+            <StringItem index="57" value="BIF | Botswana Insurance Fund Management Limited (SCI) | 0009"/>
+            <StringItem index="58" value="AFM | Absa Fund Managers (SCI Manco) | 0009"/>
+            <StringItem index="59" value="SLS | SILS Savings (SIL) | 0010"/>
+            <StringItem index="60" value="SLR | SILS Risk (SIL) | 0010"/>
+            <StringItem index="61" value="SLL | SILS Legacy (SIL) | 0010"/>
+            <StringItem index="62" value="SLC | SILS Closed Book (SIL) | 0010"/>
+            <StringItem index="63" value="SIL | Sanlam Individual Life (SIL) | 0010"/>
+            <StringItem index="64" value="SFP | SFP | 0010"/>
+            <StringItem index="65" value="PAC | SILS Policy Administration (SIL) | 0010"/>
+            <StringItem index="66" value="GIL | Glacier Life Investments (SIL) | 0010"/>
+            <StringItem index="67" value="CCC | SILS Call Centre (SIL) | 0010"/>
+            <StringItem index="68" value="GCO | Sanlam Group Compliance Office | 0011"/>
+            <StringItem index="69" value="GAN | Glacier Namibia (GAN) | 0012"/>
+            <StringItem index="70" value="IND | INDIEFIN | 0013"/>
+            <StringItem index="71" value="EQT | Easy Equities (IND) | 0013"/>
+            <StringItem index="72" value="MWL | MiWay Life | 0014"/>
+            <StringItem index="73" value="SWE | Sanlam Trust Estates | 0015"/>
+            <StringItem index="74" value="SVT | Inter Vivos &amp; Testamentary Trust | 0015"/>
+            <StringItem index="75" value="STT | Sanlam Trust WILLS | 0015"/>
+            <StringItem index="76" value="STA | Sanlam Umbrella Trust Admin | 0015"/>
+            <StringItem index="77" value="SRY | Reality | 0015"/>
+            <StringItem index="78" value="SPL | Sanlam Personal Loans | 0015"/>
+            <StringItem index="79" value="SBE | Sanlam Trust Beneficiary Funds | 0015"/>
+            <StringItem index="80" value="MUL | Multidata | 0015"/>
+            <StringItem index="81" value="BRI | Brightrock | 0016"/>
+            <StringItem index="82" value="STN | Satrix Now (SIG Easy Equities - Satrix) | 0017"/>
+            <StringItem index="83" value="SSI | Sanlam Sustainable Infrastructure Fund (SIG) | 0017"/>
+            <StringItem index="84" value="SPE | Sanlam Private Equity | 0017"/>
+            <StringItem index="85" value="SMM | Sanlam Multi Manager (SIG) | 0017"/>
+            <StringItem index="86" value="SMG | Sanlam Investment Management (SIG) General Partner | 0017"/>
+            <StringItem index="87" value="SIS | Smaller Institution (SIG) | 0017"/>
+            <StringItem index="88" value="SIM | Sanlam Investment Manager (SIG) | 0017"/>
+            <StringItem index="89" value="SGP | Sanlam Investment General Partners | 0017"/>
+            <StringItem index="90" value="SGI | Sanlam Global Investment Solutions | 0017"/>
+            <StringItem index="91" value="SED | South African Small Medium Enterprise Debt Fund eCP (SIG) | 0017"/>
+            <StringItem index="92" value="SCM | Sanfin (Sanlam Capital Markets) | 0017"/>
+            <StringItem index="93" value="SAR | Sanlam Africa Real Estate Advisors | 0017"/>
+            <StringItem index="94" value="REF | Resilient Investment Fund (SIG) | 0017"/>
+            <StringItem index="95" value="MMF | SPE Mid-Market Fund 1 General Partner | 0017"/>
+            <StringItem index="96" value="LDF | Sanlam Investors Legacy SME Debt Fund (SIG) | 0017"/>
+            <StringItem index="97" value="GXF | Gen-X Credit Opportunities (SIG) | 0017"/>
+            <StringItem index="98" value="GSI | Sanlam Investment Management GP (SIG) | 0017"/>
+            <StringItem index="99" value="GRA | Graviton Wealth (SIG) | 0017"/>
+            <StringItem index="100" value="GFP | Graviton Financial Partners (SIG) | 0017"/>
+            <StringItem index="101" value="ESF | EPPF SME DEBT FUND PARTNERSHIP (SIG) | 0017"/>
+            <StringItem index="102" value="DEN | DENKER | 0017"/>
+            <StringItem index="103" value="CRF | Consolidated Retirement Fund (SIG) | 0017"/>
+            <StringItem index="104" value="CAT | Catalyst | 0017"/>
+            <StringItem index="105" value="BLU | Amplify | 0017"/>
+            <StringItem index="106" value="ABA | ABSA Bank Asset Management (SIG) | 0017"/>
+            <StringItem index="107" value="AAM | ABSA Bank Alternatives Investments (SIG) | 0017"/>
+            <StringItem index="108" value="TSA | Transafrica (safrican administrator) | 0018"/>
+            <StringItem index="109" value="SMB | Salt Employee Benefits (safrican administrator) | 0018"/>
+            <StringItem index="110" value="SAF | SAFRICAN | 0018"/>
+            <StringItem index="111" value="RSF | Riskfin (safrican administrator) | 0018"/>
+            <StringItem index="112" value="PKM | Pharkarma (Safrican Administrator) | 0018"/>
+            <StringItem index="113" value="NES | Ness (Safrican Administrator) | 0018"/>
+            <StringItem index="114" value="MWM | Moriting Wealth Managers (safrican administrator) | 0018"/>
+            <StringItem index="115" value="IEA | Insurance Enterprise (Safrican administrator) | 0018"/>
+            <StringItem index="116" value="ENG | Econo Group (safrican administrator) | 0018"/>
+            <StringItem index="117" value="WAS | Worldwide Advisory Services (WWAS) | 0019"/>
+            <StringItem index="118" value="SRM | Sanlam Retail Mass Data Pulse | 0019"/>
+            <StringItem index="119" value="SAS | Structured Administrator Solutions (Sanlam Sky) | 0019"/>
+            <StringItem index="120" value="IFS | Icebolethu Funerals (SKY) | 0019"/>
+            <StringItem index="121" value="GRU | Groups R US (Sanlam SKY) | 0019"/>
+            <StringItem index="122" value="AYO | MTN AYO (Sanlam Sky) | 0019"/>
+            <StringItem index="123" value="SNP | Santam Namibia Personal | 0020"/>
+            <StringItem index="124" value="SNN | Santam Namibia Niche | 0020"/>
+            <StringItem index="125" value="SNC | Santam Namibia Commercial | 0020"/>
           </StringArray>
         </Property>
       </Properties>
